@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC1 • Aula 1 — Fundamentos (HTML, CSS, JS) + Briefing v0.1</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary badge-emoji">UC1</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#definicoes">Definições</a></li>
+        <li class="nav-item"><a class="nav-link" href="#exemplos">Exemplos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#atividades">Atividades</a></li>
+        <li class="nav-item"><a class="nav-link" href="#entregaveis">Entregáveis</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC1</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Aula 1</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-7">
+        <h1 class="section-title h3">Aula 1 — Fundamentos da Web <span class="badge-soft sky ms-1">🧭 Começo inteligente</span></h1>
+        <p class="lead">Entenda o papel de <strong>HTML</strong> (estrutura), <strong>CSS</strong> (visual) e <strong>JavaScript</strong> (interação) e gere insumos práticos: <span class="token">Persona</span>, <span class="token">Mapa de Empatia</span> e <span class="token">Análise de Concorrentes</span>. Saída: <strong>Briefing v0.1</strong> com KPIs.</p>
+        <div class="d-flex gap-2">
+          <a href="#definicoes" class="btn btn-brand">🚀 Começar agora</a>
+          <a href="#exemplos" class="btn btn-outline-secondary">🧪 Ver exemplos</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="banner p-3">
+          <div class="d-flex align-items-center gap-2 mb-2"><span class="badge-soft mint">🎯 Objetivos</span></div>
+          <ul class="mb-0 mini">
+            <li>Entender como HTML, CSS e JS trabalham juntos.</li>
+            <li>Aplicar conceitos em exercícios guiados e interativos.</li>
+            <li>Gerar materiais para a Aula 2 (entrevista e requisitos).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="definicoes" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">📘 Definições essenciais</h2>
+    <div class="grid-3">
+      <div class="card-ghost p-3 fade-on-scroll">
+        <h3 class="h6 mb-1">HTML — Estrutura 🧱</h3>
+        <p class="mini">Marca o conteúdo com <em>tags semânticas</em> para dar significado e melhorar acessibilidade/SEO.</p>
+        <div class="code-note">&lt;main&gt;
+  &lt;article&gt;
+    &lt;h1&gt;Título&lt;/h1&gt;
+    &lt;p&gt;Parágrafo com &lt;strong&gt;ênfase&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/main&gt;</div>
+      </div>
+      <div class="card-ghost p-3 fade-on-scroll">
+        <h3 class="h6 mb-1">CSS — Apresentação 🎨</h3>
+        <p class="mini">Controla cores, espaçamentos, tipografia e layout. Suporte a grid/flex e <em>media queries</em> (responsivo).</p>
+        <div class="code-note">main{max-width:65ch;margin:auto}
+h1{font-weight:700}
+@media (max-width: 576px){ .hero-copy{text-align:center} }</div>
+      </div>
+      <div class="card-ghost p-3 fade-on-scroll">
+        <h3 class="h6 mb-1">JavaScript — Comportamento ⚙️</h3>
+        <p class="mini">Dá vida à página: validações, animações, AJAX, manipulação do DOM.</p>
+        <div class="code-note">document.querySelector('#cta').addEventListener('click',()=>{
+  document.body.classList.toggle('modo-destaque');
+})</div>
+      </div>
+    </div>
+    <div class="alert alert-info mt-3 mini"><strong>Trabalham juntos:</strong> HTML define o que é; CSS define como parece; JS define como responde às ações. O <strong>Bootstrap</strong> agiliza usando componentes prontos responsivos.</div>
+  </div>
+</section>
+
+<section id="exemplos" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3">🧪 Exemplos práticos (melhorados)</h2>
+
+    <!-- A) HTML semântico -->
+    <div class="card-ghost p-3 mb-3 fade-on-scroll">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="h6 m-0">A) HTML semântico 🧱</h3>
+        <button class="btn btn-sm btn-outline-primary" onclick="copyToClipboard(document.getElementById('htmlSem').textContent)">Copiar HTML 📋</button>
+      </div>
+      <div class="grid-2 mt-2">
+        <div id="htmlSem" class="code-note">&lt;header role="banner"&gt;Logo + navegação&lt;/header&gt;
+&lt;nav aria-label="principal"&gt;…&lt;/nav&gt;
+&lt;main&gt;
+  &lt;article&gt;&lt;h1&gt;Notícia&lt;/h1&gt;&lt;p&gt;…&lt;/p&gt;&lt;/article&gt;
+  &lt;aside&gt;Relacionados&lt;/aside&gt;
+&lt;/main&gt;
+&lt;footer&gt;© 2025&lt;/footer&gt;</div>
+        <div class="preview-box">
+          <div class="preview-header"><span class="dot bg-danger"></span><span class="dot bg-warning"></span><span class="dot bg-success"></span><span class="ms-2 mini">Prévia</span></div>
+          <div class="preview-body mini">
+            <span class="badge-soft sky">header</span> • <span class="badge-soft mint">nav</span> • <span class="badge-soft">main/article</span> • <span class="badge-soft rose">aside</span> • <span class="badge-soft">footer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B) CSS responsivo -->
+    <div class="card-ghost p-3 mb-3 fade-on-scroll">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="h6 m-0">B) CSS responsivo 📱</h3>
+        <div class="btn-group">
+          <button class="btn btn-sm btn-outline-secondary" onclick="demoSet('desk')">Desktop</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="demoSet('tab')">Tablet</button>
+          <button class="btn btn-sm btn-outline-secondary" onclick="demoSet('mob')">Mobile</button>
+        </div>
+      </div>
+      <div class="grid-2 mt-2">
+        <div class="code-note">.grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+@media (max-width: 992px){ .grid{grid-template-columns:repeat(2,1fr)} }
+@media (max-width: 576px){ .grid{grid-template-columns:1fr} }</div>
+        <div class="preview-box">
+          <div class="preview-header"><span class="dot bg-danger"></span><span class="dot bg-warning"></span><span class="dot bg-success"></span><span class="ms-2 mini" id="vpLabel">Desktop</span></div>
+          <div class="preview-body">
+            <div id="demoGrid" class="grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px">
+              <div class="card p-2 text-center">Card 1</div>
+              <div class="card p-2 text-center">Card 2</div>
+              <div class="card p-2 text-center">Card 3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- C) JS Validação + Toast -->
+    <div class="card-ghost p-3 mb-3 fade-on-scroll">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="h6 m-0">C) JavaScript: Validação + Toast ⚙️</h3>
+        <button class="btn btn-sm btn-outline-primary" onclick="copyToClipboard(document.getElementById('jsVal').textContent)">Copiar JS 📋</button>
+      </div>
+      <div class="grid-2 mt-2">
+        <div id="jsVal" class="code-note">const email = document.getElementById('demoEmail');
+document.getElementById('btnInscrever').addEventListener('click',()=>{
+  const ok = /.+@.+\..+/.test(email.value);
+  showToast(ok ? 'Inscrição iniciada! ✅' : 'E-mail inválido. Verifique. ❌');
+});</div>
+        <div class="preview-box">
+          <div class="preview-header"><span class="dot bg-danger"></span><span class="dot bg-warning"></span><span class="dot bg-success"></span><span class="ms-2 mini">Form</span></div>
+          <div class="preview-body">
+            <div class="row g-2">
+              <div class="col-md-8"><input id="demoEmail" class="form-control" placeholder="seu@email.com"></div>
+              <div class="col-md-4 d-grid"><button id="btnInscrever" class="btn btn-success">Inscrever-se</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- D) Persona (interativo) -->
+    <div class="card-ghost p-3 mb-3 fade-on-scroll" id="ex-persona">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="h6 m-0">D) Persona 👤</h3>
+        <button class="btn btn-sm btn-outline-primary" id="btnCopyPersona">Copiar Persona 📋</button>
+      </div>
+      <div class="row g-3 mt-2">
+        <div class="col-lg-7">
+          <div class="row g-2">
+            <div class="col-md-6"><label class="form-label">Nome</label><input id="pNome" class="form-control" value="Juliana Alves"></div>
+            <div class="col-md-3"><label class="form-label">Idade</label><input id="pIdade" class="form-control" value="34"></div>
+            <div class="col-md-3"><label class="form-label">Cidade</label><input id="pCidade" class="form-control" value="BH/MG"></div>
+            <div class="col-md-6"><label class="form-label">Profissão</label><input id="pProf" class="form-control" value="Administradora"></div>
+            <div class="col-md-6"><label class="form-label">Renda</label><input id="pRenda" class="form-control" value="R$ 7.200"></div>
+            <div class="col-12"><label class="form-label">Objetivos</label><input id="pObj" class="form-control" value="Encontrar cursos práticos, com avaliações e pagamento seguro."></div>
+            <div class="col-12"><label class="form-label">Dores</label><input id="pDores" class="form-control" value="Pouco tempo; difícil confiar na plataforma."></div>
+            <div class="col-12"><label class="form-label">Frase</label><input id="pFrase" class="form-control" value="Quero aprender algo novo sem complicação."></div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <h4 class="h6 mb-1" id="cardNome">Juliana Alves</h4>
+              <div class="mini" id="cardMeta">34 • Administradora • BH/MG • R$ 7.200</div>
+              <hr>
+              <p class="mb-1"><strong>Objetivos:</strong> <span id="cardObj">Encontrar cursos práticos...</span></p>
+              <p class="mb-1"><strong>Dores:</strong> <span id="cardDores">Pouco tempo...</span></p>
+              <p class="mb-0"><em id="cardFrase">“Quero aprender algo novo sem complicação.”</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- E) Mapa de Empatia -->
+    <div class="card-ghost p-3 mb-3 fade-on-scroll">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="h6 m-0">E) Mapa de Empatia 🧠</h3>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-secondary" id="btnPresetMapa"><i class="bi bi-magic"></i> Auto-preencher</button>
+          <button class="btn btn-sm btn-outline-primary" id="btnCopyMapa"><i class="bi bi-clipboard"></i> Copiar resumo</button>
+        </div>
+      </div>
+      <div class="empathy-grid mt-2">
+        <div class="preview-box empathy-cell"><strong>Vê</strong><textarea class="form-control mt-2" id="mVe" rows="3"></textarea></div>
+        <div class="preview-box empathy-cell"><strong>Escuta</strong><textarea class="form-control mt-2" id="mEscuta" rows="3"></textarea></div>
+        <div class="preview-box empathy-cell"><strong>Pensa/Sente</strong><textarea class="form-control mt-2" id="mPensa" rows="3"></textarea></div>
+        <div class="preview-box empathy-cell"><strong>Fala/Faz</strong><textarea class="form-control mt-2" id="mFala" rows="3"></textarea></div>
+        <div class="preview-box empathy-cell"><strong>Dores</strong><textarea class="form-control mt-2" id="mDores" rows="3"></textarea></div>
+        <div class="preview-box empathy-cell"><strong>Ganhos</strong><textarea class="form-control mt-2" id="mGanhos" rows="3"></textarea></div>
+      
+<!-- Empathy Map — Insights automáticos -->
+<div class="card-ghost p-3 mt-3">
+  <h4 class="h6">Insights automáticos a partir do Mapa 💡</h4>
+  <p class="mini mb-2">Gere sugestões de design com base no que foi preenchido.</p>
+  <div class="row g-2">
+    <div class="col-md-3 d-grid"><button class="btn btn-outline-dark" id="btnGerarInsights">Gerar insights</button></div>
+    <div class="col-md-9"><div id="insightsBox" class="alert alert-secondary mini mb-0">Preencha o mapa e clique em “Gerar insights”.</div></div>
+  </div>
+</div>
+
+    <!-- F) Concorrentes -->
+    <div class="card-ghost p-3 fade-on-scroll">
+      <div class="d-flex justify-content-between align-items-center">
+        <h3 class="h6 m-0">F) Concorrentes 🕵️‍♂️</h3>
+        <div class="d-flex gap-2">
+          <button class="btn btn-sm btn-outline-secondary" id="btnAddLinha"><i class="bi bi-plus-circle"></i> Adicionar linha</button>
+          <button class="btn btn-sm btn-outline-primary" id="btnCalcular"><i class="bi bi-calculator"></i> Calcular notas</button>
+        </div>
+      </div>
+      <div class="table-responsive mt-2">
+        <table class="table align-middle" id="tabConc">
+          <thead class="table-light"><tr><th>Site</th><th>Mobile/Nav</th><th>Informações</th><th>Avaliações</th><th>Pagamento</th><th>Suporte</th><th>Diferenciais</th><th>Score</th></tr></thead>
+          <tbody>
+            <tr><td contenteditable="true">Escola A</td><td contenteditable="true">8</td><td contenteditable="true">7</td><td contenteditable="true">6</td><td contenteditable="true">8</td><td contenteditable="true">7</td><td contenteditable="true">App, cursos curtos</td><td class="score-badge">–</td></tr>
+            <tr><td contenteditable="true">Escola B</td><td contenteditable="true">9</td><td contenteditable="true">9</td><td contenteditable="true">8</td><td contenteditable="true">7</td><td contenteditable="true">8</td><td contenteditable="true">Depoimentos, certificado</td><td class="score-badge">–</td></tr>
+            <tr><td contenteditable="true">Escola C</td><td contenteditable="true">6</td><td contenteditable="true">10</td><td contenteditable="true">10</td><td contenteditable="true">8</td><td contenteditable="true">9</td><td contenteditable="true">Suporte 24/7</td><td class="score-badge">–</td></tr>
+          </tbody>
+        </table>
+      
+<!-- Persona — Campos avançados -->
+<div class="card-ghost p-3 mb-3">
+  <h4 class="h6">Campos avançados da Persona ✍️</h4>
+  <div class="row g-2">
+    <div class="col-md-12"><label class="form-label">Contexto de uso (onde/quando)</label><input id="pContexto" class="form-control" value="No celular, no intervalo do trabalho; 15–20 min disponíveis."></div>
+    <div class="col-md-6"><label class="form-label">Motivação principal</label><input id="pMotiv" class="form-control" value="Evoluir na carreira com um certificado rápido."></div>
+    <div class="col-md-6"><label class="form-label">Resultado desejado</label><input id="pResultado" class="form-control" value="Matricular-se em 1 curso confiável hoje."></div>
+
+    <div class="col-md-6">
+      <label class="form-label">Dispositivos</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pDevMob" checked><label class="form-check-label" for="pDevMob">📱 Mobile</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pDevDesk"><label class="form-check-label" for="pDevDesk">🖥️ Desktop</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pDevTab"><label class="form-check-label" for="pDevTab">📟 Tablet</label></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Habilidade digital</label>
+      <select id="pSkill" class="form-select">
+        <option>Iniciante</option>
+        <option selected>Médio</option>
+        <option>Avançado</option>
+      </select>
+    </div>
+
+    <div class="col-md-12"><label class="form-label">Canais que influenciam</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalOrg" checked><label class="form-check-label" for="pCanalOrg">🔎 Busca orgânica</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalAds"><label class="form-check-label" for="pCanalAds">📣 Anúncios</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalSoc" checked><label class="form-check-label" for="pCanalSoc">💬 Redes sociais</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalRef"><label class="form-check-label" for="pCanalRef">🤝 Indicação</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalEmail"><label class="form-check-label" for="pCanalEmail">✉️ Email</label></div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Critérios de decisão (marque)</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritAval" checked><label class="form-check-label" for="pCritAval">⭐ Avaliações</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritPreço" checked><label class="form-check-label" for="pCritPreço">💲 Preço</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritCert" checked><label class="form-check-label" for="pCritCert">📜 Certificado</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritPrazo"><label class="form-check-label" for="pCritPrazo">⏱️ Carga horária</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritSuporte"><label class="form-check-label" for="pCritSuporte">🛟 Suporte</label></div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Barreiras/objeções (marque)</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pBarrTempo" checked><label class="form-check-label" for="pBarrTempo">⏳ Falta de tempo</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pBarrConfianca" checked><label class="form-check-label" for="pBarrConfianca">🔒 Confiança</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pBarrPagamento"><label class="form-check-label" for="pBarrPagamento">💳 Pagamento</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pBarrAcesso"><label class="form-check-label" for="pBarrAcesso">🌐 Acesso/Internet</label></div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <label class="form-label">Necessidades de acessibilidade (se houver)</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pAccContr"><label class="form-check-label" for="pAccContr">Contraste alto</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pAccLeitor"><label class="form-check-label" for="pAccLeitor">Leitor de tela</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pAccTeclado"><label class="form-check-label" for="pAccTeclado">Navegação por teclado</label></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-3">
+  <div class="row g-2 align-items-end">
+    <div class="col-md-9">
+      <label class="form-label">Declaração JTBD (gerada)</label>
+      <input id="pJTBD" class="form-control" readonly placeholder="Quando [contexto], quero [motivação] para [resultado].">
+    </div>
+    <div class="col-md-3 d-grid">
+      <button class="btn btn-brand" id="btnGerarJTBD">✨ Gerar JTBD</button>
+    </div>
+  </div>
+
+  <div class="mt-3 d-flex gap-2">
+    <button class="btn btn-outline-primary btn-sm" id="btnPersonaResumo">Copiar resumo da persona 📋</button>
+  </div>
+</div>
+
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="atividades" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">📋 Atividades guiadas</h2>
+    <div class="accordion" id="acc-a1">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="a1-1"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c1" aria-expanded="true" aria-controls="c1">1) Problematização rápida (10–25’) ❓</button></h2>
+        <div id="c1" class="accordion-collapse collapse show" aria-labelledby="a1-1" data-bs-parent="#acc-a1">
+          <div class="accordion-body">Escreva 1 dor real do seu público e converta em pergunta HMW (How Might We…?). Foque em comportamento observável.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="a1-2"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2">2) Referências (25–45’) 🔎</button></h2>
+        <div id="c2" class="accordion-collapse collapse" aria-labelledby="a1-2" data-bs-parent="#acc-a1">
+          <div class="accordion-body">Avalie 3 sites (bom/mediano/ruim). Responda: “o que domina na dobra?”, “qual ação em 3s?”, “o que confunde?”.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="a1-3"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3">3) Personas (95–115’) 👥</button></h2>
+        <div id="c3" class="accordion-collapse collapse" aria-labelledby="a1-3" data-bs-parent="#acc-a1">
+          <div class="accordion-body">Gere 3 personas com objetivos, tarefas-chave, dores e barreiras técnicas.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="a1-4"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c4">4) KPIs (135–165’) 📈</button></h2>
+        <div id="c4" class="accordion-collapse collapse" aria-labelledby="a1-4" data-bs-parent="#acc-a1">
+          <div class="accordion-body">Defina baseline e meta de 90 dias: leitura de recados, abandono da etapa 1, tempo até clicar no CTA.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="a1-5"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c5">5) Briefing v0.1 (190–220’) 📝</button></h2>
+        <div id="c5" class="accordion-collapse collapse" aria-labelledby="a1-5" data-bs-parent="#acc-a1">
+          <div class="accordion-body">Contexto, público, objetivos mensuráveis, KPIs, escopo inicial, restrições e riscos (linguagem simples e números claros).</div>
+        </div>
+      
+<!-- Persona — Campos avançados -->
+<div class="card-ghost p-3 mb-3">
+  <h4 class="h6">Campos avançados da Persona ✍️</h4>
+  <div class="row g-2">
+    <div class="col-md-12"><label class="form-label">Contexto de uso (onde/quando)</label><input id="pContexto" class="form-control" value="No celular, no intervalo do trabalho; 15–20 min disponíveis."></div>
+    <div class="col-md-6"><label class="form-label">Motivação principal</label><input id="pMotiv" class="form-control" value="Evoluir na carreira com um certificado rápido."></div>
+    <div class="col-md-6"><label class="form-label">Resultado desejado</label><input id="pResultado" class="form-control" value="Matricular-se em 1 curso confiável hoje."></div>
+
+    <div class="col-md-6">
+      <label class="form-label">Dispositivos</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pDevMob" checked><label class="form-check-label" for="pDevMob">📱 Mobile</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pDevDesk"><label class="form-check-label" for="pDevDesk">🖥️ Desktop</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pDevTab"><label class="form-check-label" for="pDevTab">📟 Tablet</label></div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Habilidade digital</label>
+      <select id="pSkill" class="form-select">
+        <option>Iniciante</option>
+        <option selected>Médio</option>
+        <option>Avançado</option>
+      </select>
+    </div>
+
+    <div class="col-md-12"><label class="form-label">Canais que influenciam</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalOrg" checked><label class="form-check-label" for="pCanalOrg">🔎 Busca orgânica</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalAds"><label class="form-check-label" for="pCanalAds">📣 Anúncios</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalSoc" checked><label class="form-check-label" for="pCanalSoc">💬 Redes sociais</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalRef"><label class="form-check-label" for="pCanalRef">🤝 Indicação</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCanalEmail"><label class="form-check-label" for="pCanalEmail">✉️ Email</label></div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Critérios de decisão (marque)</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritAval" checked><label class="form-check-label" for="pCritAval">⭐ Avaliações</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritPreço" checked><label class="form-check-label" for="pCritPreço">💲 Preço</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritCert" checked><label class="form-check-label" for="pCritCert">📜 Certificado</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritPrazo"><label class="form-check-label" for="pCritPrazo">⏱️ Carga horária</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pCritSuporte"><label class="form-check-label" for="pCritSuporte">🛟 Suporte</label></div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Barreiras/objeções (marque)</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pBarrTempo" checked><label class="form-check-label" for="pBarrTempo">⏳ Falta de tempo</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pBarrConfianca" checked><label class="form-check-label" for="pBarrConfianca">🔒 Confiança</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pBarrPagamento"><label class="form-check-label" for="pBarrPagamento">💳 Pagamento</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pBarrAcesso"><label class="form-check-label" for="pBarrAcesso">🌐 Acesso/Internet</label></div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <label class="form-label">Necessidades de acessibilidade (se houver)</label>
+      <div class="d-flex flex-wrap gap-2">
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pAccContr"><label class="form-check-label" for="pAccContr">Contraste alto</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pAccLeitor"><label class="form-check-label" for="pAccLeitor">Leitor de tela</label></div>
+        <div class="form-check"><input class="form-check-input" type="checkbox" id="pAccTeclado"><label class="form-check-label" for="pAccTeclado">Navegação por teclado</label></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="my-3">
+  <div class="row g-2 align-items-end">
+    <div class="col-md-9">
+      <label class="form-label">Declaração JTBD (gerada)</label>
+      <input id="pJTBD" class="form-control" readonly placeholder="Quando [contexto], quero [motivação] para [resultado].">
+    </div>
+    <div class="col-md-3 d-grid">
+      <button class="btn btn-brand" id="btnGerarJTBD">✨ Gerar JTBD</button>
+    </div>
+  </div>
+
+  <div class="mt-3 d-flex gap-2">
+    <button class="btn btn-outline-primary btn-sm" id="btnPersonaResumo">Copiar resumo da persona 📋</button>
+  </div>
+</div>
+
+</div>
+    </div>
+  </div>
+</section>
+
+<section id="entregaveis" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h4 mb-2">📦 Entregáveis</h2>
+    <ul class="mb-0">
+      <li>Briefing v0.1 (1–2 páginas),</li>
+      <li>Personas + Mapa de Empatia,</li>
+      <li>Planilha de Concorrentes com score.</li>
+    </ul>
+    <div class="alert alert-success mt-3 mini"><strong>Dica:</strong> cole os resultados no seu drive/repo — serão usados nas Aulas 2 e 3.</div>
+  </div>
+
+<!-- Referências -->
+<section id="referencias" class="py-5 bg-white border-top">
+  <div class="container">
+    <h2 class="h5 mb-3">📚 Referências recomendadas</h2>
+    <ul class="mb-0">
+      <li><a href="https://www.nngroup.com/articles/personas-study-guide/" target="_blank" rel="noreferrer">NN/g — Personas: Study Guide</a></li>
+      <li><a href="https://www.nngroup.com/articles/persona/" target="_blank" rel="noreferrer">NN/g — Personas Make Users Memorable</a></li>
+      <li><a href="https://www.nngroup.com/articles/empathy-mapping/" target="_blank" rel="noreferrer">NN/g — Empathy Mapping: The First Step in Design Thinking</a></li>
+      <li><a href="https://www.nngroup.com/articles/using-empathy-maps/" target="_blank" rel="noreferrer">NN/g — When to Use Empathy Maps</a></li>
+      <li><a href="https://www.interaction-design.org/literature/article/personas-why-and-how-you-should-use-them" target="_blank" rel="noreferrer">IxDF — Personas: Why & How</a></li>
+      <li><a href="https://www.interaction-design.org/literature/article/how-to-create-design-personas-a-step-by-step-guide-for-beginners" target="_blank" rel="noreferrer">IxDF — How to Create Design Personas (Step-by-step)</a></li>
+      <li><a href="https://dschool.stanford.edu/tools/design-thinking-bootleg" target="_blank" rel="noreferrer">Stanford d.school — Design Thinking Bootleg</a></li>
+      <li><a href="https://www.ideo.com/journal/build-your-creative-confidence-empathy-maps" target="_blank" rel="noreferrer">IDEO — Empathy Maps (guia rápido)</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> 2025-08-18</span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-container p-2">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+  // fade on scroll
+  const io = new IntersectionObserver((entries)=> entries.forEach(e=> e.isIntersecting && e.target.classList.add('visible')), {threshold:.16});
+  document.querySelectorAll('.fade-on-scroll').forEach(el=> io.observe(el));
+
+  // Responsivo demo
+  function demoSet(mode){
+    const g = document.getElementById('demoGrid'); const l = document.getElementById('vpLabel');
+    if(!g||!l) return;
+    if(mode==='desk'){g.style.gridTemplateColumns='repeat(3,1fr)'; l.textContent='Desktop';}
+    if(mode==='tab'){g.style.gridTemplateColumns='repeat(2,1fr)'; l.textContent='Tablet';}
+    if(mode==='mob'){g.style.gridTemplateColumns='1fr'; l.textContent='Mobile';}
+  }
+
+  // JS validação (exemplo C)
+  const email = document.getElementById('demoEmail'); const btn = document.getElementById('btnInscrever');
+  btn?.addEventListener('click',()=>{
+    const ok = /.+@.+\..+/.test(email.value);
+    showToast(ok ? 'Inscrição iniciada! ✅' : 'E-mail inválido. Verifique. ❌');
+  });
+
+  // Persona sync
+  const el = (id)=> document.getElementById(id);
+  function syncPersona(){
+    el('cardNome').textContent = el('pNome').value || 'Sua Persona';
+    el('cardMeta').textContent = (el('pIdade').value||'?')+' • '+(el('pProf').value||'?')+' • '+(el('pCidade').value||'?')+' • '+(el('pRenda').value||'?');
+    el('cardObj').textContent = el('pObj').value||'-';
+    el('cardDores').textContent = el('pDores').value||'-';
+    el('cardFrase').textContent = '“'+(el('pFrase').value||'')+'”';
+  }
+  ['pNome','pIdade','pCidade','pProf','pRenda','pObj','pDores','pFrase'].forEach(id=> el(id)?.addEventListener('input', syncPersona));
+  syncPersona();
+
+  // Copiar persona
+  el('btnCopyPersona')?.addEventListener('click', async ()=>{
+    const txt = [
+      'Persona',
+      'Nome: '+(el('pNome').value),
+      'Idade: '+(el('pIdade').value)+' | Cidade: '+(el('pCidade').value),
+      'Profissão: '+(el('pProf').value)+' | Renda: '+(el('pRenda').value),
+      'Objetivos: '+(el('pObj').value),
+      'Dores: '+(el('pDores').value),
+      'Frase: '+(el('pFrase').value),
+    ].join('\n');
+    try{ await navigator.clipboard.writeText(txt); showToast('Persona copiada 📋'); }catch(e){ alert(txt); }
+  });
+
+  // Mapa de empatia: presets / cópia
+  el('btnPresetMapa')?.addEventListener('click', ()=>{
+    el('mVe').value='Sites poluídos; valoriza clareza e comparação simples.';
+    el('mEscuta').value='Indicações no trabalho; resenhas no LinkedIn/Google.';
+    el('mPensa').value='Precisa otimizar tempo; busca credibilidade e segurança.';
+    el('mFala').value='Compartilha dicas; consulta fóruns antes de comprar.';
+    el('mDores').value='Falta de tempo; indecisão; medo de investir errado.';
+    el('mGanhos').value='Curso direto ao ponto; avaliações reais; pagamento facilitado.';
+    showToast('Mapa preenchido ✨');
+  });
+  el('btnCopyMapa')?.addEventListener('click', async ()=>{
+    const resumo = [
+      'Mapa de Empatia',
+      'Vê: '+(el('mVe').value||'-'),
+      'Escuta: '+(el('mEscuta').value||'-'),
+      'Pensa/Sente: '+(el('mPensa').value||'-'),
+      'Fala/Faz: '+(el('mFala').value||'-'),
+      'Dores: '+(el('mDores').value||'-'),
+      'Ganhos: '+(el('mGanhos').value||'-')
+    ].join('\n');
+    try{ await navigator.clipboard.writeText(resumo); showToast('Mapa copiado 📋'); }catch(e){ alert(resumo); }
+  });
+
+  // Concorrentes: adicionar linha e calcular
+  el('btnAddLinha')?.addEventListener('click', ()=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td contenteditable="true">Novo site</td>' + '<td contenteditable="true">0</td>'.repeat(5) + '<td contenteditable="true">—</td><td class="score-badge">–</td>';
+    el('tabConc').querySelector('tbody').appendChild(tr);
+  });
+  el('btnCalcular')?.addEventListener('click', ()=>{
+    const rows = [...el('tabConc').querySelectorAll('tbody tr')]; let best={row:null,score:-1};
+    rows.forEach(r=>{
+      const nums = [...r.children].slice(1,6).map(td=> parseFloat(td.textContent.replace(',','.')) || 0);
+      const media = nums.reduce((a,b)=>a+b,0) / nums.length;
+      r.querySelector('.score-badge').textContent = media.toFixed(1);
+      r.classList.remove('table-success'); if(media>best.score) best={row:r,score:media};
+    });
+    if(best.row){ best.row.classList.add('table-success'); showToast('Cálculo concluído ✅'); }
+  });
+
+  addEventListener('DOMContentLoaded', ()=> showToast('Aula 1 atualizada! ✨'));
+
+// --- Extra JS: Persona avançada e Insights do Mapa ---
+function getChecked(id){ const el=document.getElementById(id); return el && el.checked; }
+function chipsFromChecked(pairs){
+  return pairs.filter(p=> getChecked(p[0])).map(p=> p[1]).join(', ') || '—';
+}
+document.getElementById('btnGerarJTBD')?.addEventListener('click', ()=>{
+  const ctx = document.getElementById('pContexto')?.value || '...';
+  const mot = document.getElementById('pMotiv')?.value || '...';
+  const res = document.getElementById('pResultado')?.value || '...';
+  document.getElementById('pJTBD').value = `Quando ${ctx}, quero ${mot} para ${res}.`;
+  showToast('JTBD gerada ✨');
+});
+
+document.getElementById('btnPersonaResumo')?.addEventListener('click', async ()=>{
+  const get = id => (document.getElementById(id)?.value || '').trim();
+  const resumo = [
+    'Persona — Resumo',
+    `Nome: ${get('pNome')} (${get('pIdade')}), ${get('pProf')} — ${get('pCidade')}`,
+    `Renda: ${get('pRenda')} | Habilidade digital: ${document.getElementById('pSkill')?.value || '—'}`,
+    `Contexto: ${get('pContexto')}`,
+    `Objetivos: ${get('pObj')}`,
+    `Dores: ${get('pDores')}`,
+    `Critérios: ${chipsFromChecked([['pCritAval','Avaliações'],['pCritPreço','Preço'],['pCritCert','Certificado'],['pCritPrazo','Carga horária'],['pCritSuporte','Suporte']])}`,
+    `Barreiras: ${chipsFromChecked([['pBarrTempo','Tempo'],['pBarrConfianca','Confiança'],['pBarrPagamento','Pagamento'],['pBarrAcesso','Acesso']])}`,
+    `Canais: ${chipsFromChecked([['pCanalOrg','Busca'],['pCanalAds','Ads'],['pCanalSoc','Redes sociais'],['pCanalRef','Indicação'],['pCanalEmail','Email']])}`,
+    `Dispositivos: ${chipsFromChecked([['pDevMob','Mobile'],['pDevDesk','Desktop'],['pDevTab','Tablet']])}`,
+    `JTBD: ${document.getElementById('pJTBD')?.value || ''}`,
+    `Frase: ${get('pFrase')}`
+  ].join('\n');
+  try{ await navigator.clipboard.writeText(resumo); showToast('Resumo copiado 📋'); }catch(e){ alert(resumo); }
+});
+
+document.getElementById('btnGerarInsights')?.addEventListener('click', ()=>{
+  const v = id => (document.getElementById(id)?.value || '').toLowerCase();
+  const say = v('mFala'), think = v('mPensa'), see = v('mVe'), hear = v('mEscuta'), pain = v('mDores'), gain=v('mGanhos');
+  let out = [];
+  // CTA
+  if(pain.includes('tempo') || think.includes('tempo')) out.push('🕒 CTA: “Comece em 5 minutos” + estimativa de conclusão.');
+  if(pain.includes('confian') || think.includes('confian') || hear.includes('indica')) out.push('🔒 Provas de confiança: selo, avaliações verificadas e política de reembolso.');
+  // Arquitetura
+  if(see.includes('polu') || say.includes('confus')) out.push('🧭 Arquitetura: navegação simples (máx. 5 itens) e hierarquia clara no primeiro scroll.');
+  // Acessibilidade
+  out.push('♿ Acessibilidade: foco visível, teclado, contraste AA e linguagem clara.');
+  // Social proof
+  if(hear.includes('linkedin') || hear.includes('google')) out.push('🗣️ Destaque depoimentos com fonte (LinkedIn/Google).');
+  // Pagamento
+  if(pain.includes('pagamento')) out.push('💳 Ofereça parcelamento e badges de segurança na dobra.');
+  document.getElementById('insightsBox').innerHTML = out.length ? out.map(x=>`<div>${x}</div>`).join('') : 'Preencha o mapa para gerar recomendações.';
+  showToast('Insights gerados 💡');
+});
+
+</script>
+</body>
+</html>
