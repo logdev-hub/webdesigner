@@ -1,1 +1,444 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC1 • Aula 2 — Requisitos, HMW, Personas, Métricas e Pacote Estratégico</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary badge-emoji">UC1</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Índice da UC1</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-01.html">Aula 1</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-02.html">Aula 2</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC1</a></li>
+        <li class="breadcrumb-item active">Aula 2</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h1 class="h3">Aula 2 — Requisitos práticos e alinhamento estratégico <span class="badge text-bg-light ms-1">🧭</span></h1>
+        <p class="lead">Transforme dores em perguntas <strong>HMW</strong>, avalie <strong>3 sites</strong> com o <em>teste de 3s</em>, defina <strong>Personas</strong>, <strong>Baseline e Meta (90 dias)</strong>, monte o <strong>Pacote Estratégico</strong> e escreva a <strong>JTBD</strong>. Tudo com exemplos guiados e modelos copiáveis.</p>
+        <div class="d-flex gap-2">
+          <a href="#hmw" class="btn btn-brand">Começar pelos HMW</a>
+          <a href="#pacote" class="btn btn-outline-secondary">Pacote Estratégico</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-ghost p-3">
+          <strong>Objetivos da aula</strong>
+          <ul class="mini mb-0">
+            <li>Identificar <em>dores observáveis</em>.</li>
+            <li>Criar perguntas <strong>HMW</strong> claras.</li>
+            <li>Avaliar referências pela <strong>dobra</strong>, <strong>ação em 3s</strong> e <strong>confusões</strong>.</li>
+            <li>Definir <strong>3 personas</strong> úteis para o projeto.</li>
+            <li>Medir <strong>baseline</strong> e estabelecer <strong>meta de 90 dias</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="hmw" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">1) Dor real → HMW (How Might We) ❓➡️💡</h2>
+    <p class="mini">“Dor” é algo observável/medível. Convertemos em uma pergunta positiva do tipo <em>Como poderíamos…</em> para orientar o design e os experimentos.</p>
+    <div class="grid-2">
+      <div class="card-ghost p-3">
+        <h3 class="h6">Gerador de HMW</h3>
+        <div class="row g-2">
+          <div class="col-12"><label class="form-label">Dor observável</label><input id="dor" class="form-control" placeholder="Ex.: As pessoas desistem no passo 1 do formulário."></div>
+          <div class="col-12"><label class="form-label">Resultado desejado</label><input id="resultado" class="form-control" placeholder="Ex.: Concluir o passo 1 sem erros."></div>
+          <div class="col-md-6"><label class="form-label">Verbo (reduzir/evitar/ajudar)</label><input id="verbo" class="form-control" value="reduzir"></div>
+          <div class="col-md-6 d-grid"><button class="btn btn-brand" id="btnHMW">✨ Gerar HMW</button></div>
+          <div class="col-12"><label class="form-label">HMW gerado</label><input id="hmwOut" class="form-control" readonly></div>
+        </div>
+        <div class="mt-2"><button class="btn btn-outline-primary btn-sm" id="copyHMW">Copiar 📋</button></div>
+      </div>
+      <div class="card-ghost p-3">
+        <h3 class="h6">Exemplos rápidos</h3>
+        <ul class="mini mb-2">
+          <li>Desistem no passo 1 → <em>Como poderíamos</em> tornar o primeiro passo tão simples que ninguém pare ali?</li>
+          <li>Pouca confiança no pagamento → <em>Como poderíamos</em> evidenciar segurança e reduzir a incerteza no checkout?</li>
+          <li>Dúvida sobre o que fazer na home → <em>Como poderíamos</em> deixar a ação principal clara em 3 segundos?</li>
+        </ul>
+        <div class="alert alert-info mini">Dica: observe 10–15 interações reais por 15 min e anote onde a pessoa trava.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avaliacao" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3">2) Avaliar 3 sites: dobra, ação em 3s e confusões 🔎</h2>
+    <p class="mini">A “dobra” é o que aparece sem rolar a página. Faça o teste dos 3 segundos: mostre a dobra por 3s e pergunte “o que esse site faz?” e “o que você faria agora?”.</p>
+    <div class="table-responsive">
+      <table class="table align-middle" id="tabSites">
+        <thead class="table-light"><tr><th>Site</th><th>O que domina na dobra?</th><th>Ação em 3s</th><th>O que confunde?</th><th>Veredito</th></tr></thead>
+        <tbody>
+          <tr><td contenteditable="true">Site A</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+            <td>
+              <select class="form-select form-select-sm"><option>Bom</option><option>Mediano</option><option selected>Ruim</option></select>
+            </td></tr>
+          <tr><td contenteditable="true">Site B</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+            <td>
+              <select class="form-select form-select-sm"><option selected>Bom</option><option>Mediano</option><option>Ruim</option></select>
+            </td></tr>
+          <tr><td contenteditable="true">Site C</td><td contenteditable="true"></td><td contenteditable="true"></td><td contenteditable="true"></td>
+            <td>
+              <select class="form-select form-select-sm"><option>Bom</option><option selected>Mediano</option><option>Ruim</option></select>
+            </td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary btn-sm" id="btnAddSite"><i class="bi bi-plus-circle"></i> Adicionar linha</button>
+      <button class="btn btn-outline-primary btn-sm" id="btnResumoSites"><i class="bi bi-clipboard"></i> Copiar resumo</button>
+    </div>
+  </div>
+</section>
+
+<section id="personas" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">3) Personas (3 perfis) 👤👤👤</h2>
+    <p class="mini">Use sinais reais (perguntas frequentes, atendimentos e analytics) para criar 3 fichas com objetivos, tarefas-chave, dores e barreiras técnicas.</p>
+    <div id="personasWrap" class="row g-3">
+      <!-- Persona template cards will be injected by JS -->
+    </div>
+    <div class="d-flex gap-2 mt-2">
+      <button class="btn btn-outline-secondary btn-sm" id="btnAddPersona"><i class="bi bi-person-plus"></i> Adicionar persona</button>
+      <button class="btn btn-outline-primary btn-sm" id="btnCopyPersonas"><i class="bi bi-clipboard"></i> Copiar todas 📋</button>
+    </div>
+  </div>
+</section>
+
+<section id="metricas" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h4 mb-3">4) Métricas: Baseline e Meta (90 dias) 📈</h2>
+    <p class="mini">Escolha 3 métricas simples. Meça os últimos 30 dias (baseline) e defina metas realistas para 90 dias (+20% a +40% de melhoria como referência).</p>
+    <div class="table-responsive">
+      <table class="table align-middle" id="tabMetas">
+        <thead class="table-light"><tr><th>Métrica</th><th>Baseline</th><th>Meta +%</th><th>Meta (calculada)</th><th>Como medir</th></tr></thead>
+        <tbody>
+          <tr>
+            <td contenteditable="true">Leitura de recados (%)</td>
+            <td contenteditable="true">54</td>
+            <td contenteditable="true">30</td>
+            <td class="calc">70.2</td>
+            <td contenteditable="true">Contar lidas/recebidas por semana</td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Abandono no passo 1 (%)</td>
+            <td contenteditable="true">48</td>
+            <td contenteditable="true">-37.5</td>
+            <td class="calc">30.0</td>
+            <td contenteditable="true">Iniciaram vs chegaram ao passo 2</td>
+          </tr>
+          <tr>
+            <td contenteditable="true">Tempo até clicar no CTA (s)</td>
+            <td contenteditable="true">10.8</td>
+            <td contenteditable="true">-44.4</td>
+            <td class="calc">6.0</td>
+            <td contenteditable="true">Cronometrar 20 visitas (mediana)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary btn-sm" id="btnAddMetrica"><i class="bi bi-plus-circle"></i> Adicionar métrica</button>
+      <button class="btn btn-outline-primary btn-sm" id="btnRecalcular"><i class="bi bi-calculator"></i> Recalcular metas</button>
+      <button class="btn btn-outline-dark btn-sm" id="btnCopyMetas"><i class="bi bi-clipboard"></i> Copiar resumo</button>
+    </div>
+  </div>
+</section>
+
+<section id="pacote" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">5) Pacote Estratégico (claro e acionável) 🧩</h2>
+    <p class="mini">Organize o plano: <strong>Contexto → Objetivos mensuráveis → KPIs → Escopo inicial → Restrições e riscos</strong>.</p>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="card-ghost p-3">
+          <label class="form-label">Contexto & público</label>
+          <textarea id="ctx" class="form-control" rows="4" placeholder="Ex.: maioria no celular; 3 perfis principais..."></textarea>
+          <label class="form-label mt-2">Objetivos mensuráveis (90 dias)</label>
+          <textarea id="obj" class="form-control" rows="3" placeholder='Ex.: Aumentar propostas boas em +20% sem elevar mídia.'></textarea>
+          <label class="form-label mt-2">KPIs (2–4)</label>
+          <textarea id="kpis" class="form-control" rows="3" placeholder="Ex.: leitura de recados, abandono passo 1, tempo até CTA..."></textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card-ghost p-3">
+          <label class="form-label">Escopo inicial (o que faremos primeiro)</label>
+          <textarea id="escopo" class="form-control" rows="5" placeholder="Ex.: Dobra clara, sugestão de preço, compressão de fotos, medição simples..."></textarea>
+          <label class="form-label mt-2">Restrições e riscos</label>
+          <textarea id="riscos" class="form-control" rows="4" placeholder="Ex.: time pequeno; LGPD; performance; adesão da equipe..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex gap-2 mt-2">
+      <button class="btn btn-brand btn-sm" id="btnCopiarPacote">Copiar Pacote 📋</button>
+      <button class="btn btn-outline-secondary btn-sm" id="btnModeloPacote">Preencher com modelo</button>
+    </div>
+  </div>
+</section>
+
+<section id="jtbd" class="py-5 bg-white border-top">
+  <div class="container">
+    <h2 class="h4 mb-3">6) JTBD — Jobs To Be Done 🧠</h2>
+    <p class="mini">Descreve o progresso que a pessoa quer fazer. Modelo: <code>Quando [situação], eu quero [progresso desejado], para [resultado].</code></p>
+    <div class="row g-2">
+      <div class="col-md-4"><input id="jtbdSit" class="form-control" placeholder="Quando..."></div>
+      <div class="col-md-4"><input id="jtbdProg" class="form-control" placeholder="eu quero..."></div>
+      <div class="col-md-4"><input id="jtbdRes" class="form-control" placeholder="para..."></div>
+      <div class="col-12 d-grid d-md-flex gap-2 mt-2">
+        <button class="btn btn-brand" id="btnGerarJTBD">✨ Gerar JTBD</button>
+        <button class="btn btn-outline-primary" id="btnCopyJTBD">Copiar 📋</button>
+      </div>
+      <div class="col-12"><input id="jtbdOut" class="form-control" readonly placeholder="Sua frase aparecerá aqui."></div>
+    </div>
+  </div>
+</section>
+
+<section id="exemplo" class="py-5">
+  <div class="container">
+    <h2 class="h5 mb-3">📌 Exemplo aplicado (compra e venda de carros)</h2>
+    <div class="accordion" id="acc-ex">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#ex1" aria-expanded="true">Resumo do caso</button></h2>
+        <div id="ex1" class="accordion-collapse collapse show" data-bs-parent="#acc-ex">
+          <div class="accordion-body mini">
+            <ul>
+              <li><strong>HMW:</strong> simplificar preço e fotos para não travar no passo 1.</li>
+              <li><strong>Avaliação 3 sites:</strong> teste dos 3s para identificar clareza da dobra e CTA.</li>
+              <li><strong>Personas:</strong> Juliana (compradora 1º carro), Rogério (vendedor com pressa), Camila (segurança/custo).</li>
+              <li><strong>Métricas:</strong> leitura de recados, abandono no passo 1, tempo até CTA.</li>
+              <li><strong>Escopo rápido:</strong> preço sugerido, compressão de fotos, laudo visível, WhatsApp com SLA, pagamento seguro.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#ex2">Tabelas e modelos</button></h2>
+        <div id="ex2" class="accordion-collapse collapse" data-bs-parent="#acc-ex">
+          <div class="accordion-body">
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead class="table-light"><tr><th>Tag/padrão</th><th>Ocorrências</th></tr></thead>
+                <tbody>
+                  <tr><td>Preço/taxas</td><td>6</td></tr>
+                  <tr><td>Confiança</td><td>6</td></tr>
+                  <tr><td>Upload de fotos</td><td>5</td></tr>
+                  <tr><td>Laudo/histórico</td><td>5</td></tr>
+                  <tr><td>Financiamento</td><td>4</td></tr>
+                  <tr><td>Whats/resposta rápida</td><td>4</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="alert alert-info mini mb-0">Use esses padrões para priorizar o que aparece na dobra e quais mensagens de confiança exibir.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recursos" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h6 mb-2">🔗 Recursos & Leituras</h2>
+    <ul class="mini mb-0">
+      <li>Conceitos desta aula foram baseados no material de apoio da AULA 2 (PDF).</li>
+      <li>Veja também: NN/g sobre personas e mapas de empatia; Stanford d.school (Bootleg); IxDF (personas/jtbd).</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> <!-- defina a data aqui --> </span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-container p-2">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+// HMW generator
+document.getElementById('btnHMW')?.addEventListener('click',()=>{
+  const dor = document.getElementById('dor').value.trim();
+  const res = document.getElementById('resultado').value.trim();
+  const v = (document.getElementById('verbo').value||'reduzir').trim();
+  const frase = dor && res ? `Como poderíamos ${v} ${dor.toLowerCase()} para ${res.toLowerCase()}?` : 'Preencha os campos para gerar.';
+  document.getElementById('hmwOut').value = frase;
+  if(dor && res) showToast('HMW gerado ✨');
+});
+document.getElementById('copyHMW')?.addEventListener('click',()=>{
+  const t = document.getElementById('hmwOut').value||'';
+  navigator.clipboard?.writeText(t).then(()=>showToast('Copiado 📋')).catch(()=>alert(t));
+});
+
+// Sites table
+document.getElementById('btnAddSite')?.addEventListener('click',()=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td contenteditable="true">Novo site</td>`+`<td contenteditable="true"></td>`.repeat(3)+`<td><select class="form-select form-select-sm"><option>Bom</option><option>Mediano</option><option selected>Ruim</option></select></td>`;
+  document.querySelector('#tabSites tbody').appendChild(tr);
+});
+document.getElementById('btnResumoSites')?.addEventListener('click',()=>{
+  const rows = [...document.querySelectorAll('#tabSites tbody tr')];
+  const out = rows.map(r=>{
+    const tds = r.querySelectorAll('td');
+    const site = tds[0].textContent.trim();
+    const dobra = tds[1].textContent.trim();
+    const acao = tds[2].textContent.trim();
+    const conf = tds[3].textContent.trim();
+    const ver = tds[4].querySelector('select').value;
+    return `• ${site} | Dobra: ${dobra} | Ação 3s: ${acao} | Confusões: ${conf} | Veredito: ${ver}`;
+  }).join('\n');
+  navigator.clipboard?.writeText(out).then(()=>showToast('Resumo copiado 📋')).catch(()=>alert(out));
+});
+
+// Personas (3 templates)
+const personasWrap = document.getElementById('personasWrap');
+function personaCard(i){
+  return `<div class="col-md-4"><div class="card-ghost p-3">
+    <div class="d-flex justify-content-between align-items-center">
+      <h3 class="h6 m-0">Persona ${i}</h3>
+      <span class="badge text-bg-light">👤</span>
+    </div>
+    <div class="mini">Objetivos, tarefas, dores e barreiras técnicas.</div>
+    <div class="mt-2">
+      <label class="form-label mini">Nome (idade) — foco</label>
+      <input class="form-control pNome" placeholder="Ex.: Juliana (29) — 1º carro">
+      <label class="form-label mini mt-2">Objetivos</label>
+      <textarea class="form-control pObj" rows="2"></textarea>
+      <label class="form-label mini mt-2">Tarefas-chave</label>
+      <textarea class="form-control pTask" rows="2"></textarea>
+      <label class="form-label mini mt-2">Dores</label>
+      <textarea class="form-control pPain" rows="2"></textarea>
+      <label class="form-label mini mt-2">Barreiras técnicas</label>
+      <textarea class="form-control pTech" rows="2"></textarea>
+    </div>
+  </div></div>`;
+}
+function renderInitialPersonas(){
+  personasWrap.innerHTML = personaCard(1)+personaCard(2)+personaCard(3);
+}
+renderInitialPersonas();
+document.getElementById('btnAddPersona')?.addEventListener('click',()=>{
+  const i = personasWrap.querySelectorAll('.col-md-4').length+1;
+  personasWrap.insertAdjacentHTML('beforeend', personaCard(i));
+});
+document.getElementById('btnCopyPersonas')?.addEventListener('click',()=>{
+  const cards = [...personasWrap.querySelectorAll('.card-ghost')];
+  const out = cards.map((c,idx)=>{
+    const nome = c.querySelector('.pNome').value||`Persona ${idx+1}`;
+    const obj  = c.querySelector('.pObj').value||'-';
+    const task = c.querySelector('.pTask').value||'-';
+    const pain = c.querySelector('.pPain').value||'-';
+    const tech = c.querySelector('.pTech').value||'-';
+    return `Persona ${idx+1}: ${nome}\nObjetivos: ${obj}\nTarefas: ${task}\nDores: ${pain}\nBarreiras: ${tech}`;
+  }).join('\n\n');
+  navigator.clipboard?.writeText(out).then(()=>showToast('Personas copiadas 📋')).catch(()=>alert(out));
+});
+
+// Métricas: cálculo
+function recalc(){
+  document.querySelectorAll('#tabMetas tbody tr').forEach(tr=>{
+    const tds = tr.querySelectorAll('td');
+    const baseline = parseFloat(tds[1].textContent.replace(',', '.')) || 0;
+    const deltaPct = parseFloat(tds[2].textContent.replace(',', '.')) || 0;
+    let result = baseline * (1 + (deltaPct/100));
+    tds[3].textContent = (Math.round(result*10)/10).toFixed(1);
+  });
+  showToast('Metas recalculadas ✅');
+}
+document.getElementById('btnRecalcular')?.addEventListener('click', recalc);
+document.getElementById('btnAddMetrica')?.addEventListener('click',()=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = '<td contenteditable="true">Nova métrica</td><td contenteditable="true">0</td><td contenteditable="true">10</td><td class="calc">0.0</td><td contenteditable="true">Como medir...</td>';
+  document.querySelector('#tabMetas tbody').appendChild(tr);
+});
+document.getElementById('btnCopyMetas')?.addEventListener('click',()=>{
+  const out = [...document.querySelectorAll('#tabMetas tbody tr')].map(tr=>{
+    const tds = tr.querySelectorAll('td');
+    return `• ${tds[0].textContent.trim()} | Baseline: ${tds[1].textContent.trim()} | Δ%: ${tds[2].textContent.trim()} | Meta: ${tds[3].textContent.trim()} | Medição: ${tds[4].textContent.trim()}`;
+  }).join('\n');
+  navigator.clipboard?.writeText(out).then(()=>showToast('Resumo de métricas copiado 📋')).catch(()=>alert(out));
+});
+
+// Pacote estratégico
+document.getElementById('btnCopiarPacote')?.addEventListener('click',()=>{
+  const g = id => (document.getElementById(id)?.value || '').trim();
+  const txt = [
+    'Pacote Estratégico',
+    'Contexto & público: ' + g('ctx'),
+    'Objetivos (90 dias): ' + g('obj'),
+    'KPIs: ' + g('kpis'),
+    'Escopo inicial: ' + g('escopo'),
+    'Restrições & riscos: ' + g('riscos')
+  ].join('\n');
+  navigator.clipboard?.writeText(txt).then(()=>showToast('Pacote copiado 📋')).catch(()=>alert(txt));
+});
+document.getElementById('btnModeloPacote')?.addEventListener('click',()=>{
+  document.getElementById('ctx').value = 'Maioria acessa via celular; três personas principais; dúvidas sobre preço/segurança.';
+  document.getElementById('obj').value = 'Aumentar propostas qualificadas em +20% em 90 dias, sem elevar investimento.';
+  document.getElementById('kpis').value = 'Leitura de recados; Abandono no passo 1; Tempo até clicar no CTA.';
+  document.getElementById('escopo').value = 'Dobra clara com 1 CTA; sugestão de preço; compressão de fotos; laudo visível; botão Whats + SLA; medição semanal simples.';
+  document.getElementById('riscos').value = 'LGPD/privacidade; lentidão em mobile; adesão do time; dependência de integração.';
+  showToast('Modelo aplicado ✨');
+});
+
+// JTBD
+document.getElementById('btnGerarJTBD')?.addEventListener('click',()=>{
+  const s = document.getElementById('jtbdSit').value.trim();
+  const p = document.getElementById('jtbdProg').value.trim();
+  const r = document.getElementById('jtbdRes').value.trim();
+  const frase = (s && p && r) ? `Quando ${s}, eu quero ${p}, para ${r}.` : 'Preencha os 3 campos para gerar.';
+  document.getElementById('jtbdOut').value = frase;
+  if(s&&p&&r) showToast('JTBD gerada ✨');
+});
+document.getElementById('btnCopyJTBD')?.addEventListener('click',()=>{
+  const t = document.getElementById('jtbdOut').value||'';
+  navigator.clipboard?.writeText(t).then(()=>showToast('Copiado 📋')).catch(()=>alert(t));
+});
+
+addEventListener('DOMContentLoaded', ()=> showToast('Aula 2 carregada! 🚀'));
+</script>
+</body>
+</html>
 
