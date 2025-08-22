@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC1 • Aula 4 — Wireframes (conceito, grid, teste de 3s e prática guiada)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Google Fonts (pré-carregadas) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#0d6efd;
+      --accent:#00e676;
+      --bg:#f8fafc;
+      --text:#212529;
+      --font:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+
+      --dash: rgba(0,0,0,0.1);
+      --columns: 12;
+      --gutter: 12px;
+    }
+    body{font-family:var(--font); background:var(--bg); color:var(--text);}
+    .badge-emoji{vertical-align:middle}
+    .hero{background:linear-gradient(180deg,#fff, #f6f8ff 60%)}
+    .mini{font-size:.93rem; color:#4b5563}
+    .btn-brand{background:var(--brand); color:#fff; border:none}
+    .btn-brand:hover{filter:brightness(.95); color:#fff}
+    .card-ghost{border:1px dashed #d0d7de; background:#fff; border-radius:12px}
+    .grid-2{display:grid; gap:1rem; grid-template-columns:1fr; }
+    @media (min-width: 992px){ .grid-2{grid-template-columns:1fr 1fr} }
+    .table thead th{white-space:nowrap}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; background:#0f172a; color:#fff; padding:2px 6px; border-radius:6px}
+
+    /* Wireframe look */
+    .wire { border:2px dashed var(--dash); background:linear-gradient(180deg,#fff, #fbfbfd); border-radius:10px; padding:14px; color:#6c757d; font-weight:600; display:flex; align-items:center; justify-content:center; min-height:48px; }
+    .wire.hero { min-height:140px; }
+    .wire.small{ min-height:38px; font-size:.95rem }
+    .wire.footer{ min-height:56px; }
+    .wf-canvas{position:relative; border:1px solid #e5e7eb; border-radius:12px; background:#fff; padding:16px; min-height:280px; overflow:hidden}
+    .grid-overlay{
+      position:absolute; inset:0; pointer-events:none; opacity:.25;
+      background-image: repeating-linear-gradient(to right, #0d0d0d 0 1px, transparent 1px calc(100%/var(--columns)));
+    }
+
+    /* Teste de 3s */
+    #shotWrap img{max-width:100%; border-radius:10px; border:1px solid #e5e7eb}
+    #mask3s{
+      position:fixed; inset:0; background:#000; display:none; align-items:center; justify-content:center; z-index:1080;
+    }
+    #mask3s .inner{color:#fff; text-align:center}
+    #mask3s .count{font-size:3rem; font-weight:700}
+
+    /* Acessibilidade para botões grandes */
+    .hit{min-width:44px; min-height:44px}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary badge-emoji">UC1</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Índice da UC1</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-01.html">Aula 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-02.html">Aula 2</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-03.html">Aula 3</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-04.html">Aula 4</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC1</a></li>
+        <li class="breadcrumb-item active">Aula 4</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h1 class="h3">Aula 4 — Wireframes práticos <span class="badge text-bg-light ms-1">🧭</span></h1>
+        <p class="lead">Entenda o <strong>conceito</strong>, monte um <strong>grid</strong> coerente, faça o <strong>teste de 3 segundos</strong> e construa um wireframe low-fi com um <strong>kit de shapes</strong> — tudo com exemplos guiados e modelos copiáveis.</p>
+        <div class="d-flex gap-2">
+          <a href="#conceito" class="btn btn-brand hit">Começar pelo conceito</a>
+          <a href="#pratica" class="btn btn-outline-secondary hit">Ir para a prática</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-ghost p-3">
+          <strong>Objetivos da aula</strong>
+          <ul class="mini mb-0">
+            <li>Definir <em>wireframe</em> e quando usar.</li>
+            <li>Aplicar <strong>grid</strong> (12 colunas) e hierarquia.</li>
+            <li>Executar o <strong>teste de 3s</strong> (dobra).</li>
+            <li>Construir um wireframe low-fi com <strong>shapes</strong> e <strong>anotações</strong>.</li>
+          </ul>
+          <div class="mt-2">
+            <button class="btn btn-outline-primary btn-sm" id="btnCopiarObjetivos">Copiar objetivos 📋</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- 1) Conceito -->
+<section id="conceito" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">1) O que é wireframe? 🦴</h2>
+    <div class="grid-2">
+      <div class="card-ghost p-3">
+        <p>Wireframe é o <strong>“esqueleto”</strong> da página, uma representação de <em>baixa fidelidade</em> que evidencia <strong>estrutura, posição dos blocos e interações básicas</strong> — antes de cores, fotos e tipografia final.</p>
+        <ul class="mini">
+          <li><strong>O quê:</strong> grupos de conteúdo (hero, cards, CTA, rodapé).</li>
+          <li><strong>Onde:</strong> distribuição na tela (grid).</li>
+          <li><strong>Como:</strong> interações iniciais (ex.: “abrir modal”).</li>
+        </ul>
+        <div class="alert alert-info mini mb-0">Pense como <em>planta baixa</em> de uma casa: define cômodos e portas, não a decoração.</div>
+      </div>
+      <div class="card-ghost p-3">
+        <h3 class="h6">Mini-exemplo (visual)</h3>
+        <div class="wire mb-2">Cabeçalho: logo + menu + CTA</div>
+        <div class="wire hero mb-2">Hero / título principal — benefício + CTA</div>
+        <div class="d-flex gap-2 mb-2">
+          <div class="wire small flex-fill">Card 1</div>
+          <div class="wire small flex-fill">Card 2</div>
+          <div class="wire small flex-fill">Card 3</div>
+        </div>
+        <div class="wire footer">Rodapé: contatos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2) Grid e hierarquia -->
+<section id="grid" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3">2) Grid de 12 colunas & hierarquia 📐</h2>
+    <div class="grid-2">
+      <div class="card-ghost p-3">
+        <div class="d-flex align-items-end gap-3">
+          <div class="flex-fill">
+            <label class="form-label mini">Colunas (4–16)</label>
+            <input type="range" min="4" max="16" value="12" id="colSlider" class="form-range">
+          </div>
+          <div class="flex-fill">
+            <label class="form-label mini">Gutter (px)</label>
+            <input type="range" min="0" max="32" value="12" id="gutSlider" class="form-range">
+          </div>
+          <div><span class="badge text-bg-light" id="gridInfo">12 col • 12px</span></div>
+        </div>
+        <div class="wf-canvas mt-3 position-relative" id="gridCanvas">
+          <div class="grid-overlay" id="gridOverlay"></div>
+          <div class="wire mb-2">Header</div>
+          <div class="wire hero mb-2">Hero</div>
+          <div class="d-flex gap-2 mb-2">
+            <div class="wire small flex-fill">Card</div>
+            <div class="wire small flex-fill">Card</div>
+            <div class="wire small flex-fill">Card</div>
+          </div>
+          <div class="wire footer">Footer</div>
+        </div>
+        <div class="mini mt-2">Dica: uma <strong>ação principal por tela</strong>. CTA consistente no header e no hero aumenta conversão.</div>
+      </div>
+      <div class="card-ghost p-3">
+        <h3 class="h6">Checklist de hierarquia (rápido) ✅</h3>
+        <ul class="mini mb-2">
+          <li>O título explica “o que faço aqui”?</li>
+          <li>O CTA principal está visível <span class="kbd">≥ 44×44px</span>?</li>
+          <li>Existem poucos focos visuais por seção?</li>
+          <li>Alinhamentos e espaçamentos consistentes?</li>
+        </ul>
+        <button class="btn btn-outline-primary btn-sm" id="btnCopyChecklist">Copiar checklist 📋</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3) Teste de 3 segundos -->
+<section id="teste3s" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">3) Teste de 3 segundos (a dobra) ⏱️</h2>
+    <p class="mini">Mostre apenas a dobra por <strong>3 segundos</strong> e pergunte: “o que este site faz?” e “o que você faria agora?”.</p>
+    <div class="grid-2">
+      <div class="card-ghost p-3">
+        <div class="row g-2">
+          <div class="col-12">
+            <label class="form-label mini">Carregar imagem da dobra (print)</label>
+            <input type="file" accept="image/*" id="shot" class="form-control">
+          </div>
+          <div class="col-md-6 d-grid">
+            <button class="btn btn-brand hit" id="btn3s" disabled>Executar teste de 3s</button>
+          </div>
+          <div class="col-md-6 d-grid">
+            <button class="btn btn-outline-secondary hit" id="btnCopyPerguntas" disabled>Copiar roteiro 📋</button>
+          </div>
+        </div>
+        <div id="shotWrap" class="mt-3"></div>
+      </div>
+      <div class="card-ghost p-3">
+        <h3 class="h6">Roteiro e anotações</h3>
+        <ol class="mini">
+          <li>Mostrar a dobra por 3s sem falar nada.</li>
+          <li>Perguntar: “o que este site faz?”</li>
+          <li>Perguntar: “o que você faria agora?”</li>
+          <li>Anotar confusões, microcópia e CTA.</li>
+        </ol>
+        <textarea class="form-control" rows="6" id="notas3s" placeholder="Anote observações do teste aqui..."></textarea>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyNotas">Copiar notas 📋</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4) Kit de shapes (prática guiada) -->
+<section id="pratica" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3">4) Prática: montar um wireframe low-fi 🧩</h2>
+    <p class="mini">Ative/desative blocos e ajuste o grid. Depois, copie o resumo do seu wireframe.</p>
+    <div class="grid-2">
+      <div class="card-ghost p-3">
+        <div class="row g-2">
+          <div class="col-md-4">
+            <!-- CORREÇÃO: checkboxes sem a classe .hit -->
+            <div class="form-check"><input class="form-check-input kit" type="checkbox" id="kHeader" checked><label class="form-check-label" for="kHeader">Header c/ CTA</label></div>
+            <div class="form-check"><input class="form-check-input kit" type="checkbox" id="kHero" checked><label class="form-check-label" for="kHero">Hero (título + CTA)</label></div>
+            <div class="form-check"><input class="form-check-input kit" type="checkbox" id="kCards" checked><label class="form-check-label" for="kCards">3 Cards</label></div>
+            <div class="form-check"><input class="form-check-input kit" type="checkbox" id="kForm"><label class="form-check-label" for="kForm">Formulário curto</label></div>
+            <div class="form-check"><input class="form-check-input kit" type="checkbox" id="kFooter" checked><label class="form-check-label" for="kFooter">Rodapé</label></div>
+          </div>
+          <div class="col-md-8">
+            <div class="wf-canvas" id="kitCanvas">
+              <div class="grid-overlay"></div>
+              <div class="wire mb-2 elt" data-id="Header">Cabeçalho: logo + menu + CTA</div>
+              <div class="wire hero mb-2 elt" data-id="Hero">Hero / título principal — benefício + CTA</div>
+              <div class="d-flex gap-2 mb-2 elt" data-id="Cards">
+                <div class="wire small flex-fill">Card 1</div>
+                <div class="wire small flex-fill">Card 2</div>
+                <div class="wire small flex-fill">Card 3</div>
+              </div>
+              <div class="wire mb-2 elt d-none" data-id="Form">Formulário curto: nome / e-mail / mensagem</div>
+              <div class="wire footer elt" data-id="Rodapé">Rodapé: contatos</div>
+            </div>
+            <div class="d-flex gap-2 mt-2">
+              <button class="btn btn-outline-primary btn-sm" id="btnResumoWF"><i class="bi bi-clipboard"></i> Copiar resumo do wireframe</button>
+              <button class="btn btn-outline-secondary btn-sm" id="btnLimparWF"><i class="bi bi-x-circle"></i> Limpar anotações</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-ghost p-3">
+        <h3 class="h6">Anotações (interações & estados)</h3>
+        <textarea class="form-control" rows="9" id="notesWF" placeholder="Ex.: “CTA do header repete o do hero”; “Form abre modal de obrigado”; “Menu colapsa ≤ 768px”"></textarea>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyWFNotes">Copiar anotações 📋</button>
+        </div>
+        <div class="alert alert-info mini mt-2 mb-0"><strong>Dica:</strong> foque em <em>ação principal</em> por tela; rotule interações (modal, slide, etc.).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5) Rubrica (apenas Critério e Descrição) -->
+<section id="entrega" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">5) Rubrica de Avaliação 🎯</h2>
+    <div class="table-responsive card-ghost p-3">
+      <table class="table align-middle" id="tabRubrica">
+        <thead class="table-light">
+          <tr><th>Critério</th><th>Descrição</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Objetivo</td><td class="mini">Entendimento claro do objetivo do site</td></tr>
+          <tr><td>Hierarquia & CTA</td><td class="mini">Clareza visual e ação principal</td></tr>
+          <tr><td>Qualidade do wireframe</td><td class="mini">Legibilidade, alinhamento, grid</td></tr>
+          <tr><td>Documentação</td><td class="mini">Sketch + notas + justificativa</td></tr>
+        </tbody>
+      </table>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-primary btn-sm" id="btnCopyRubrica"><i class="bi bi-clipboard"></i> Copiar rubrica</button>
+        <button class="btn btn-outline-secondary btn-sm" id="btnAddLinha"><i class="bi bi-plus-circle"></i> Adicionar critério</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6) Referências -->
+<section id="refs" class="py-5 bg-white border-top">
+  <div class="container">
+    <h2 class="h6 mb-2">🔗 Referências & Leituras</h2>
+    <ul class="mini mb-0">
+      <li>Playlist sobre UX (YouTube): <a href="https://www.youtube.com/playlist?list=PLx_6W4OtI_rmPGtlz_FfmnABwmgC8I_Yo" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLx_6W4OtI_rmPGtlz_FfmnABwmgC8I_Yo</a></li>
+      <li>Vídeo “Wireframe” (YouTube): <a href="https://www.youtube.com/watch?v=INPlcg_BsGc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=INPlcg_BsGc</a></li>
+      <li>Materiais de apoio desta aula (wireframes e exemplos práticos) — ver documentos anexados ao curso.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> 2025-08-22</span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Máscara do teste de 3s -->
+<div id="mask3s">
+  <div class="inner">
+    <div class="count" id="count3s">3</div>
+    <div class="mini">Olhe e diga: o que este site faz? o que você faria agora?</div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast-container p-2 position-fixed bottom-0 end-0">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ===== utilidades ===== */
+const toastEl = document.getElementById('liveToast');
+const toastMsg = document.getElementById('toastMsg');
+const toast = new bootstrap.Toast(toastEl, { delay: 2000 });
+const mask = document.getElementById('mask3s');
+function showToast(msg){ toastMsg.textContent = msg; toast.show(); }
+
+/* ===== copiar objetivos ===== */
+document.getElementById('btnCopiarObjetivos')?.addEventListener('click', ()=>{
+  const txt = `Aula 4 — Wireframes
+• Definir o que é wireframe e quando usar
+• Aplicar grid (12 colunas) e hierarquia
+• Executar teste de 3s (dobra)
+• Construir wireframe low-fi com shapes e anotações`;
+  navigator.clipboard.writeText(txt).then(()=>showToast('Objetivos copiados 📋'));
+});
+
+/* ===== grid controls ===== */
+const colSlider = document.getElementById('colSlider');
+const gutSlider = document.getElementById('gutSlider');
+const gridInfo  = document.getElementById('gridInfo');
+function updateGrid(){
+  const cols = +colSlider.value;
+  const gut  = +gutSlider.value;
+  document.documentElement.style.setProperty('--columns', cols);
+  document.documentElement.style.setProperty('--gutter', gut + 'px');
+  gridInfo.textContent = `${cols} col • ${gut}px`;
+}
+colSlider.addEventListener('input', updateGrid);
+gutSlider.addEventListener('input', updateGrid);
+updateGrid();
+
+/* ===== checklist ===== */
+document.getElementById('btnCopyChecklist')?.addEventListener('click', ()=>{
+  const txt = `Checklist de hierarquia
+• Título explica “o que faço aqui”
+• CTA principal visível (≥ 44×44px)
+• Poucos focos visuais por seção
+• Alinhamentos/espaçamentos consistentes`;
+  navigator.clipboard.writeText(txt).then(()=>showToast('Checklist copiada 📋'));
+});
+
+/* ===== teste de 3 segundos ===== */
+const shot = document.getElementById('shot');
+const shotWrap = document.getElementById('shotWrap');
+const btn3s = document.getElementById('btn3s');
+const btnCopyPerguntas = document.getElementById('btnCopyPerguntas');
+const notas3s = document.getElementById('notas3s');
+const btnCopyNotas = document.getElementById('btnCopyNotas');
+const count3s = document.getElementById('count3s');
+
+shot.addEventListener('change', (e)=>{
+  const file = e.target.files?.[0];
+  if(!file) return;
+  const img = document.createElement('img');
+  img.alt = 'Dobra selecionada';
+  img.className = 'mt-2';
+  img.onload = ()=> showToast('Imagem carregada. Pronto para o teste ⏱️');
+  img.src = URL.createObjectURL(file);
+  shotWrap.innerHTML = '';
+  shotWrap.appendChild(img);
+  btn3s.disabled = false;
+  btnCopyPerguntas.disabled = false;
+});
+
+btn3s.addEventListener('click', ()=>{
+  if(!shotWrap.querySelector('img')) return;
+  let t = 3;
+  count3s.textContent = t;
+  mask.style.display = 'flex';
+  const timer = setInterval(()=>{
+    t -= 1; count3s.textContent = t;
+    if(t<=0){ clearInterval(timer); mask.style.display='none'; showToast('Tempo! Faça as 2 perguntas.'); }
+  }, 1000);
+});
+
+btnCopyPerguntas.addEventListener('click', ()=>{
+  const txt = `Teste de 3 segundos
+1) O que este site faz?
+2) O que você faria agora?`;
+  navigator.clipboard.writeText(txt).then(()=>showToast('Roteiro copiado 📋'));
+});
+
+btnCopyNotas.addEventListener('click', ()=>{
+  navigator.clipboard.writeText(notas3s.value||'').then(()=>showToast('Notas copiadas 📋'));
+});
+
+/* ===== kit de shapes ===== */
+const kitCanvas = document.getElementById('kitCanvas');
+function toggleElt(id, on){
+  const el = kitCanvas.querySelector(`.elt[data-id="${id}"]`);
+  if(!el) return;
+  el.classList.toggle('d-none', !on);
+}
+document.querySelectorAll('.kit').forEach(chk=>{
+  chk.addEventListener('change', ()=>{
+    toggleElt('Header', document.getElementById('kHeader').checked);
+    toggleElt('Hero',   document.getElementById('kHero').checked);
+    toggleElt('Cards',  document.getElementById('kCards').checked);
+    toggleElt('Form',   document.getElementById('kForm').checked);
+    toggleElt('Rodapé', document.getElementById('kFooter').checked);
+  });
+});
+
+/* Resumo do WF */
+document.getElementById('btnResumoWF')?.addEventListener('click', ()=>{
+  const active = [...kitCanvas.querySelectorAll('.elt')].filter(e=>!e.classList.contains('d-none')).map(e=>e.dataset.id);
+  const txt = `Wireframe (low-fi)
+Blocos: ${active.join(', ')}
+Grid: ${colSlider.value} colunas / gutter ${gutSlider.value}px
+Notas:
+${document.getElementById('notesWF').value || '(sem anotações)'}`;
+  navigator.clipboard.writeText(txt).then(()=>showToast('Resumo do wireframe copiado 📋'));
+});
+document.getElementById('btnLimparWF')?.addEventListener('click', ()=>{
+  document.getElementById('notesWF').value = '';
+  showToast('Anotações limpas 🧽');
+});
+document.getElementById('btnCopyWFNotes')?.addEventListener('click', ()=>{
+  navigator.clipboard.writeText(document.getElementById('notesWF').value||'').then(()=>showToast('Anotações copiadas 📋'));
+});
+
+/* ===== rubrica (2 colunas) ===== */
+document.getElementById('btnCopyRubrica')?.addEventListener('click', ()=>{
+  const rows = [...document.querySelectorAll('#tabRubrica tbody tr')].map(tr=>{
+    const t = tr.querySelectorAll('td');
+    return `• ${t[0].textContent.trim()} | ${t[1].textContent.trim()}`;
+  }).join('\n');
+  const txt = `Rubrica — Aula 4 (Wireframes)\n${rows}`;
+  navigator.clipboard.writeText(txt).then(()=>showToast('Rubrica copiada 📋'));
+});
+document.getElementById('btnAddLinha')?.addEventListener('click', ()=>{
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td contenteditable="true">Novo critério</td><td class="mini" contenteditable="true">Descrição</td>`;
+  document.querySelector('#tabRubrica tbody').appendChild(tr);
+});
+
+/* init */
+addEventListener('DOMContentLoaded', ()=> showToast('Aula 4 carregada! 🚀'));
+</script>
+</body>
+</html>
