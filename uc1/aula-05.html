@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC1 • Aula 5 — Teoria das Cores & Tipografia</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;600&family=Roboto:wght@400;700&family=Roboto+Slab:wght@400;700&family=Merriweather:wght@400;700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#0d6efd; --accent:#00e676; --bg:#f8fafc; --text:#212529;
+    --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    --hero-grad:linear-gradient(180deg,#fff 0%, #f6f8ff 60%);
+    --cta:#0d6efd; --cta-contrast:#fff;
+    --preview-bg:#ffffff; --preview-text:#111827;
+  }
+  html,body{scroll-behavior:smooth}
+  body{font-family:var(--font); background:var(--bg); color:var(--text)}
+  .hero{background:var(--hero-grad)}
+  .btn-brand{background:var(--brand); color:#fff; border:none}
+  .btn-brand:hover{filter:brightness(.95); color:#fff}
+  .badge-emoji{vertical-align:middle}
+  .mini{font-size:.94rem; color:#4b5563}
+  .card-ghost{border:1px dashed #d0d7de; background:#fff; border-radius:12px}
+  .grid-2{display:grid; gap:1rem; grid-template-columns:1fr}
+  @media(min-width:992px){.grid-2{grid-template-columns:1fr 1fr}}
+  .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0f172a; color:#fff; padding:2px 6px; border-radius:6px}
+  .lead strong{font-weight:800}
+  /* Preview (aplicabilidade) */
+  .preview{border-radius:14px; border:1px solid #e5e7eb; overflow:hidden}
+  .preview .pv-header{background:var(--cta); color:var(--cta-contrast); padding:12px 16px; display:flex; align-items:center; justify-content:space-between}
+  .preview .pv-body{padding:18px; background:var(--preview-bg); color:var(--preview-text)}
+  .pv-pill{background:rgba(255,255,255,.15); padding:4px 10px; border-radius:999px}
+  .pv-card{border:1px dashed #d1d5db; border-radius:10px; padding:12px}
+  /* Reveal animation */
+  .reveal{opacity:0; transform:translateY(10px); transition:all .6s ease}
+  .reveal.show{opacity:1; transform:none}
+  /* Swatches */
+  .sw{width:100%; height:38px; border-radius:8px; border:1px solid #e5e7eb}
+  .table thead th{white-space:nowrap}
+  /* Pills for font preview */
+  .font-pill{display:inline-flex; align-items:center; gap:.5rem; padding:.25rem .6rem; border:1px solid #e5e7eb; border-radius:999px; background:#fff}
+  .copy-ok{animation:pop .35s ease}
+  @keyframes pop{0%{transform:scale(.98)}70%{transform:scale(1.02)}100%{transform:scale(1)}}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary badge-emoji">UC1</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Índice</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-01.html">Aula 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-02.html">Aula 2</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-03.html">Aula 3</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-04.html">Aula 4</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-05.html">Aula 5</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC1</a></li>
+        <li class="breadcrumb-item active">Aula 5</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h1 class="h3">Aula 5 — Teoria das <span class="text-primary">Cores</span> & <span class="text-primary">Tipografia</span> <span class="badge text-bg-light ms-1">📚</span></h1>
+        <p class="lead">Fundamente seu design: entenda <strong>modelo de cor</strong>, <strong>temperatura</strong>, <strong>contraste</strong>, <strong>harmonias</strong> e <strong>psicologia</strong>; depois aplique <strong>tipografia</strong> com hierarquia, legibilidade e ritmo. Fechamos com <strong>3 exemplos práticos</strong> prontos para copiar.</p>
+        <div class="d-flex gap-2">
+          <a href="#cores" class="btn btn-brand">Começar pelas Cores</a>
+          <a href="#tipografia" class="btn btn-outline-secondary">Ir para Tipografia</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-ghost p-3">
+          <strong>Objetivos da aula</strong>
+          <ul class="mini mb-3">
+            <li>Dominar fundamentos de cor (RGB/CMYK/HSV, círculo, temperatura, contraste, acessibilidade).</li>
+            <li>Relacionar cores a sentimentos e contextos.</li>
+            <li>Aplicar tipografia: anatomia, medidas, entrelinha, largura de coluna, kerning/tracking, hierarquia.</li>
+            <li>Construir 3 temas de site aplicando cor + tipo.</li>
+          </ul>
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyGoals">Copiar objetivos 📋</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ====================================== CORES ====================================== -->
+<section id="cores" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3 reveal">1) Estudo de Cores 🎨</h2>
+    <div class="grid-2">
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Fundamentos essenciais</h3>
+        <ul class="mini mb-2">
+          <li><strong>Modelo RGB</strong> (luz) para telas; <strong>CMYK</strong> (pigmento) para impressão. <span class="text-muted">HSV/HSL: matiz, saturação, brilho/valor para ajustar cor com precisão.</span></li>
+          <li><strong>Círculo cromático</strong>: primárias, secundárias, terciárias; <strong>temperatura</strong> (quentes ↔ frias) e suas sensações.</li>
+          <li><strong>Harmonias</strong>: complementares (contraste forte), análogas (coesas), tríades e duplas complementares.</li>
+          <li><strong>Contraste & acessibilidade</strong>: razão >= <span class="kbd">4.5:1</span> para texto normal; links sempre distinguíveis.</li>
+          <li><strong>Consistência</strong>: defina cores-base (marca/logo) e varie por tons/valores; mantenha o sistema por todo o site.</li>
+        </ul>
+        <div class="alert alert-info mini mb-0">Dica: comece por <em>1 cor primária</em>, <em>1 acento</em> e <em>2 tons neutros</em> (claro/escuro).</div>
+      </div>
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6 d-flex align-items-center gap-2">Vídeo — Introdução à Teoria das Cores <span>📺</span></h3>
+        <!-- Vídeo solicitado -->
+        <div class="ratio ratio-16x9">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Iu8Q2u17hVs?si=X99p3SDvRc2R7gpU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Laboratório de Cores -->
+    <div class="grid-2 mt-3">
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Laboratório: contraste e paleta</h3>
+        <div class="row g-2">
+          <div class="col-md-4">
+            <label class="form-label mini">Cor do texto</label>
+            <input type="color" class="form-control form-control-color" id="fg" value="#111827">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label mini">Cor de fundo</label>
+            <input type="color" class="form-control form-control-color" id="bg" value="#ffffff">
+          </div>
+          <div class="col-md-4 d-grid">
+            <button class="btn btn-brand" id="btnApplyContrast">Aplicar</button>
+          </div>
+          <div class="col-12">
+            <div class="preview mt-2">
+              <div class="pv-header">
+                <strong>Prévia</strong>
+                <span class="pv-pill"><span id="ratio">—</span> de contraste</span>
+              </div>
+              <div class="pv-body" id="pvBody">
+                <div class="row g-2">
+                  <div class="col-md-6"><div class="pv-card">Título visível e CTA claro</div></div>
+                  <div class="col-md-6"><div class="pv-card">Bloco secundário / texto longo</div></div>
+                </div>
+                <p class="mini mt-2">Objetivo: garantir legibilidade e hierarquia em diferentes blocos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mini mt-2">Use o botão “Aplicar” para testar combinações. Busque razão ≥ <span class="kbd">4.5:1</span> para corpo.</div>
+      </div>
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Quadro: cores & sentimentos (síntese)</h3>
+        <div class="table-responsive">
+          <table class="table align-middle" id="tabEmocoes">
+            <thead class="table-light"><tr><th>Swatch</th><th>Cor</th><th>Sentimentos / Associações comuns</th><th>Notas de uso</th></tr></thead>
+            <tbody>
+              <tr><td><div class="sw" style="background:#e11d48"></div></td><td>Vermelho</td><td>Energia, urgência, paixão; estimula apetite; pode sinalizar perigo.</td><td>Use para CTA, alertas, destaque. Evite excesso em textos longos.</td></tr>
+              <tr><td><div class="sw" style="background:#f97316"></div></td><td>Laranja</td><td>Calor, proximidade, movimento; acolhedor e expansivo.</td><td>Ótimo para convites e interações sociais.</td></tr>
+              <tr><td><div class="sw" style="background:#facc15"></div></td><td>Amarelo</td><td>Atenção, otimismo; em grandes áreas pode causar cansaço/ansiedade.</td><td>Bom como acento/feedback; cuidado em superfícies extensas.</td></tr>
+              <tr><td><div class="sw" style="background:#22c55e"></div></td><td>Verde</td><td>Natureza, equilíbrio, tranquilidade; saúde, confirmação.</td><td>Estados de sucesso/ok; temas de bem-estar/eco.</td></tr>
+              <tr><td><div class="sw" style="background:#0ea5e9"></div></td><td>Azul</td><td>Serenidade, confiança, profissionalismo; “higiênico” quando claro.</td><td>Institucional, financeiro, saúde; base para design “limpo”.</td></tr>
+              <tr><td><div class="sw" style="background:#8b5cf6"></div></td><td>Roxo</td><td>Mistério, contemplação, nobreza/poder.</td><td>Acentos premium/culturais; combine com neutros.</td></tr>
+              <tr><td><div class="sw" style="background:#a16207"></div></td><td>Marrom</td><td>Solidez, estabilidade, “terra”.</td><td>Artesanal, alimentos, rusticidade.</td></tr>
+              <tr><td><div class="sw" style="background:#ec4899"></div></td><td>Rosa</td><td>Afeto, suavidade, intimidade; feminilidade em certos contextos.</td><td>Onboarding, mensagens acolhedoras, infantil.</td></tr>
+              <tr><td><div class="sw" style="background:#111827"></div></td><td>Preto</td><td>Elegância, formalidade; também luto/seriedade.</td><td>Luxo, contraste forte; cuidado com grandes áreas em mobile.</td></tr>
+              <tr><td><div class="sw" style="background:#f3f4f6"></div></td><td>Branco/Neutros</td><td>Pureza, limpeza, vazio/intencional.</td><td>Espaço negativo, respiro, foco no conteúdo.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyCores"><i class="bi bi-clipboard"></i> Copiar quadro</button>
+          <button class="btn btn-outline-secondary btn-sm" id="btnAddSwatch"><i class="bi bi-plus-circle"></i> Adicionar linha</button>
+        </div>
+        <div class="mini mt-2">Associações variam por <em>contexto cultural</em> e <em>setor</em>; use testes rápidos com usuários.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================== TIPOGRAFIA ====================================== -->
+<section id="tipografia" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3 reveal">2) Tipografia ✍️</h2>
+
+    <div class="grid-2">
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Fundamentos e boas práticas</h3>
+        <ul class="mini">
+          <li><strong>Objetivo</strong>: dar “atmosfera” adequada e legibilidade ao conteúdo.</li>
+          <li><strong>Anatomia & medidas</strong>: altura-x, ascendentes/descendentes; <em>leading</em> (entrelinha), <em>tracking</em>/<em>kerning</em>, largura de coluna.</li>
+          <li><strong>Hierarquia</strong>: títulos maiores (acima do corpo), subtítulos, corpo, legendas.</li>
+          <li><strong>Alinhamento</strong>: prefira alinhado à esquerda; evite centralizado em blocos longos; não empilhe texto vertical.</li>
+          <li><strong>Não justifique na Web</strong>: sem controle fino de hifenização/kerning cria “rios”.</li>
+          <li><strong>Fonte não é enfeite</strong>: priorize legibilidade; limite-se a 2–3 famílias por projeto.</li>
+        </ul>
+        <div class="alert alert-info mini mb-0">Regra-ouro de leitura: ~<span class="kbd">45–75</span> caracteres por linha, entrelinha ≥ <span class="kbd">1.4×</span> o corpo.</div>
+      </div>
+
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Laboratório: ritmo de leitura</h3>
+        <div class="row g-2">
+          <div class="col-md-4">
+            <label class="form-label mini">Fonte (títulos/corpo)</label>
+            <select class="form-select" id="fontHead">
+              <option value="'Poppins',sans-serif" selected>Poppins</option>
+              <option value="'Inter',sans-serif">Inter</option>
+              <option value="'Nunito',sans-serif">Nunito</option>
+              <option value="'Roboto',sans-serif">Roboto</option>
+              <option value="'Merriweather',serif">Merriweather (serif)</option>
+              <option value="'Roboto Slab',serif">Roboto Slab (serif)</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label mini">Fonte (corpo)</label>
+            <select class="form-select" id="fontBody">
+              <option value="'Inter',sans-serif" selected>Inter</option>
+              <option value="'Roboto',sans-serif">Roboto</option>
+              <option value="'Nunito',sans-serif">Nunito</option>
+              <option value="'Merriweather',serif">Merriweather (serif)</option>
+              <option value="'Roboto Slab',serif">Roboto Slab (serif)</option>
+            </select>
+          </div>
+          <div class="col-md-4 d-grid">
+            <button class="btn btn-brand" id="btnApplyFonts">Aplicar fontes</button>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label mini">Tamanho (px)</label>
+            <input type="range" class="form-range" id="fs" min="14" max="22" value="16">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label mini">Entrelinha</label>
+            <input type="range" class="form-range" id="lh" min="1.2" max="2.0" step=".05" value="1.6">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label mini">Largura (ch)</label>
+            <input type="range" class="form-range" id="mw" min="40" max="80" value="66">
+          </div>
+        </div>
+        <div class="border rounded p-3 mt-2" id="typePlay" style="max-width:66ch; line-height:1.6; font-size:16px">
+          <h4 class="mb-2" style="font-family:'Poppins',sans-serif">Título em destaque que guia a leitura</h4>
+          <p class="mb-2" style="font-family:'Inter',sans-serif">A tipografia organiza o conteúdo e estabelece ritmo. Ajuste tamanho, entrelinha e largura do parágrafo para perceber como a leitura fica mais confortável.</p>
+          <p class="mini">Dica: o <em>espaço entre linhas</em> deve aparentar ser maior que o espaço entre palavras; isso evita “paredões” de texto.</p>
+        </div>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-outline-secondary btn-sm" id="btnUpper">Alternar MAIÚSCULAS</button>
+          <button class="btn btn-outline-secondary btn-sm" id="btnJust">Alternar Justificado (⚠️)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2 mt-3">
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Kerning/Tracking (visuais)</h3>
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+          <span class="font-pill">Texto: <strong id="kWord">AVATAR</strong></span>
+          <div class="flex-fill">
+            <label class="form-label mini">Espaçamento entre letras</label>
+            <input type="range" class="form-range" id="ls" min="-2" max="4" step=".1" value="0">
+          </div>
+        </div>
+        <div class="display-6 mt-1" id="kShow" style="letter-spacing:0">AVATAR</div>
+        <div class="mini">Ajustes finos melhoram títulos grandes; cuidado para não “abrir rios” no texto corrido.</div>
+      </div>
+
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Quadro: regras rápidas</h3>
+        <ul class="mini" id="tipRules">
+          <li>Use 2–3 famílias no máximo (ex.: títulos sem serifa + corpo serifado).</li>
+          <li>Evite justificar texto na web; prefira alinhamento à esquerda.</li>
+          <li>Mantenha 45–75 caracteres por linha; ajuste entrelinha ~1.4–1.8.</li>
+          <li>Destaques: prefira itálico/subtítulo; use versais com moderação.</li>
+          <li>Contraste texto/fundo forte; evite claro sobre claro e escuro sobre escuro.</li>
+        </ul>
+        <button class="btn btn-outline-primary btn-sm" id="btnCopyTipRules">Copiar regras 📋</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================== EXEMPLOS PRÁTICOS ====================================== -->
+<section id="exemplos" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3 reveal">3) Exemplos práticos de aplicação 🧪</h2>
+    <p class="mini reveal">Clique para aplicar o tema e veja cor + tipografia no <em>preview</em> abaixo.</p>
+
+    <div class="row g-3">
+      <div class="col-md-4 reveal">
+        <div class="card-ghost p-3 h-100">
+          <h3 class="h6">E-commerce de Promoções ⚡</h3>
+          <ul class="mini">
+            <li>Cor: vermelho/laranja + neutros (urgência/energia).</li>
+            <li>Tipo: títulos Poppins 800; corpo Inter 16/1.6.</li>
+            <li>CTA contrastante; badges de preço.</li>
+          </ul>
+          <button class="btn btn-brand btn-sm" data-theme="promo">Aplicar tema</button>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="card-ghost p-3 h-100">
+          <h3 class="h6">Clínica & Saúde 🩺</h3>
+          <ul class="mini">
+            <li>Cor: azuis/verde (confiança/serenidade).</li>
+            <li>Tipo: títulos Roboto Slab; corpo Inter.</li>
+            <li>Microcópias “claras e higiênicas”.</li>
+          </ul>
+          <button class="btn btn-brand btn-sm" data-theme="saude">Aplicar tema</button>
+        </div>
+      </div>
+      <div class="col-md-4 reveal">
+        <div class="card-ghost p-3 h-100">
+          <h3 class="h6">Educação Infantil 🎈</h3>
+          <ul class="mini">
+            <li>Cor: amarelo/azul/rosa (lúdico/acolhedor).</li>
+            <li>Tipo: títulos Nunito; corpo Nunito/Inter.</li>
+            <li>Botões grandes (≥ <span class="kbd">44×44px</span>).</li>
+          </ul>
+          <button class="btn btn-brand btn-sm" data-theme="kids">Aplicar tema</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview dos temas -->
+    <div class="preview mt-3 reveal">
+      <div class="pv-header">
+        <strong id="pvTitle">Hero do site — mensagem clara</strong>
+        <span class="pv-pill" id="pvPill">CTA</span>
+      </div>
+      <div class="pv-body" id="pvSite" style="font-family:var(--font)">
+        <div class="row g-2">
+          <div class="col-md-6"><div class="pv-card"><strong>Card 1</strong><br><span class="mini">Benefício-chave e CTA secundário.</span></div></div>
+          <div class="col-md-6"><div class="pv-card"><strong>Card 2</strong><br><span class="mini">Conteúdo/serviço complementar.</span></div></div>
+        </div>
+        <p class="mini mt-2" id="pvText">Este bloco simula o corpo do texto. Observe o contraste, a família de fontes, o tamanho e a entrelinha.</p>
+      </div>
+    </div>
+    <div class="d-flex gap-2 mt-2">
+      <button class="btn btn-outline-primary btn-sm" id="btnCopyPreview">Copiar descrição do tema 📋</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================== REFERÊNCIAS ====================================== -->
+<section id="refs" class="py-5 bg-white border-top">
+  <div class="container">
+    <h2 class="h6 mb-2">🔗 Referências & Leituras</h2>
+    <ul class="mini mb-0">
+      <li><strong>Materiais anexos base</strong>: “TAW – Web Design: Cores”, “Guia (não chato) da Teoria da Cor – Alex de Marcos”, “Tipografia na Web – Evandro Miletto”.</li>
+      <li>Vídeo embutido nesta página: “Teoria das Cores” (YouTube).</li>
+      <li><strong>Livros</strong>: <em>Interaction of Color</em> (Josef Albers); <em>Thinking with Type</em> (Ellen Lupton); <em>Designing with Type</em> (James Craig).</li>
+      <li><strong>Guias</strong>: W3C WCAG (contraste); Material Design – Color & Typography; Apple HIG – Typography.</li>
+      <li><strong>Ferramentas</strong>: Coolors / Adobe Color (paletas); Google Fonts; WebAIM Contrast Checker.</li>
+      <li><strong>Vídeos</strong>: NN/g sobre legibilidade; explicações de tipografia e hierarquia visual em canais de design.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> 2025-08-22</span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-container p-2 position-fixed bottom-0 end-0">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ===== util ===== */
+const $ = sel => document.querySelector(sel);
+const $$ = sel => [...document.querySelectorAll(sel)];
+const toast = new bootstrap.Toast($('#liveToast'), {delay:2000});
+function ping(msg){ $('#toastMsg').textContent = msg; toast.show(); }
+function reveal(){ $$('.reveal').forEach(el=>io.observe(el)); }
+const io = new IntersectionObserver(entries => entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show') }), {threshold:.12});
+
+/* ===== Goals copy ===== */
+$('#btnCopyGoals')?.addEventListener('click', ()=>{
+  const txt=`Aula 5 — Teoria das Cores & Tipografia
+• Fundamentos de cor (RGB/CMYK/HSV, círculo, temperatura, contraste/acessibilidade)
+• Relação cor–sentimento e harmonias
+• Tipografia prática (hierarquia, medidas, entrelinha, largura de coluna, kerning/tracking)
+• 3 temas aplicados para sites`;
+  navigator.clipboard.writeText(txt).then(()=>ping('Objetivos copiados 📋'));
+});
+
+/* ===== Lab de contraste ===== */
+function hex2rgb(h){ const x=h.replace('#',''); const n=parseInt(x,16); return [n>>16 &255, n>>8 &255, n&255]; }
+function srgb(c){ c/=255; return (c<=.03928)? c/12.92 : Math.pow((c+.055)/1.055, 2.4); }
+function luminance([r,g,b]){ const [R,G,B]=[srgb(r),srgb(g),srgb(b)]; return 0.2126*R+0.7152*G+0.0722*B; }
+function ratioHex(fg,bg){ const L1=luminance(hex2rgb(fg)); const L2=luminance(hex2rgb(bg)); const [a,b]=L1>L2?[L1,L2]:[L2,L1]; return ((a+0.05)/(b+0.05)).toFixed(2); }
+
+$('#btnApplyContrast')?.addEventListener('click', ()=>{
+  const fg=$('#fg').value, bg=$('#bg').value;
+  $('#pvBody').style.color=fg;
+  $('#pvBody').style.background=bg;
+  const r=ratioHex(fg,bg); $('#ratio').textContent=r+':1';
+  ping('Contraste aplicado 🎨');
+});
+
+/* ===== Quadro de cores ===== */
+$('#btnCopyCores')?.addEventListener('click', ()=>{
+  const rows=$$('#tabEmocoes tbody tr').map(tr=>{
+    const t=tr.querySelectorAll('td');
+    return `• ${t[1].textContent.trim()} — ${t[2].textContent.trim()} (Uso: ${t[3].textContent.trim()})`;
+  }).join('\n');
+  navigator.clipboard.writeText(rows).then(()=>{ ping('Quadro copiado 📋'); $('#btnCopyCores').classList.add('copy-ok'); setTimeout(()=>$('#btnCopyCores').classList.remove('copy-ok'),400); });
+});
+$('#btnAddSwatch')?.addEventListener('click', ()=>{
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td><div class="sw" style="background:#9ca3af"></div></td><td contenteditable="true">Nova Cor</td><td contenteditable="true">Sentimentos…</td><td contenteditable="true">Notas…</td>`;
+  $('#tabEmocoes tbody').appendChild(tr);
+  ping('Linha adicionada ➕');
+});
+
+/* ===== Tipografia Lab ===== */
+function applyFonts(){
+  const h=$('#fontHead').value, b=$('#fontBody').value;
+  $('#typePlay h4').style.fontFamily=h;
+  $('#typePlay p').style.fontFamily=b;
+}
+$('#btnApplyFonts')?.addEventListener('click', ()=>{ applyFonts(); ping('Fontes aplicadas ✍️'); });
+$('#fs').addEventListener('input', e=>{ $('#typePlay').style.fontSize=e.target.value+'px'; });
+$('#lh').addEventListener('input', e=>{ $('#typePlay').style.lineHeight=e.target.value; });
+$('#mw').addEventListener('input', e=>{ $('#typePlay').style.maxWidth=e.target.value+'ch'; });
+$('#btnUpper').addEventListener('click', ()=>{
+  const p=$$('#typePlay p, #typePlay h4'); p.forEach(el=>el.style.textTransform = el.style.textTransform==='uppercase' ? 'none' : 'uppercase');
+});
+$('#btnJust').addEventListener('click', ()=>{
+  const p=$$('#typePlay p'); const j=p[0].style.textAlign==='justify';
+  p.forEach(el=>el.style.textAlign = j?'left':'justify');
+});
+$('#ls').addEventListener('input', e=>{ $('#kShow').style.letterSpacing=e.target.value+'px'; });
+$('#btnCopyTipRules').addEventListener('click', ()=>{
+  const out=$$('#tipRules li').map(li=>'• '+li.textContent.trim()).join('\n');
+  navigator.clipboard.writeText(out).then(()=>ping('Regras copiadas 📋'));
+});
+
+/* ===== Temas práticos ===== */
+const THEMES={
+  promo:{ title:'Ofertas relâmpago — até 70% off',
+    cta:'#e11d48', text:'#111827', bg:'#ffffff', pill:'Comprar agora', fontHead:"'Poppins',sans-serif", fontBody:"'Inter',sans-serif"
+  },
+  saude:{ title:'Saúde perto de você — confiança e cuidado',
+    cta:'#0ea5e9', text:'#0f172a', bg:'#f8fafc', pill:'Agendar consulta', fontHead:"'Roboto Slab',serif", fontBody:"'Inter',sans-serif"
+  },
+  kids:{ title:'Aprender brincando — espaço lúdico e seguro',
+    cta:'#f59e0b', text:'#111827', bg:'#fffaf0', pill:'Conhecer programas', fontHead:"'Nunito',sans-serif", fontBody:"'Nunito',sans-serif"
+  }
+};
+let ACTIVE='promo';
+$$('[data-theme]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const key=btn.dataset.theme; ACTIVE=key;
+    const t=THEMES[key];
+    document.documentElement.style.setProperty('--cta', t.cta);
+    document.documentElement.style.setProperty('--cta-contrast', '#ffffff');
+    document.documentElement.style.setProperty('--preview-bg', t.bg);
+    document.documentElement.style.setProperty('--preview-text', t.text);
+    $('#pvTitle').textContent=t.title;
+    $('#pvPill').textContent=t.pill;
+    $('#pvSite').style.fontFamily=t.fontBody;
+    $('#pvSite strong').style.fontFamily=t.fontHead;
+    ping('Tema aplicado ✨');
+  });
+});
+$('#btnCopyPreview')?.addEventListener('click', ()=>{
+  const t=THEMES[ACTIVE];
+  const out=`Tema: ${ACTIVE}
+• Título: ${t.title}
+• CTA: ${t.cta}
+• Texto/Fundo: ${t.text} / ${t.bg}
+• Fontes: head ${t.fontHead} | body ${t.fontBody}`;
+  navigator.clipboard.writeText(out).then(()=>ping('Descrição copiada 📋'));
+});
+
+/* init */
+addEventListener('DOMContentLoaded', ()=>{ reveal(); applyFonts(); ping('Aula 5 carregada! 🚀'); });
+</script>
+</body>
+</html>
