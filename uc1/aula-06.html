@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC1 • Aula 6 — Wireframe Hi-Fi no Figma com IA (Design & Maker)</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@600;800&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand:#0d6efd; --accent:#22c55e; --bg:#f8fafc; --text:#1f2937;
+    --font:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  }
+  html,body{scroll-behavior:smooth}
+  body{font-family:var(--font); background:var(--bg); color:var(--text)}
+  .hero{background:linear-gradient(180deg,#fff 0,#f6f8ff 65%)}
+  .btn-brand{background:var(--brand); color:#fff; border:none}
+  .btn-brand:hover{filter:brightness(.95); color:#fff}
+  .badge-emoji{vertical-align:middle}
+  .mini{font-size:.94rem; color:#4b5563}
+  .card-ghost{border:1px dashed #d0d7de; background:#fff; border-radius:12px}
+  .grid-2{display:grid; gap:1rem; grid-template-columns:1fr}
+  @media (min-width:992px){ .grid-2{grid-template-columns:1fr 1fr} }
+  .kbd{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0f172a; color:#fff; padding:2px 6px; border-radius:6px}
+  .reveal{opacity:0; transform:translateY(10px); transition:all .6s ease}
+  .reveal.show{opacity:1; transform:none}
+  .pill{display:inline-flex; align-items:center; gap:.5rem; padding:.25rem .6rem; border:1px solid #e5e7eb; border-radius:999px; background:#fff}
+  .preview{border-radius:14px; border:1px solid #e5e7eb; overflow:hidden}
+  .preview .pv-header{background:var(--brand); color:#fff; padding:12px 16px; display:flex; align-items:center; justify-content:space-between}
+  .preview .pv-body{padding:18px; background:#fff}
+  .pv-card{border:1px dashed #d1d5db; border-radius:10px; padding:12px}
+  .checklist .form-check{margin-bottom:.35rem}
+  .copy-ok{animation:pop .35s ease}
+  @keyframes pop{0%{transform:scale(.98)}70%{transform:scale(1.02)}100%{transform:scale(1)}}
+  .sw{width:100%; height:38px; border-radius:8px; border:1px solid #e5e7eb}
+  .table thead th{white-space:nowrap}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary badge-emoji">UC1</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Índice</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-05.html">Aula 5</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-06.html">Aula 6</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC1</a></li>
+        <li class="breadcrumb-item active">Aula 6</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h1 class="h3">Aula 6 — Wireframe <span class="text-primary">Hi-Fi</span> no Figma com IA <span class="badge text-bg-light ms-1">🤖</span></h1>
+        <p class="lead">Do “prompt” ao <strong>wireframe de alta fidelidade</strong>: entenda o <strong>Figma</strong>, use a <strong>Figma AI</strong>, e aplique os fluxos em <strong>Modo Design</strong> e <strong>Modo Maker</strong> com padrões, acessibilidade e componentes.</p>
+        <div class="d-flex gap-2">
+          <a href="#intro" class="btn btn-brand">Começar</a>
+          <a href="#insumos" class="btn btn-outline-secondary">Insumos</a>
+          <a href="#design" class="btn btn-outline-secondary">Modo Design</a>
+          <a href="#maker" class="btn btn-outline-secondary">Modo Maker</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-ghost p-3">
+          <strong>Objetivos</strong>
+          <ul class="mini mb-2">
+            <li>Entender o Figma e a IA como copiloto.</li>
+            <li>Gerar e refinar telas Hi-Fi (Design).</li>
+            <li>Padronizar com tokens, styles, components (Maker).</li>
+            <li>Prototipar fluxo e exportar link.</li>
+          </ul>
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyGoals">Copiar objetivos 📋</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- 1) INTRO -->
+<section id="intro" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3 reveal">1) O que é Figma? 🧰</h2>
+    <div class="grid-2">
+      <div class="card-ghost p-3 reveal">
+        <p><strong>Figma</strong> é a plataforma colaborativa (nuvem) para <em>design de interfaces</em>, protótipos e <em>design systems</em>. Destaques: <strong>Frames</strong>, <strong>Auto Layout</strong>, <strong>Components & Variants</strong>, <strong>Prototype</strong>, comentar e compartilhar via link.</p>
+        <p><strong>Figma AI</strong> acelera o processo: gera layouts iniciais, textos/ícones, variações e ajuda a <em>organizar</em> camadas. Pense como um <em>copiloto</em>: você dita o rumo, a IA dá opções rápidas.</p>
+        <div class="alert alert-info mini mb-0">
+          <strong>Pro Tip:</strong> Peça <em>3 variações</em>, escolha 1 e <u>combine o melhor das outras</u>. Trave decisões com tokens e componentes.
+        </div>
+      </div>
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Vídeos de apoio</h3>
+        <div class="ratio ratio-16x9 mb-2">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/UYPtatFRaXM?si=BCrxp6V67NYhnczJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="ratio ratio-16x9">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/O7jXn04UTGA?si=czre0nLuzYFapHTV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2) INSUMOS -->
+<section id="insumos" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3 reveal">2) Insumos para alimentar a IA 📦</h2>
+    <p class="mini reveal">Preencha com o seu projeto. Depois, gere o prompt no compositor abaixo.</p>
+    <div class="grid-2">
+      <div class="card-ghost p-3 reveal">
+        <div class="row g-2">
+          <div class="col-md-6">
+            <label class="form-label mini">Persona (nome/idade)</label>
+            <input class="form-control" id="inPersona" placeholder="Ex.: Mariana, 36">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label mini">Objetivo do usuário</label>
+            <input class="form-control" id="inObjetivo" placeholder="Ex.: comprar rápido com confiança">
+          </div>
+          <div class="col-12">
+            <label class="form-label mini">Dores / Objeções</label>
+            <input class="form-control" id="inDores" placeholder="Ex.: preço, frete, autenticidade do produto">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label mini">Tom de voz (3 adjetivos)</label>
+            <input class="form-control" id="inTom" placeholder="Ex.: confiável, ágil, acolhedor">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label mini">Fluxo (4 passos)</label>
+            <input class="form-control" id="inFluxo" placeholder="Home → Detalhe → Carrinho → Checkout">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label mini">Paleta (P1 / A1)</label>
+            <input class="form-control" id="inPaleta" placeholder="P1 #0057ff, A1 #ffb703">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label mini">Tipografia (Head/Body)</label>
+            <input class="form-control" id="inTipo" placeholder="Head Poppins 700, Body Inter 400">
+          </div>
+          <div class="col-12">
+            <label class="form-label mini">Blocos desejados</label>
+            <input class="form-control" id="inBlocos" placeholder="Header, Hero, cards, filtros, prova social, FAQ, Footer">
+          </div>
+        </div>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyInsumos">Copiar insumos 📋</button>
+          <button class="btn btn-outline-secondary btn-sm" id="btnClearInsumos">Limpar</button>
+        </div>
+      </div>
+
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Compositor de Prompt (Figma AI)</h3>
+        <textarea id="outPrompt" class="form-control" rows="10" placeholder="Seu prompt aparecerá aqui..."></textarea>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-brand btn-sm" id="btnBuildPrompt">Gerar prompt</button>
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyPrompt">Copiar prompt 📋</button>
+          <button class="btn btn-outline-secondary btn-sm" id="btnPromptModelo">Modelo</button>
+        </div>
+        <div class="mini mt-2">
+          <strong>Regra de ouro:</strong> peça <em>3 variações</em>, explique o público e <em>liste os blocos</em>. Inclua acessibilidade (contraste ≥ <span class="kbd">4.5:1</span> e alvos ≥ <span class="kbd">44×44px</span>).
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3) DESIGN MODE -->
+<section id="design" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3 reveal">3) Tutorial — Modo Design ✍️</h2>
+
+    <div class="grid-2">
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Passo a passo (gerar & refinar com IA)</h3>
+        <ol class="mini" id="stepsDesign">
+          <li><strong>Novo arquivo</strong> → <span class="kbd">Frame</span> (Desktop 1440 ou Mobile 390) + <strong>Layout Grid</strong> (12 col / base 8px).</li>
+          <li><strong>Abrir Figma AI</strong> e colar o prompt gerado (acima). Solicite <strong>3 variações</strong> da tela.</li>
+          <li><strong>Escolha 1 variação</strong> e refatore: aplique <strong>Auto Layout</strong>, defina espaçamentos múltiplos de <span class="kbd">8px</span>, use <strong>constraints</strong> simples.</li>
+          <li><strong>Textos reais</strong> (sem lorem): microcópias baseadas na persona; evidencie prova social e políticas (frete/devolução).</li>
+          <li><strong>Iconografia/imagens</strong>: peça placeholders coerentes; use ícones consistentes (tamanho e stroke).</li>
+          <li><strong>Renomeie layers</strong> (AI: rename by structure) e agrupe por seções.</li>
+          <li><strong>Protótipo</strong>: Home → Detalhe → Ação; conecte CTAs e transições, adicione <em>feedback</em> de estados (hover/focus).</li>
+        </ol>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyDesign">Copiar roteiro 📋</button>
+          <button class="btn btn-outline-secondary btn-sm" id="btnResetDesign">Marcar tudo como feito ✅</button>
+        </div>
+        <div class="alert alert-info mini mt-2 mb-0">
+          <strong>Pontos críticos:</strong> CTA único por tela; hierarquia clara; contraste ≥ 4.5:1; toque mínimo 44×44px; grid e baseline coerentes.
+        </div>
+      </div>
+
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Teste rápido de contraste</h3>
+        <div class="row g-2">
+          <div class="col-md-4">
+            <label class="form-label mini">Texto</label>
+            <input type="color" id="fg" class="form-control form-control-color" value="#111827">
+          </div>
+          <div class="col-md-4">
+            <label class="form-label mini">Fundo</label>
+            <input type="color" id="bg" class="form-control form-control-color" value="#ffffff">
+          </div>
+          <div class="col-md-4 d-grid">
+            <button class="btn btn-brand" id="btnContrast">Calcular</button>
+          </div>
+        </div>
+        <div class="preview mt-2">
+          <div class="pv-header"><strong>Prévia</strong><span class="pill"><span id="ratio">—</span> de contraste</span></div>
+          <div class="pv-body" id="pvBody" style="color:#111827; background:#ffffff">
+            <div class="row g-2">
+              <div class="col-md-6"><div class="pv-card">Título & CTA</div></div>
+              <div class="col-md-6"><div class="pv-card">Texto corrido e links</div></div>
+            </div>
+            <p class="mini mt-2">Objetivo: garantir legibilidade (meta ≥ 4.5:1 para corpo).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4) MAKER MODE -->
+<section id="maker" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3 reveal">4) Tutorial — Modo Maker 🛠️</h2>
+
+    <div class="grid-2">
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Passo a passo (tokens, styles, components)</h3>
+        <ol class="mini" id="stepsMaker">
+          <li><strong>Variáveis/Tokens</strong>: crie color.primary/accent/text/bg/success/error; type.H1/H2/body (tamanho/linha); spacing.8-based.</li>
+          <li><strong>Styles publicados</strong>: Color/Text/Effect (sombra). Nomeie por função (ex.: <code>text/body</code>, <code>action/primary</code>).</li>
+          <li><strong>Botão</strong>: Auto Layout; Component properties (texto/ícone); Variants (default/hover/disabled + sm/md/lg); Interactive components (focus/hover).</li>
+          <li><strong>Card</strong>: imagem, título, selos, preço, CTA. Ajuste constraints para responsividade.</li>
+          <li><strong>Header</strong>: navegação, busca, CTA; organize com Auto Layout e <em>hug contents</em>.</li>
+          <li><strong>Biblioteca</strong>: mova para “UI Kit” e publique (se houver time). Atualize telas para usar os componentes.</li>
+          <li><strong>Protótipo</strong>: refine micro-interações e valide o fluxo completo.</li>
+        </ol>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyMaker">Copiar roteiro 📋</button>
+          <button class="btn btn-outline-secondary btn-sm" id="btnResetMaker">Marcar tudo como feito ✅</button>
+        </div>
+        <div class="alert alert-warning mini mt-2 mb-0"><strong>Atenção:</strong> Componentes sem Auto Layout quebram; nomes genéricos atrapalham a manutenção.
+        </div>
+      </div>
+
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Checklist Hi-Fi (Qualidade & Acessibilidade)</h3>
+        <div class="checklist" id="chkList">
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="c1"><label class="form-check-label" for="c1">Grid 12 col / espaçamento base 8px</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="c2"><label class="form-check-label" for="c2">Contraste (corpo) ≥ 4.5:1</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="c3"><label class="form-check-label" for="c3">Auto Layout & constraints configurados</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="c4"><label class="form-check-label" for="c4">Componentes com variants + estados (hover/focus/disabled)</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="c5"><label class="form-check-label" for="c5">Nomes semânticos de camadas</label></div>
+          <div class="form-check"><input class="form-check-input" type="checkbox" id="c6"><label class="form-check-label" for="c6">Fluxo Home → Detalhe → Ação prototipado</label></div>
+        </div>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-outline-primary btn-sm" id="btnCopyChecklist">Copiar checklist 📋</button>
+          <button class="btn btn-outline-secondary btn-sm" id="btnClearChecklist">Limpar marcações</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5) ENTREGA & EXPORT -->
+<section id="entrega" class="py-5">
+  <div class="container">
+    <h2 class="h5 mb-3 reveal">5) Entrega & Exportação 📦</h2>
+    <div class="grid-2">
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">O que enviar</h3>
+        <ul class="mini">
+          <li>Link do Figma (visualização).</li>
+          <li>Prompt(s) usados (Design e Maker).</li>
+          <li>3 telas Hi-Fi (Home, Detalhe, Ação) com protótipo navegável.</li>
+          <li>Print de 3 componentes (Botão, Card, Header) mostrando variants.</li>
+          <li>Nota (5 linhas): como as escolhas refletem a persona e o fluxo.</li>
+        </ul>
+      </div>
+      <div class="card-ghost p-3 reveal">
+        <h3 class="h6">Exportar resumo</h3>
+        <button class="btn btn-brand" id="btnExport">Copiar tudo 📋</button>
+        <p class="mini mt-2 mb-0">Cole no seu relatório/entrega.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6) REFERÊNCIAS -->
+<section id="refs" class="py-5 bg-white border-top">
+  <div class="container">
+    <h2 class="h6 mb-2">🔗 Referências & Leituras</h2>
+    <ul class="mini mb-0">
+      <li>Figma Help: Frames, Auto Layout, Components, Variants, Prototype.</li>
+      <li>Figma AI: geração de layout, renomeação de layers, placeholders.</li>
+      <li>WCAG (contraste), Material Design (color/typography), Apple HIG.</li>
+      <li>Playlist complementar (YouTube): <a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PL2b2uvKR5s-Hx3byi3qZY_HhPPw9U0e6x">UI/UX & Figma</a></li>
+      <li>Vídeos embutidos nesta página (acima) para revisão rápida.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> 2025-08-26</span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-container p-2 position-fixed bottom-0 end-0">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ===== Util ===== */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const toast = new bootstrap.Toast($('#liveToast'), {delay:2000});
+function ping(t){ $('#toastMsg').textContent=t; toast.show(); }
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show') }), {threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+
+/* ===== Objetivos ===== */
+$('#btnCopyGoals')?.addEventListener('click', ()=>{
+  const txt=`Aula 6 — Wireframe Hi-Fi com Figma + IA
+• Entender Figma e IA como copiloto
+• Gerar/refinar telas (Modo Design)
+• Padronizar com tokens, styles e components (Modo Maker)
+• Prototipar fluxo e exportar link`;
+  navigator.clipboard.writeText(txt).then(()=>ping('Objetivos copiados 📋'));
+});
+
+/* ===== Insumos ===== */
+$('#btnCopyInsumos')?.addEventListener('click', ()=>{
+  const out = [
+    `Persona: ${$('#inPersona').value||'-'}`,
+    `Objetivo: ${$('#inObjetivo').value||'-'}`,
+    `Dores: ${$('#inDores').value||'-'}`,
+    `Tom: ${$('#inTom').value||'-'}`,
+    `Fluxo: ${$('#inFluxo').value||'-'}`,
+    `Paleta: ${$('#inPaleta').value||'-'}`,
+    `Tipografia: ${$('#inTipo').value||'-'}`,
+    `Blocos: ${$('#inBlocos').value||'-'}`
+  ].join('\n');
+  navigator.clipboard.writeText(out).then(()=>ping('Insumos copiados 📋'));
+});
+$('#btnClearInsumos')?.addEventListener('click', ()=>{
+  ['#inPersona','#inObjetivo','#inDores','#inTom','#inFluxo','#inPaleta','#inTipo','#inBlocos'].forEach(id=>$(id).value='');
+  ping('Insumos limpos 🧽');
+});
+
+/* ===== Prompt Builder ===== */
+$('#btnBuildPrompt')?.addEventListener('click', ()=>{
+  const p = (id)=>$(id).value.trim();
+  const prompt =
+`Você é Figma AI. Gere 3 variações de layout HI-FI para um site de ${p('#inObjetivo')||'[contexto]'}.
+Persona: ${p('#inPersona')||'[nome, idade]'} — dores: ${p('#inDores')||'[dores]'}.
+Tom de voz: ${p('#inTom')||'[adjetivos]'}.
+Fluxo: ${p('#inFluxo')||'Home → Detalhe → Ação'}.
+Paleta: ${p('#inPaleta')||'P1/A1 + texto/fundo/semânticas'}.
+Tipografia: ${p('#inTipo')||'Head/Body + tamanhos/linhas'}.
+Blocos: ${p('#inBlocos')||'Header, Hero, cards, filtros, prova social, FAQ, Footer'}.
+Regras: grid 12 col / base 8px; contraste ≥ 4.5:1; alvos ≥ 44×44px; textos reais (sem lorem); Auto Layout.
+Entregue: 3 opções explicando hierarquia/contraste e onde aplicar P1/A1.`;
+  $('#outPrompt').value = prompt;
+  ping('Prompt gerado ✍️');
+});
+$('#btnCopyPrompt')?.addEventListener('click', ()=>{
+  navigator.clipboard.writeText($('#outPrompt').value||'').then(()=>ping('Prompt copiado 📋'));
+});
+$('#btnPromptModelo')?.addEventListener('click', ()=>{
+  $('#outPrompt').value =
+`Crie em Figma (Hi-Fi) uma HOME para e-commerce de alimentos saudáveis.
+Persona: Mariana, 36 — dores: preço, frete, autenticidade. Tom: confiável, ágil, acolhedor.
+Fluxo: Home → Detalhe → Carrinho → Checkout.
+Paleta: P1 #0EA5E9, A1 #22C55E, texto #111827, fundo #FFFFFF; sucesso #16A34A, erro #DC2626.
+Tipografia: Head Poppins 700, Body Inter 400 (16–18px / LH 1.5).
+Blocos: Header (busca/CTA), Hero (valor), grid de produtos (filtros org/veg), prova social, FAQ (frete/devolução), Footer.
+Regras: grid 12 col / 8px; contraste ≥ 4.5:1; alvos ≥ 44×44px; Auto Layout; nomes semânticos.
+Entregue: 3 variações com justificativa de hierarquia e uso de P1/A1.`;
+  ping('Modelo inserido ✨');
+});
+
+/* ===== Contraste ===== */
+function hex2rgb(h){ const x=h.replace('#',''); const n=parseInt(x,16); return [n>>16 &255, n>>8 &255, n&255]; }
+function srgb(c){ c/=255; return (c<=.03928)? c/12.92 : Math.pow((c+.055)/1.055, 2.4); }
+function luminance([r,g,b]){ const [R,G,B]=[srgb(r),srgb(g),srgb(b)]; return 0.2126*R+0.7152*G+0.0722*B; }
+function ratioHex(fg,bg){ const L1=luminance(hex2rgb(fg)); const L2=luminance(hex2rgb(bg)); const [a,b]=L1>L2?[L1,L2]:[L2,L1]; return ((a+0.05)/(b+0.05)).toFixed(2); }
+$('#btnContrast')?.addEventListener('click', ()=>{
+  const fg=$('#fg').value, bg=$('#bg').value;
+  $('#pvBody').style.color=fg; $('#pvBody').style.background=bg;
+  $('#ratio').textContent = ratioHex(fg,bg)+':1';
+  ping('Contraste calculado 🎨');
+});
+
+/* ===== Tutoriais copy/mark ===== */
+function copyList(id, label){
+  const items = $$(id+' li').map(li=>'• '+li.textContent.trim()).join('\n');
+  navigator.clipboard.writeText(`${label}\n${items}`).then(()=>ping('Roteiro copiado 📋'));
+}
+$('#btnCopyDesign')?.addEventListener('click', ()=>copyList('#stepsDesign','Modo Design — Passos'));
+$('#btnCopyMaker')?.addEventListener('click', ()=>copyList('#stepsMaker','Modo Maker — Passos'));
+$('#btnResetDesign')?.addEventListener('click', ()=>{ $$('#stepsDesign li').forEach(li=>li.style.textDecoration='line-through'); ping('Passos marcados como feitos ✅'); });
+$('#btnResetMaker')?.addEventListener('click', ()=>{ $$('#stepsMaker li').forEach(li=>li.style.textDecoration='line-through'); ping('Passos marcados como feitos ✅'); });
+
+/* ===== Checklist ===== */
+$('#btnCopyChecklist')?.addEventListener('click', ()=>{
+  const rows = $$('#chkList .form-check-label').map(l=>`• ${l.textContent}`).join('\n');
+  navigator.clipboard.writeText(`Checklist Hi-Fi\n${rows}`).then(()=>ping('Checklist copiado 📋'));
+});
+$('#btnClearChecklist')?.addEventListener('click', ()=>{
+  $$('#chkList input[type="checkbox"]').forEach(c=>c.checked=false);
+  ping('Marcações limpas 🧽');
+});
+
+/* ===== Export ===== */
+$('#btnExport')?.addEventListener('click', ()=>{
+  const insumos = [
+    `Persona: ${$('#inPersona').value||'-'}`,
+    `Objetivo: ${$('#inObjetivo').value||'-'}`,
+    `Dores: ${$('#inDores').value||'-'}`,
+    `Tom: ${$('#inTom').value||'-'}`,
+    `Fluxo: ${$('#inFluxo').value||'-'}`,
+    `Paleta: ${$('#inPaleta').value||'-'}`,
+    `Tipografia: ${$('#inTipo').value||'-'}`,
+    `Blocos: ${$('#inBlocos').value||'-'}`
+  ].join('\n');
+  const design = $$('#stepsDesign li').map(li=>'• '+li.textContent.trim()).join('\n');
+  const maker  = $$('#stepsMaker li').map(li=>'• '+li.textContent.trim()).join('\n');
+  const chk    = $$('#chkList .form-check').map(c=>`• [${c.querySelector('input').checked?'x':' '}] ${c.querySelector('label').textContent}`).join('\n');
+  const out = [
+    '=== INSUMOS ===', insumos,
+    '\n=== PROMPT (Design) ===', $('#outPrompt').value || '(vazio)',
+    '\n=== Modo Design ===', design,
+    '\n=== Modo Maker ===', maker,
+    '\n=== Checklist ===', chk
+  ].join('\n');
+  navigator.clipboard.writeText(out).then(()=>ping('Resumo copiado 📋'));
+});
+
+/* Init */
+addEventListener('DOMContentLoaded', ()=> ping('Aula 6 carregada! 🚀'));
+</script>
+</body>
+</html>
