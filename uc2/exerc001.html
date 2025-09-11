@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>HTML5 — 10 Exercícios Básicos (com copiar/colar)</title>
+  <style>
+    :root{
+      --bg:#0f172a;          /* fundo */
+      --card:#111827;        /* card */
+      --muted:#94a3b8;       /* texto secundário */
+      --text:#e5e7eb;        /* texto principal */
+      --brand:#22d3ee;       /* ciano */
+      --accent:#a78bfa;      /* roxo */
+      --ok:#10b981;          /* verde sucesso */
+      --warn:#f59e0b;        /* laranja */
+      --border:#1f2937;      /* borda */
+      --code:#0b1220;        /* bloco código */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+      background:linear-gradient(180deg,#0b1220 0%, #0f172a 100%);
+      color:var(--text);
+    }
+    header{
+      padding:32px 16px; text-align:center; position:sticky; top:0; z-index:10;
+      background:linear-gradient(180deg, rgba(11,18,32,0.95) 0%, rgba(15,23,42,0.85) 100%);
+      backdrop-filter: blur(6px); border-bottom:1px solid var(--border);
+    }
+    h1{margin:0 0 8px; font-size:clamp(1.4rem, 2.4vw, 2.2rem)}
+    .subtitle{color:var(--muted); margin:0 auto; max-width:920px}
+    .container{max-width:1100px; margin:24px auto; padding:0 16px 64px}
+    .toc{
+      display:flex; gap:8px; flex-wrap:wrap; margin:16px auto 24px; justify-content:center
+    }
+    .toc a{
+      text-decoration:none; color:var(--bg); background:var(--brand); padding:8px 12px;
+      border-radius:999px; font-weight:600; border:2px solid transparent
+    }
+    .toc a:hover{filter:brightness(1.08)}
+    .grid{
+      display:grid; gap:20px;
+      grid-template-columns:repeat(12,1fr);
+    }
+    .card{
+      grid-column:1/-1; background:var(--card); border:1px solid var(--border);
+      border-radius:16px; padding:18px 16px 12px; box-shadow:0 10px 30px rgba(0,0,0,.25)
+    }
+    @media (min-width:720px){ .card{padding:22px} }
+    .head{
+      display:flex; align-items:center; gap:12px; margin-bottom:8px; flex-wrap:wrap
+    }
+    .badge{font-size:.85rem; color:var(--bg); background:var(--accent);
+      padding:4px 10px; border-radius:999px; font-weight:700}
+    h2{font-size:1.25rem; margin:0}
+    p{line-height:1.6}
+    .enunciado{color:var(--muted); margin:8px 0 12px}
+    details summary{
+      cursor:pointer; user-select:none; list-style:none; font-weight:700;
+      padding:10px 12px; border:1px solid var(--border); border-radius:12px;
+      background:linear-gradient(180deg,#0e1629,#0b1220); margin-bottom:10px
+    }
+    details[open] summary{border-color:#223e7a; box-shadow:inset 0 0 0 1px #223e7a}
+    pre{
+      margin:0; padding:14px 14px; background:var(--code); border:1px solid var(--border);
+      border-radius:12px; overflow:auto; max-height:560px
+    }
+    code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.92rem}
+    .actions{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 0}
+    .btn{
+      appearance:none; border:none; cursor:pointer; font-weight:700;
+      padding:10px 14px; border-radius:10px; transition:transform .05s ease, filter .2s ease
+    }
+    .btn:active{transform:translateY(1px)}
+    .copy{background:var(--brand); color:var(--bg)}
+    .copy:hover{filter:brightness(1.05)}
+    .preview{background:transparent; color:var(--text); border:1px solid var(--border)}
+    .note{font-size:.9rem; color:var(--muted); margin-top:10px}
+    footer{color:var(--muted); text-align:center; padding:24px}
+    /* Acessibilidade de foco */
+    a:focus,button:focus,summary:focus{outline:3px solid var(--brand); outline-offset:2px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HTML5 — 10 Exercícios Básicos</h1>
+    <p class="subtitle">Cada exercício traz um <strong>enunciado</strong> + um <strong>código final comentado</strong>.
+      Clique em <em>Copiar</em> para levar o código completo e colar no seu editor.</p>
+    <nav class="toc" aria-label="Sumário">
+      <a href="#ex1">1. Estrutura</a>
+      <a href="#ex2">2. Títulos</a>
+      <a href="#ex3">3. Ênfase</a>
+      <a href="#ex4">4. Listas</a>
+      <a href="#ex5">5. Descrição</a>
+      <a href="#ex6">6. Links</a>
+      <a href="#ex7">7. Imagens</a>
+      <a href="#ex8">8. Tabelas</a>
+      <a href="#ex9">9. Formulário</a>
+      <a href="#ex10">10. Semântico</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="grid">
+
+      <!-- EXERCÍCIO 1 -->
+      <article class="card" id="ex1">
+        <div class="head">
+          <span class="badge">Exercício 1</span>
+          <h2>Estrutura do documento (HTML5 básico)</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Crie uma página mínima com título “Olá, HTML5!” e um parágrafo de boas-vindas.</p>
+        <details open>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-1">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;!-- Metadados essenciais --&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Olá, HTML5!&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Conteúdo visível da página --&gt;
+  &lt;h1&gt;Olá, HTML5!&lt;/h1&gt; &lt;!-- Título principal --&gt;
+  &lt;p&gt;Bem-vindo(a) à sua primeira página estruturada com HTML5.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-1">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 2 -->
+      <article class="card" id="ex2">
+        <div class="head">
+          <span class="badge">Exercício 2</span>
+          <h2>Títulos e parágrafos</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Estruture um texto com hierarquia de títulos (h1–h3) e parágrafos explicativos.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-2">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Títulos e Parágrafos&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Guia Rápido&lt;/h1&gt; &lt;!-- h1: título único da página --&gt;
+  &lt;p&gt;Este guia mostra como usar títulos e parágrafos corretamente.&lt;/p&gt;
+
+  &lt;h2&gt;Seção 1&lt;/h2&gt; &lt;!-- h2: seção principal --&gt;
+  &lt;p&gt;Use &lt;code&gt;&amp;lt;h2&amp;gt;&lt;/code&gt; para seções derivadas do título principal.&lt;/p&gt;
+
+  &lt;h3&gt;Subseção 1.1&lt;/h3&gt; &lt;!-- h3: subseção --&gt;
+  &lt;p&gt;Parágrafos &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; organizam o texto em blocos legíveis.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-2">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 3 -->
+      <article class="card" id="ex3">
+        <div class="head">
+          <span class="badge">Exercício 3</span>
+          <h2>Ênfase e formatação inline</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Aplique negrito, itálico, ênfase semântica e quebras de linha.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-3">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Ênfase e Formatação&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Formatações de Texto&lt;/h1&gt;
+  &lt;p&gt;Texto em &lt;b&gt;negrito (visual)&lt;/b&gt; e em &lt;strong&gt;negrito (importante)&lt;/strong&gt;.&lt;/p&gt;
+  &lt;p&gt;Texto em &lt;i&gt;itálico (visual)&lt;/i&gt; e em &lt;em&gt;itálico (ênfase)&lt;/em&gt;.&lt;/p&gt;
+  &lt;p&gt;Linha 1&lt;br&gt;Linha 2 após uma quebra.&lt;/p&gt;
+  &lt;hr&gt; &lt;!-- linha horizontal para separar conteúdos --&gt;
+  &lt;p&gt;Química: H&lt;sub&gt;2&lt;/sub&gt;O • Matemática: 2&lt;sup&gt;3&lt;/sup&gt; = 8&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-3">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 4 -->
+      <article class="card" id="ex4">
+        <div class="head">
+          <span class="badge">Exercício 4</span>
+          <h2>Listas ordenadas e não ordenadas</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Crie uma lista numerada de passos e outra com marcadores para materiais.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-4">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Listas&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Receita Simples&lt;/h1&gt;
+
+  &lt;h2&gt;Passos (lista ordenada)&lt;/h2&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Separe os ingredientes.&lt;/li&gt;
+    &lt;li&gt;Misture tudo.&lt;/li&gt;
+    &lt;li&gt;Leve ao forno.&lt;/li&gt;
+  &lt;/ol&gt;
+
+  &lt;h2&gt;Ingredientes (lista não ordenada)&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Farinha&lt;/li&gt;
+    &lt;li&gt;Açúcar&lt;/li&gt;
+    &lt;li&gt;Ovos&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-4">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 5 -->
+      <article class="card" id="ex5">
+        <div class="head">
+          <span class="badge">Exercício 5</span>
+          <h2>Lista de descrição (termo e definição)</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Monte um glossário curto com termos e descrições.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-5">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Lista de Descrição&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Glossário&lt;/h1&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;Linguagem de marcação para estruturar páginas web.&lt;/dd&gt;
+
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Folhas de estilo para aparência e layout.&lt;/dd&gt;
+
+    &lt;dt&gt;JavaScript&lt;/dt&gt;
+    &lt;dd&gt;Linguagem para interatividade no front-end.&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-5">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 6 -->
+      <article class="card" id="ex6">
+        <div class="head">
+          <span class="badge">Exercício 6</span>
+          <h2>Links (externo, interno e âncora)</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Crie links para um site externo, para outra página do projeto e para uma âncora interna.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-6">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Links&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Navegação&lt;/h1&gt;
+
+  &lt;!-- Link externo: abre em nova aba --&gt;
+  &lt;p&gt;&lt;a href="https://developer.mozilla.org/pt-BR/" target="_blank" rel="noopener"&gt;Documentação (MDN)&lt;/a&gt;&lt;/p&gt;
+
+  &lt;!-- Link interno: página do mesmo projeto --&gt;
+  &lt;p&gt;&lt;a href="contato.html" title="Ir para a página de contato"&gt;Página de Contato&lt;/a&gt;&lt;/p&gt;
+
+  &lt;!-- Link âncora: navega dentro da mesma página --&gt;
+  &lt;p&gt;&lt;a href="#rodape"&gt;Ir para o rodapé&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;Conteúdo intermediário…&lt;/p&gt;
+
+  &lt;h2 id="rodape"&gt;Rodapé&lt;/h2&gt;
+  &lt;p&gt;Aqui termina a página.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-6">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 7 -->
+      <article class="card" id="ex7">
+        <div class="head">
+          <span class="badge">Exercício 7</span>
+          <h2>Imagens com alt e legenda (figure/figcaption)</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Insira uma imagem com <code>alt</code> descritivo e use <code>&lt;figure&gt;</code>/<code>&lt;figcaption&gt;</code> para legenda.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-7">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Imagens&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Galeria&lt;/h1&gt;
+
+  &lt;figure&gt;
+    &lt;img src="img/paisagem.jpg" alt="Paisagem ao pôr do sol vista de um mirante" width="480"&gt;
+    &lt;figcaption&gt;Paisagem ao pôr do sol — foto ilustrativa.&lt;/figcaption&gt;
+  &lt;/figure&gt;
+
+  &lt;!-- Dica: descreva a imagem no alt para acessibilidade --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-7">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 8 -->
+      <article class="card" id="ex8">
+        <div class="head">
+          <span class="badge">Exercício 8</span>
+          <h2>Tabela básica com thead/tbody</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Crie uma tabela com cabeçalho e corpo para listar produtos e preços.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-8">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Tabela&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Tabela de Preços&lt;/h1&gt;
+
+  &lt;table border="1"&gt; &lt;!-- border para visualização rápida (demonstração) --&gt;
+    &lt;caption&gt;Produtos e Preços&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Produto&lt;/th&gt;
+        &lt;th&gt;Preço (R$)&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;Caderno&lt;/td&gt;&lt;td&gt;15,90&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;Caneta&lt;/td&gt;&lt;td&gt;3,50&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-8">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 9 -->
+      <article class="card" id="ex9">
+        <div class="head">
+          <span class="badge">Exercício 9</span>
+          <h2>Formulário básico</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Construa um formulário com campos de texto, e-mail, seleção e botão de envio.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-9">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Formulário&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Fale Conosco&lt;/h1&gt;
+
+  &lt;!-- action e method são exemplos; ajuste conforme seu backend --&gt;
+  &lt;form action="/enviar" method="post"&gt;
+    &lt;label for="nome"&gt;Nome:&lt;/label&gt;
+    &lt;input type="text" id="nome" name="nome" required placeholder="Seu nome completo"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="email"&gt;E-mail:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required placeholder="voce@exemplo.com"&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="assunto"&gt;Assunto:&lt;/label&gt;
+    &lt;select id="assunto" name="assunto"&gt;
+      &lt;option&gt;Suporte&lt;/option&gt;
+      &lt;option&gt;Comercial&lt;/option&gt;
+      &lt;option&gt;Outros&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;label for="mensagem"&gt;Mensagem:&lt;/label&gt;&lt;br&gt;
+    &lt;textarea id="mensagem" name="mensagem" rows="4" cols="40" placeholder="Escreva aqui..."&gt;&lt;/textarea&gt;
+
+    &lt;br&gt;&lt;br&gt;
+
+    &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-9">📋 Copiar</button>
+          </div>
+        </details>
+      </article>
+
+      <!-- EXERCÍCIO 10 -->
+      <article class="card" id="ex10">
+        <div class="head">
+          <span class="badge">Exercício 10</span>
+          <h2>Estrutura semântica (layout básico)</h2>
+        </div>
+        <p class="enunciado"><strong>Enunciado:</strong> Monte um layout com tags semânticas: <code>header</code>, <code>nav</code>, <code>main</code>, <code>article</code>, <code>section</code>, <code>aside</code>, <code>footer</code>.</p>
+        <details>
+          <summary>Ver código final (comentado)</summary>
+          <pre><code id="code-10">&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Página Semântica&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Meu Site&lt;/h1&gt; &lt;!-- Cabeçalho do site --&gt;
+    &lt;nav&gt;
+      &lt;a href="#"&gt;Início&lt;/a&gt; | &lt;a href="#"&gt;Blog&lt;/a&gt; | &lt;a href="#"&gt;Contato&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;Artigo: Boas práticas HTML&lt;/h2&gt;
+      &lt;section&gt;
+        &lt;h3&gt;Estrutura&lt;/h3&gt;
+        &lt;p&gt;Use tags semânticas para clareza e acessibilidade.&lt;/p&gt;
+      &lt;/section&gt;
+      &lt;section&gt;
+        &lt;h3&gt;Conteúdo&lt;/h3&gt;
+        &lt;p&gt;Organize títulos, parágrafos e listas de forma lógica.&lt;/p&gt;
+      &lt;/section&gt;
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      &lt;h3&gt;Sobre o autor&lt;/h3&gt;
+      &lt;p&gt;Notas e links adicionais.&lt;/p&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&amp;copy; 2025 Meu Site. Todos os direitos reservados.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <div class="actions">
+            <button class="btn copy" data-target="code-10">📋 Copiar</button>
+          </div>
+        </details>
+        <p class="note">Dica: você pode alterar cores, textos e adicionar CSS externo conforme evoluir a aula.</p>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    Feito com ❤️ para aulas introdutórias de HTML5 — copie e experimente!
+  </footer>
+
+  <script>
+    // Copiar conteúdo do bloco <code> pelo ID indicado no data-target
+    function copiarCodigo(id, btn){
+      const el = document.getElementById(id);
+      if(!el){ return; }
+      const texto = el.textContent; // preserva < e > corretamente
+      // Tenta API moderna do Clipboard
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(texto).then(()=>{
+          feedback(btn, "✅ Copiado!");
+        }).catch(()=>{
+          fallbackCopy(texto, btn);
+        });
+      } else {
+        fallbackCopy(texto, btn);
+      }
+    }
+
+    // Fallback para ambientes sem HTTPS/Clipboard API
+    function fallbackCopy(texto, btn){
+      const ta = document.createElement("textarea");
+      ta.value = texto;
+      ta.style.position = "fixed";
+      ta.style.top = "-1000px";
+      ta.setAttribute("readonly", "");
+      document.body.appendChild(ta);
+      ta.select();
+      try{
+        document.execCommand("copy");
+        feedback(btn, "✅ Copiado!");
+      }catch(e){
+        feedback(btn, "❗ Selecione e copie manualmente");
+      }finally{
+        document.body.removeChild(ta);
+      }
+    }
+
+    // Feedback visual no botão
+    function feedback(btn, msg){
+      const original = btn.innerHTML;
+      btn.innerHTML = msg;
+      btn.style.background = getComputedStyle(document.documentElement)
+        .getPropertyValue("--ok");
+      btn.style.color = "var(--bg)";
+      setTimeout(()=>{
+        btn.innerHTML = original;
+        btn.style.background = ""; // volta ao estilo da classe
+        btn.style.color = "";
+      }, 1500);
+    }
+
+    // Liga os botões de copiar
+    document.querySelectorAll(".btn.copy").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        const target = btn.getAttribute("data-target");
+        copiarCodigo(target, btn);
+      });
+    });
+  </script>
+</body>
+</html>
