@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC2 • Aula 1 — O que é HTML? Fundamentos e Principais Tags</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
+  <style>
+    .preview-box{border:1px dashed #ced4da;border-radius:.75rem;padding:1rem;background:#fff}
+    .code-note{background:#0d1117;color:#c9d1d9;border-radius:.75rem;padding:1rem;font-size:.9rem;overflow:auto}
+    .mini{font-size:.92rem}
+    .hl{background:#fff7d6}
+    .table thead th{white-space:nowrap}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary">UC2</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Índice</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-01.html">Aula 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-02.html">Aula 2</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC2</a></li>
+        <li class="breadcrumb-item active">Aula 1</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h1 class="h3">Aula 1 — O que é HTML? Fundamentos & Principais Tags</h1>
+        <p class="lead">Entenda a estrutura básica, estude o <strong>Top 20</strong> de tags com exemplos e pratique no <strong>Playground</strong> com verificador didático.</p>
+        <div class="d-flex gap-2">
+          <a href="#top20" class="btn btn-brand">Ir para o Top 20</a>
+          <a href="#playground" class="btn btn-outline-secondary">Playground</a>
+          <a href="#quiz" class="btn btn-outline-dark">Quiz</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-ghost p-3">
+          <strong>Objetivos da aula</strong>
+          <ul class="mini mb-0">
+            <li>Compreender <em>o que é HTML</em>.</li>
+            <li>Conhecer a <strong>estrutura mínima</strong>.</li>
+            <li>Dominar um <strong>Top 20 de tags</strong>.</li>
+            <li>Praticar com <strong>exemplos executáveis</strong>.</li>
+            <li>Fixar com um <strong>quiz ampliado</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="fundamentos" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">1) Fundamentos</h2>
+    <div class="row g-3">
+      <div class="col-md-4"><div class="card-ghost p-3"><h3 class="h6">Definição</h3><p class="mini">HTML é a <strong>linguagem de marcação</strong> que descreve a estrutura das páginas web.</p></div></div>
+      <div class="col-md-4"><div class="card-ghost p-3"><h3 class="h6">Tags & atributos</h3><p class="mini"><span class="text-monospace">&lt;p&gt;...&lt;/p&gt;</span> cria um parágrafo. <span class="text-monospace">alt</span> descreve imagens: <span class="text-monospace">&lt;img src=&quot;...&quot; alt=&quot;...&quot;&gt;</span>.</p></div></div>
+      <div class="col-md-4"><div class="card-ghost p-3"><h3 class="h6">Semântica</h3><p class="mini">Use elementos como <span class="text-monospace">&lt;header&gt;&lt;main&gt;&lt;section&gt;</span> para melhorar acessibilidade/SEO.</p></div></div>
+    </div>
+
+    <div class="mt-4">
+      <h3 class="h6">Estrutura mínima (boilerplate)</h3>
+      <div class="code-note" id="code-boiler">
+&lt;!doctype html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Minha página&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Olá, mundo!&lt;/h1&gt;
+  &lt;p&gt;Esta é a minha primeira página.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+      </div>
+      <div class="mt-2 d-flex gap-2">
+        <button class="btn btn-outline-primary btn-sm" data-copy="#code-boiler">Copiar 📋</button>
+        <button class="btn btn-outline-secondary btn-sm" data-run="#code-boiler">Executar ▶️</button>
+        <button class="btn btn-outline-dark btn-sm" data-download="#code-boiler">Baixar .html ⬇️</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="top20" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3">2) Top 20 — Tags, exemplo e aplicação 🏷️</h2>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>Tag</th>
+            <th>Exemplo <small class="text-muted">(copiável)</small></th>
+            <th>Aplicação</th>
+          </tr>
+        </thead>
+        <tbody>
+      <tr>
+        <td><code>&lt;html&gt;</code></td>
+        <td><code id="ex-t1">&lt;html lang=&quot;pt-BR&quot;&gt;…&lt;/html&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t1">Copiar</button></td>
+        <td class="mini">Elemento raiz do documento.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;head&gt;</code></td>
+        <td><code id="ex-t2">&lt;head&gt;…&lt;/head&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t2">Copiar</button></td>
+        <td class="mini">Metadados e configurações.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;meta&gt;</code></td>
+        <td><code id="ex-t3">&lt;meta charset=&quot;utf-8&quot;&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t3">Copiar</button></td>
+        <td class="mini">Metadados: charset, viewport, SEO.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;title&gt;</code></td>
+        <td><code id="ex-t4">&lt;title&gt;Minha página&lt;/title&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t4">Copiar</button></td>
+        <td class="mini">Título da aba/resultado de busca.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;body&gt;</code></td>
+        <td><code id="ex-t5">&lt;body&gt;…&lt;/body&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t5">Copiar</button></td>
+        <td class="mini">Conteúdo visível ao usuário.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;h1&gt;</code></td>
+        <td><code id="ex-t6">&lt;h1&gt;Título&lt;/h1&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t6">Copiar</button></td>
+        <td class="mini">Título principal (use 1 por página/área).</td>
+      </tr>
+      <tr>
+        <td><code>&lt;p&gt;</code></td>
+        <td><code id="ex-t7">&lt;p&gt;Parágrafo.&lt;/p&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t7">Copiar</button></td>
+        <td class="mini">Bloco de texto.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;a&gt;</code></td>
+        <td><code id="ex-t8">&lt;a href=&quot;https://ex.com&quot;&gt;Link&lt;/a&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t8">Copiar</button></td>
+        <td class="mini">Hiperlink para navegação.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;img&gt;</code></td>
+        <td><code id="ex-t9">&lt;img src=&quot;foto.jpg&quot; alt=&quot;Descrição&quot;&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t9">Copiar</button></td>
+        <td class="mini">Imagem com texto alternativo.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;ul&gt;</code></td>
+        <td><code id="ex-t10">&lt;ul&gt;&lt;li&gt;A&lt;/li&gt;&lt;li&gt;B&lt;/li&gt;&lt;/ul&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t10">Copiar</button></td>
+        <td class="mini">Lista não ordenada.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;ol&gt;</code></td>
+        <td><code id="ex-t11">&lt;ol&gt;&lt;li&gt;1&lt;/li&gt;&lt;li&gt;2&lt;/li&gt;&lt;/ol&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t11">Copiar</button></td>
+        <td class="mini">Lista ordenada.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;li&gt;</code></td>
+        <td><code id="ex-t12">&lt;li&gt;Item&lt;/li&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t12">Copiar</button></td>
+        <td class="mini">Item de lista.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;table&gt;</code></td>
+        <td><code id="ex-t13">&lt;table&gt;&lt;thead&gt;…&lt;/thead&gt;&lt;tbody&gt;…&lt;/tbody&gt;&lt;/table&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t13">Copiar</button></td>
+        <td class="mini">Tabela de dados.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;form&gt;</code></td>
+        <td><code id="ex-t14">&lt;form action=&quot;#&quot; method=&quot;post&quot;&gt;…&lt;/form&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t14">Copiar</button></td>
+        <td class="mini">Envio de dados do usuário.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;label&gt;</code></td>
+        <td><code id="ex-t15">&lt;label for=&quot;email&quot;&gt;E-mail&lt;/label&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t15">Copiar</button></td>
+        <td class="mini">Associa rótulo ao campo (acessibilidade).</td>
+      </tr>
+      <tr>
+        <td><code>&lt;input&gt;</code></td>
+        <td><code id="ex-t16">&lt;input id=&quot;email&quot; type=&quot;email&quot; required&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t16">Copiar</button></td>
+        <td class="mini">Campo de entrada (vários tipos).</td>
+      </tr>
+      <tr>
+        <td><code>&lt;textarea&gt;</code></td>
+        <td><code id="ex-t17">&lt;textarea rows=&quot;3&quot;&gt;&lt;/textarea&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t17">Copiar</button></td>
+        <td class="mini">Área de texto multilinha.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;button&gt;</code></td>
+        <td><code id="ex-t18">&lt;button type=&quot;submit&quot;&gt;Enviar&lt;/button&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t18">Copiar</button></td>
+        <td class="mini">Botão de ação.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;section&gt;</code></td>
+        <td><code id="ex-t19">&lt;section&gt;…&lt;/section&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t19">Copiar</button></td>
+        <td class="mini">Agrupamento semântico de conteúdo.</td>
+      </tr>
+      <tr>
+        <td><code>&lt;nav&gt;</code></td>
+        <td><code id="ex-t20">&lt;nav&gt;…&lt;/nav&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#ex-t20">Copiar</button></td>
+        <td class="mini">Conjunto de links de navegação.</td>
+      </tr>
+
+        </tbody>
+      </table>
+    </div>
+    <p class="mini text-muted">Dica: combine essas tags com boas práticas de semântica e acessibilidade (alt em imagens, rótulos em formulários, uso de headings em ordem).</p>
+  </div>
+</section>
+
+<section id="playground" class="py-5">
+  <div class="="container">
+    <h2 class="h4 mb-3">3) Playground (edite e execute) 🧪</h2>
+    <p class="mini">Edite o HTML no painel esquerdo e clique em <strong>Executar</strong>. O verificador aponta estrutura mínima e <span class="hl">alt ausente</span> em imagens.</p>
+    <div class="row g-3">
+      <div class="col-lg-6">
+        <textarea id="editor" class="form-control" rows="18">&lt;h1&gt;Bem-vindo!&lt;/h1&gt;
+&lt;p&gt;Edite este HTML e clique em &lt;strong&gt;Executar&lt;/strong&gt;.&lt;/p&gt;</textarea>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-brand" id="btnRun">Executar ▶️</button>
+          <button class="btn btn-outline-primary" id="btnCopy">Copiar HTML 📋</button>
+          <button class="btn btn-outline-dark" id="btnDownload">Baixar .html ⬇️</button>
+        </div>
+        <div class="mt-3">
+          <div class="alert alert-warning mini" id="lint" hidden></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="preview-box">
+          <iframe id="preview" style="width:100%;height:380px;border:0;border-radius:.5rem;background:#fff"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h4 mb-3">4) Quiz ampliado ✅</h2>
+    <div class="row g-3 quiz">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">1. Qual opção descreve melhor HTML?</div>
+          <ul class="list-group list-group-flush" data-q="1" data-a="b">
+            <li class="list-group-item" data-v="a">Uma linguagem de programação.</li>
+            <li class="list-group-item" data-v="b">Uma linguagem de <em>marcação</em> para estruturar conteúdo.</li>
+            <li class="list-group-item" data-v="c">Um banco de dados para páginas web.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">2. Para acessibilidade, o que é obrigatório em &lt;img&gt;?</div>
+          <ul class="list-group list-group-flush" data-q="2" data-a="c">
+            <li class="list-group-item" data-v="a">width</li>
+            <li class="list-group-item" data-v="b">title</li>
+            <li class="list-group-item" data-v="c">alt</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">3. Qual tag <em>não</em> é semântica?</div>
+          <ul class="list-group list-group-flush" data-q="3" data-a="a">
+            <li class="list-group-item" data-v="a">&lt;div&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;main&gt;</li>
+            <li class="list-group-item" data-v="c">&lt;article&gt;</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">4. Qual grupo pertence a formulários?</div>
+          <ul class="list-group list-group-flush" data-q="4" data-a="b">
+            <li class="list-group-item" data-v="a">&lt;ul&gt;, &lt;li&gt;, &lt;ol&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;form&gt;, &lt;label&gt;, &lt;input&gt;</li>
+            <li class="list-group-item" data-v="c">&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">5. Qual ordem representa a estrutura básica?</div>
+          <ul class="list-group list-group-flush" data-q="5" data-a="c">
+            <li class="list-group-item" data-v="a">&lt;body&gt; → &lt;head&gt; → &lt;html&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;head&gt; → &lt;html&gt; → &lt;body&gt;</li>
+            <li class="list-group-item" data-v="c">&lt;html&gt; → &lt;head&gt; → &lt;body&gt;</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">6. Qual atributo torna um campo obrigatório?</div>
+          <ul class="list-group list-group-flush" data-q="6" data-a="b">
+            <li class="list-group-item" data-v="a">disabled</li>
+            <li class="list-group-item" data-v="b">required</li>
+            <li class="list-group-item" data-v="c">checked</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">7. Em listas não ordenadas, quais tags usamos?</div>
+          <ul class="list-group list-group-flush" data-q="7" data-a="a">
+            <li class="list-group-item" data-v="a">&lt;ul&gt; e &lt;li&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;ol&gt; e &lt;td&gt;</li>
+            <li class="list-group-item" data-v="c">&lt;table&gt; e &lt;tr&gt;</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">8. Qual código de imagem é mais acessível?</div>
+          <ul class="list-group list-group-flush" data-q="8" data-a="b">
+            <li class="list-group-item" data-v="a">&lt;img src="foto.jpg"&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;img src="foto.jpg" alt="Retrato de perfil de uma pessoa sorrindo"&gt;</li>
+            <li class="list-group-item" data-v="c">&lt;img src="foto.jpg" title="Foto"&gt;</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">9. Qual atributo em <a> abre o link em nova aba?</div>
+          <ul class="list-group list-group-flush" data-q="9" data-a="c">
+            <li class="list-group-item" data-v="a">download</li>
+            <li class="list-group-item" data-v="b">rel</li>
+            <li class="list-group-item" data-v="c">target="_blank"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">10. Qual par melhora a segurança ao abrir nova aba?</div>
+          <ul class="list-group list-group-flush" data-q="10" data-a="a">
+            <li class="list-group-item" data-v="a">rel="noopener noreferrer"</li>
+            <li class="list-group-item" data-v="b">rel="nofollow"</li>
+            <li class="list-group-item" data-v="c">rel="author"</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn btn-brand btn-sm" id="btnCheck">Conferir respostas</button>
+      <button class="btn btn-outline-secondary btn-sm" id="btnResetQuiz">Limpar seleção</button>
+    </div>
+  </div>
+</section>
+
+<section id="desafios" class="py-5">
+  <div class="container">
+    <h2 class="h5 mb-3">5) Prática guiada — mini desafios 🎯</h2>
+    <ol class="mini">
+      <li>Crie a estrutura mínima de uma página e troque o título do documento.</li>
+      <li>Escreva um texto com título (&lt;h2&gt;), 2 parágrafos e destaque uma palavra com &lt;strong&gt; e outra com &lt;em&gt;.</li>
+      <li>Monte uma lista ordenada com 3 passos e, abaixo, uma lista não ordenada com 3 itens.</li>
+      <li>Insira uma imagem com &lt;img&gt; e um atributo <span class="text-monospace">alt</span> descritivo.</li>
+      <li>Crie uma tabela com 2 colunas e 3 linhas (com &lt;thead&gt; e &lt;tbody&gt;).</li>
+      <li>Faça um formulário com &lt;label&gt; e &lt;input type="email"&gt; e um botão &lt;button type="submit"&gt;Enviar&lt;/button&gt;.</li>
+    </ol>
+    <p class="mini mb-0">Quer mais prática? Abra a coletânea: <a href="./exerc001.html">10 exercícios básicos</a>.</p>
+  </div>
+</section>
+
+<section id="recursos" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h6 mb-2">🔗 Recursos & Leituras</h2>
+    <ul class="mini mb-0">
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener">MDN Web Docs — HTML</a></li>
+      <li><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener">W3Schools — HTML</a></li>
+      <li><a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener">WHATWG — HTML Living Standard</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> 2025-09-11 </span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-container p-2 position-fixed bottom-0 end-0">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+/* ==== Copiar/Executar/Baixar blocos de código ==== */
+document.querySelectorAll('[data-copy]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-copy');
+    const el = document.querySelector(sel);
+    const txt = el ? el.textContent : '';
+    navigator.clipboard?.writeText(txt).then(()=>showToast('Copiado 📋')).catch(()=>alert(txt));
+  });
+});
+document.querySelectorAll('[data-run]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-run');
+    const el = document.querySelector(sel);
+    if(!el) return;
+    runPreview(el.textContent);
+  });
+});
+document.querySelectorAll('[data-download]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-download');
+    const el = document.querySelector(sel);
+    if(!el) return;
+    downloadHTML(el.textContent, 'boilerplate.html');
+  });
+});
+
+/* ==== Playground ==== */
+document.getElementById('btnRun').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  runPreview(code);
+});
+document.getElementById('btnCopy').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  navigator.clipboard?.writeText(code).then(()=>showToast('Copiado 📋')).catch(()=>alert(code));
+});
+document.getElementById('btnDownload').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  downloadHTML(code, 'meu-exemplo.html');
+});
+
+function runPreview(code){
+  // Verificador simples (lint didático)
+  const alerts = [];
+  if(!/<!doctype/i.test(code) && !/<html/i.test(code)){
+    alerts.push('Sugestão: inclua estrutura mínima (<!doctype html>, <html>, <head>, <body>).');
+  }
+  const imgs = (code.match(/<img\b[^>]*>/gi)||[]);
+  imgs.forEach(tag=>{
+    if(!/\balt=/.test(tag)) alerts.push('Imagem sem alt: ' + tag.replace(/</g,'&lt;'));
+  });
+  const lint = document.getElementById('lint');
+  if(alerts.length){ lint.hidden = false; lint.innerHTML = alerts.map(a=>'• '+a).join('<br>'); }
+  else { lint.hidden = true; }
+
+  document.getElementById('preview').srcdoc = code;
+  showToast('Executado ▶️');
+}
+function downloadHTML(code, filename){
+  const blob = new Blob([code], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), {href:url, download:filename});
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* ==== Quiz ==== */
+document.querySelectorAll('#quiz .list-group').forEach(list=>{
+  list.addEventListener('click',(e)=>{
+    const li = e.target.closest('.list-group-item'); if(!li) return;
+    [...list.querySelectorAll('.list-group-item')].forEach(x=>x.classList.remove('active','list-group-item-success','list-group-item-danger'));
+    li.classList.add('active');
+  });
+});
+
+document.getElementById('btnCheck').addEventListener('click',()=>{
+  let acertos=0, total=0;
+  document.querySelectorAll('#quiz .list-group').forEach(list=>{
+    total++;
+    const correct = list.getAttribute('data-a');
+    const sel = list.querySelector('.list-group-item.active');
+    if(!sel){ return; }
+    const v = sel.getAttribute('data-v');
+    if(v===correct){ acertos++; sel.classList.add('list-group-item-success'); }
+    else { sel.classList.add('list-group-item-danger'); }
+  });
+  showToast(`Você acertou ${acertos}/${total} ✔️`);
+});
+document.getElementById('btnResetQuiz').addEventListener('click',()=>{
+  document.querySelectorAll('#quiz .list-group-item').forEach(li=>li.classList.remove('active','list-group-item-success','list-group-item-danger'));
+});
+
+/* ==== Mensagem inicial ==== */
+addEventListener('DOMContentLoaded', ()=> showToast('Aula 1 atualizada! 🚀'));
+</script>
+</body>
+</html>
