@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC2 • Aula 2 — HTML na prática com 10 exercícios</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
+  <style>
+    .preview-box{border:1px dashed #ced4da;border-radius:.75rem;padding:1rem;background:#fff}
+    .code-note{background:#0d1117;color:#c9d1d9;border-radius:.75rem;padding:1rem;font-size:.9rem;overflow:auto}
+    .mini{font-size:.92rem}
+    .hl{background:#fff7d6}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:1rem}
+    .grid-3{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width: 992px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:1fr 1fr 1fr} }
+    .checklist li { margin-bottom:.25rem }
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;}
+    .table thead th{white-space:nowrap}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary">UC2</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Índice</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-01.html">Aula 1</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-02.html">Aula 2</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC2</a></li>
+        <li class="breadcrumb-item active">Aula 2</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h1 class="h3">Aula 2 — HTML na prática com 10 exercícios</h1>
+        <p class="lead">Explanação detalhada + <strong>tabela-guia</strong> dos exercícios e um <strong>Playground</strong> que carrega o código do anexo automaticamente.</p>
+        <div class="d-flex gap-2">
+          <a href="#guia" class="btn btn-brand">Tabela-guia dos exercícios</a>
+          <a href="#playground" class="btn btn-outline-secondary">Ir ao Playground</a>
+          <a href="#quiz" class="btn btn-outline-dark">Quiz</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-ghost p-3">
+          <strong>Objetivos da aula</strong>
+          <ul class="mini mb-0">
+            <li>Entender conceitos por trás de cada exercício.</li>
+            <li>Aprender padrões corretos com <em>boas práticas</em>.</li>
+            <li>Executar e modificar exemplos no Playground.</li>
+            <li>Conferir com um <strong>linter didático</strong>.</li>
+            <li>Validar aprendizado com <strong>quiz</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="conceitos" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">1) Conceitos-chave por trás dos exercícios</h2>
+    <div class="grid-3">
+      <article class="card-ghost p-3">
+        <h3 class="h6">Estrutura & Semântica</h3>
+        <ul class="mini checklist">
+          <li><span class="kbd">&lt;!doctype html&gt;</span>, <span class="kbd">&lt;html lang&gt;</span>, <span class="kbd">&lt;head&gt;</span>, <span class="kbd">&lt;body&gt;</span>.</li>
+          <li>Hierarquia de títulos (h1→h2→h3…).</li>
+          <li>Tags semânticas: <span class="kbd">&lt;header&gt;</span>, <span class="kbd">&lt;main&gt;</span>, <span class="kbd">&lt;article&gt;</span>, <span class="kbd">&lt;section&gt;</span>, <span class="kbd">&lt;aside&gt;</span>, <span class="kbd">&lt;footer&gt;</span>.</li>
+        </ul>
+      </article>
+      <article class="card-ghost p-3">
+        <h3 class="h6">Texto, listas & mídia</h3>
+        <ul class="mini checklist">
+          <li>Ênfase: <span class="kbd">&lt;strong&gt;</span> (importante), <span class="kbd">&lt;em&gt;</span> (ênfase).</li>
+          <li>Listas: <span class="kbd">&lt;ul&gt;</span>/<span class="kbd">&lt;ol&gt;</span> + <span class="kbd">&lt;li&gt;</span>; descrição: <span class="kbd">&lt;dl&gt;</span> &rarr; <span class="kbd">&lt;dt&gt;</span>/<span class="kbd">&lt;dd&gt;</span>.</li>
+          <li>Imagens com <span class="kbd">alt</span>, legenda com <span class="kbd">&lt;figure&gt;</span>/<span class="kbd">&lt;figcaption&gt;</span>.</li>
+        </ul>
+      </article>
+      <article class="card-ghost p-3">
+        <h3 class="h6">Navegação, dados & formulários</h3>
+        <ul class="mini checklist">
+          <li>Links: <span class="kbd">target="_blank"</span> + <span class="kbd">rel="noopener"</span>.</li>
+          <li>Tabelas com <span class="kbd">&lt;thead&gt;</span>/<span class="kbd">&lt;tbody&gt;</span> e <span class="kbd">&lt;caption&gt;</span>.</li>
+          <li>Formulários com <span class="kbd">&lt;label for&gt;</span> conectado ao <span class="kbd">id</span> do campo.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="guia" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3">2) Tabela‑guia dos 10 exercícios (do anexo)</h2>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tema</th>
+            <th>Conceitos</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Estrutura</td><td>Boilerplate, título, parágrafo</td><td><button class="btn btn-sm btn-outline-primary" data-load="1">Carregar no Playground</button></td></tr>
+          <tr><td>2</td><td>Títulos</td><td>Hierarquia h1–h3</td><td><button class="btn btn-sm btn-outline-primary" data-load="2">Carregar</button></td></tr>
+          <tr><td>3</td><td>Ênfase</td><td><code>&lt;strong&gt;</code> vs <code>&lt;em&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, sup/sub</td><td><button class="btn btn-sm btn-outline-primary" data-load="3">Carregar</button></td></tr>
+          <tr><td>4</td><td>Listas</td><td><code>&lt;ol&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code></td><td><button class="btn btn-sm btn-outline-primary" data-load="4">Carregar</button></td></tr>
+          <tr><td>5</td><td>Descrição</td><td><code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code></td><td><button class="btn btn-sm btn-outline-primary" data-load="5">Carregar</button></td></tr>
+          <tr><td>6</td><td>Links</td><td>Externo, interno, âncora; <span class="kbd">rel="noopener"</span></td><td><button class="btn btn-sm btn-outline-primary" data-load="6">Carregar</button></td></tr>
+          <tr><td>7</td><td>Imagens</td><td><code>alt</code> descritivo; <code>&lt;figure&gt;</code>/<code>&lt;figcaption&gt;</code></td><td><button class="btn btn-sm btn-outline-primary" data-load="7">Carregar</button></td></tr>
+          <tr><td>8</td><td>Tabela</td><td><code>&lt;thead&gt;</code>/<code>&lt;tbody&gt;</code>, <code>&lt;caption&gt;</code></td><td><button class="btn btn-sm btn-outline-primary" data-load="8">Carregar</button></td></tr>
+          <tr><td>9</td><td>Formulário</td><td><code>&lt;label for&gt;</code> + <code>id</code>, tipos de <code>&lt;input&gt;</code></td><td><button class="btn btn-sm btn-outline-primary" data-load="9">Carregar</button></td></tr>
+          <tr><td>10</td><td>Semântico</td><td>header, nav, main, article, section, aside, footer</td><td><button class="btn btn-sm btn-outline-primary" data-load="10">Carregar</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mini">Fonte dos códigos: material do anexo “HTML5 — 10 Exercícios Básicos”.</p>
+  </div>
+</section>
+
+<section id="playground" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">3) Playground (carregue um exercício e edite) 🧪</h2>
+    <div class="grid-2">
+      <div>
+        <div class="d-flex gap-2 flex-wrap mb-2">
+          <label class="form-label mb-0 me-2">Carregar do anexo:</label>
+          <select id="selEx" class="form-select form-select-sm" style="width:auto;display:inline-block">
+            <option value="">— Escolha o exercício —</option>
+            <option value="1">Exercício 1</option><option value="2">Exercício 2</option><option value="3">Exercício 3</option><option value="4">Exercício 4</option><option value="5">Exercício 5</option><option value="6">Exercício 6</option><option value="7">Exercício 7</option><option value="8">Exercício 8</option><option value="9">Exercício 9</option><option value="10">Exercício 10</option>
+          </select>
+          <button class="btn btn-outline-primary btn-sm" id="btnLoad">Carregar</button>
+          <button class="btn btn-outline-dark btn-sm" id="btnClear">Limpar</button>
+        </div>
+        <textarea id="editor" class="form-control" rows="20">&lt;!-- Selecione um exercício acima ou cole seu HTML aqui. --&gt;</textarea>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-brand" id="btnRun">Executar ▶️</button>
+          <button class="btn btn-outline-primary" id="btnCopy">Copiar HTML 📋</button>
+          <button class="btn btn-outline-dark" id="btnDownload">Baixar .html ⬇️</button>
+        </div>
+        <div class="mt-3">
+          <div class="alert alert-warning mini" id="lint" hidden></div>
+        </div>
+      </div>
+      <div>
+        <div class="preview-box">
+          <iframe id="preview" style="width:100%;height:460px;border:0;border-radius:.5rem;background:#fff"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <details class="card-ghost p-3">
+        <summary><strong>Como o verificador analisa seu código?</strong></summary>
+        <ul class="mini mb-0">
+          <li><strong>Estrutura mínima:</strong> alerta se faltar <span class="kbd">&lt;!doctype html&gt;</span>, <span class="kbd">&lt;html&gt;</span>…</li>
+          <li><strong>Imagens:</strong> alerta se houver <span class="kbd">&lt;img&gt;</span> sem <span class="kbd">alt</span>.</li>
+          <li><strong>Links externos:</strong> quando usa <span class="kbd">target="_blank"</span>, sugere <span class="kbd">rel="noopener"</span>.</li>
+          <li><strong>Tabelas:</strong> sugere <span class="kbd">&lt;thead&gt;</span>/<span class="kbd">&lt;tbody&gt;</span> quando encontra <span class="kbd">&lt;table&gt;</span> sem eles.</li>
+          <li><strong>Formulários:</strong> verifica pares <span class="kbd">&lt;label for&gt;</span> ↔ <span class="kbd">id</span> correspondentes.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h4 mb-3">4) Quiz sobre os 10 exercícios ✅</h2>
+    <div class="row g-3 quiz">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">1. Qual conjunto representa a estrutura mínima?</div>
+          <ul class="list-group list-group-flush" data-q="1" data-a="b">
+            <li class="list-group-item" data-v="a">&lt;main&gt;, &lt;section&gt;, &lt;footer&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;!doctype&gt;, &lt;html&gt;, &lt;head&gt;, &lt;body&gt;</li>
+            <li class="list-group-item" data-v="c">&lt;header&gt;, &lt;nav&gt;, &lt;article&gt;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">2. Em headings, o uso correto é…</div>
+          <ul class="list-group list-group-flush" data-q="2" data-a="c">
+            <li class="list-group-item" data-v="a">Repetir &lt;h1&gt; várias vezes</li>
+            <li class="list-group-item" data-v="b">Pular direto para &lt;h4&gt;</li>
+            <li class="list-group-item" data-v="c">Seguir hierarquia h1→h2→h3</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">3. Para acessibilidade em imagens, é essencial…</div>
+          <ul class="list-group list-group-flush" data-q="3" data-a="a">
+            <li class="list-group-item" data-v="a">Fornecer <code>alt</code> descritivo</li>
+            <li class="list-group-item" data-v="b">Definir largura fixa</li>
+            <li class="list-group-item" data-v="c">Usar <code>title</code> sem <code>alt</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">4. Em links externos com nova aba, recomenda-se…</div>
+          <ul class="list-group list-group-flush" data-q="4" data-a="b">
+            <li class="list-group-item" data-v="a">Somente <code>target="_blank"</code></li>
+            <li class="list-group-item" data-v="b"><code>target="_blank"</code> com <code>rel="noopener"</code></li>
+            <li class="list-group-item" data-v="c">Evitar qualquer atributo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">5. Uma tabela bem formada inclui…</div>
+          <ul class="list-group list-group-flush" data-q="5" data-a="c">
+            <li class="list-group-item" data-v="a">Somente &lt;tr&gt; e &lt;td&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;thead&gt; ou &lt;tbody&gt; (um dos dois)</li>
+            <li class="list-group-item" data-v="c">&lt;caption&gt;, &lt;thead&gt; e &lt;tbody&gt;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">6. Em formulários, <code>&lt;label&gt;</code> deve…</div>
+          <ul class="list-group list-group-flush" data-q="6" data-a="a">
+            <li class="list-group-item" data-v="a">Referenciar o <code>id</code> do campo com <code>for</code></li>
+            <li class="list-group-item" data-v="b">Ser usado só por estética</li>
+            <li class="list-group-item" data-v="c">Ser dispensado ao usar placeholder</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">7. Uma lista de descrição usa…</div>
+          <ul class="list-group list-group-flush" data-q="7" data-a="b">
+            <li class="list-group-item" data-v="a">&lt;ul&gt; com &lt;li&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;dl&gt; com &lt;dt&gt; e &lt;dd&gt;</li>
+            <li class="list-group-item" data-v="c">&lt;ol&gt; com &lt;li&gt;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">8. Em semântica de layout, é correto usar…</div>
+          <ul class="list-group list-group-flush" data-q="8" data-a="c">
+            <li class="list-group-item" data-v="a">&lt;div&gt; para tudo</li>
+            <li class="list-group-item" data-v="b">&lt;article&gt; para navegação</li>
+            <li class="list-group-item" data-v="c">&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;aside&gt;, &lt;footer&gt;</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn btn-brand btn-sm" id="btnCheck">Conferir respostas</button>
+      <button class="btn btn-outline-secondary btn-sm" id="btnResetQuiz">Limpar seleção</button>
+    </div>
+  </div>
+</section>
+
+<section id="desafios" class="py-5">
+  <div class="container">
+    <h2 class="h5 mb-3">5) Desafios complementares 🎯</h2>
+    <ol class="mini">
+      <li>Adapte o <strong>Ex. 6 (links)</strong> para abrir 2 páginas externas em nova aba com <span class="kbd">rel="noopener"</span>.</li>
+      <li>No <strong>Ex. 7 (imagens)</strong>, troque a legenda e descreva melhor o <span class="kbd">alt</span>.</li>
+      <li>Amplie o <strong>Ex. 8 (tabela)</strong> com mais linhas e use <span class="kbd">scope</span> nos <span class="kbd">&lt;th&gt;</span>.</li>
+      <li>Transforme o <strong>Ex. 9 (formulário)</strong> em um mini cadastro com <span class="kbd">type="date"</span> e <span class="kbd">required</span>.</li>
+      <li>No <strong>Ex. 10 (semântico)</strong>, adicione um <span class="kbd">&lt;figure&gt;</span> dentro de <span class="kbd">&lt;article&gt;</span>.</li>
+    </ol>
+    <p class="mini mb-0">Use o Playground para testar. Dica: verifique os avisos do linter.</p>
+  </div>
+</section>
+
+<section id="recursos" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h6 mb-2">🔗 Recursos & Leituras</h2>
+    <ul class="mini mb-0">
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener">MDN Web Docs — HTML</a></li>
+      <li><a href="https://www.w3schools.com/html/" target="_blank" rel="noopener">W3Schools — HTML</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> 2025-09-11 </span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-container p-2 position-fixed bottom-0 end-0">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+const EXERCISES = {"1": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <!-- Metadados essenciais -->\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Olá, HTML5!</title>\n</head>\n<body>\n  <!-- Conteúdo visível da página -->\n  <h1>Olá, HTML5!</h1> <!-- Título principal -->\n  <p>Bem-vindo(a) à sua primeira página estruturada com HTML5.</p>\n</body>\n</html>", "2": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Títulos e Parágrafos</title>\n</head>\n<body>\n  <h1>Guia Rápido</h1> <!-- h1: título único da página -->\n  <p>Este guia mostra como usar títulos e parágrafos corretamente.</p>\n\n  <h2>Seção 1</h2> <!-- h2: seção principal -->\n  <p>Use <code>&lt;h2&gt;</code> para seções derivadas do título principal.</p>\n\n  <h3>Subseção 1.1</h3> <!-- h3: subseção -->\n  <p>Parágrafos <code>&lt;p&gt;</code> organizam o texto em blocos legíveis.</p>\n</body>\n</html>", "3": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Ênfase e Formatação</title>\n</head>\n<body>\n  <h1>Formatações de Texto</h1>\n  <p>Texto em <b>negrito (visual)</b> e em <strong>negrito (importante)</strong>.</p>\n  <p>Texto em <i>itálico (visual)</i> e em <em>itálico (ênfase)</em>.</p>\n  <p>Linha 1<br>Linha 2 após uma quebra.</p>\n  <hr> <!-- linha horizontal para separar conteúdos -->\n  <p>Química: H<sub>2</sub>O • Matemática: 2<sup>3</sup> = 8</p>\n</body>\n</html>", "4": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Listas</title>\n</head>\n<body>\n  <h1>Receita Simples</h1>\n\n  <h2>Passos (lista ordenada)</h2>\n  <ol>\n    <li>Separe os ingredientes.</li>\n    <li>Misture tudo.</li>\n    <li>Leve ao forno.</li>\n  </ol>\n\n  <h2>Ingredientes (lista não ordenada)</h2>\n  <ul>\n    <li>Farinha</li>\n    <li>Açúcar</li>\n    <li>Ovos</li>\n  </ul>\n</body>\n</html>", "5": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Lista de Descrição</title>\n</head>\n<body>\n  <h1>Glossário</h1>\n  <dl>\n    <dt>HTML</dt>\n    <dd>Linguagem de marcação para estruturar páginas web.</dd>\n\n    <dt>CSS</dt>\n    <dd>Folhas de estilo para aparência e layout.</dd>\n\n    <dt>JavaScript</dt>\n    <dd>Linguagem para interatividade no front-end.</dd>\n  </dl>\n</body>\n</html>", "6": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Links</title>\n</head>\n<body>\n  <h1>Navegação</h1>\n\n  <!-- Link externo: abre em nova aba -->\n  <p><a href=\"https://developer.mozilla.org/pt-BR/\" target=\"_blank\" rel=\"noopener\">Documentação (MDN)</a></p>\n\n  <!-- Link interno: página do mesmo projeto -->\n  <p><a href=\"contato.html\" title=\"Ir para a página de contato\">Página de Contato</a></p>\n\n  <!-- Link âncora: navega dentro da mesma página -->\n  <p><a href=\"#rodape\">Ir para o rodapé</a></p>\n\n  <p>Conteúdo intermediário…</p>\n\n  <h2 id=\"rodape\">Rodapé</h2>\n  <p>Aqui termina a página.</p>\n</body>\n</html>", "7": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Imagens</title>\n</head>\n<body>\n  <h1>Galeria</h1>\n\n  <figure>\n    <img src=\"img/paisagem.jpg\" alt=\"Paisagem ao pôr do sol vista de um mirante\" width=\"480\">\n    <figcaption>Paisagem ao pôr do sol — foto ilustrativa.</figcaption>\n  </figure>\n\n  <!-- Dica: descreva a imagem no alt para acessibilidade -->\n</body>\n</html>", "8": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Tabela</title>\n</head>\n<body>\n  <h1>Tabela de Preços</h1>\n\n  <table border=\"1\"> <!-- border para visualização rápida (demonstração) -->\n    <caption>Produtos e Preços</caption>\n    <thead>\n      <tr>\n        <th>Produto</th>\n        <th>Preço (R$)</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr><td>Caderno</td><td>15,90</td></tr>\n      <tr><td>Caneta</td><td>3,50</td></tr>\n    </tbody>\n  </table>\n</body>\n</html>", "9": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Formulário</title>\n</head>\n<body>\n  <h1>Fale Conosco</h1>\n\n  <!-- action e method são exemplos; ajuste conforme seu backend -->\n  <form action=\"/enviar\" method=\"post\">\n    <label for=\"nome\">Nome:</label>\n    <input type=\"text\" id=\"nome\" name=\"nome\" required placeholder=\"Seu nome completo\">\n\n    <br><br>\n\n    <label for=\"email\">E-mail:</label>\n    <input type=\"email\" id=\"email\" name=\"email\" required placeholder=\"voce@exemplo.com\">\n\n    <br><br>\n\n    <label for=\"assunto\">Assunto:</label>\n    <select id=\"assunto\" name=\"assunto\">\n      <option>Suporte</option>\n      <option>Comercial</option>\n      <option>Outros</option>\n    </select>\n\n    <br><br>\n\n    <label for=\"mensagem\">Mensagem:</label><br>\n    <textarea id=\"mensagem\" name=\"mensagem\" rows=\"4\" cols=\"40\" placeholder=\"Escreva aqui...\"></textarea>\n\n    <br><br>\n\n    <button type=\"submit\">Enviar</button>\n  </form>\n</body>\n</html>", "10": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Página Semântica</title>\n</head>\n<body>\n  <header>\n    <h1>Meu Site</h1> <!-- Cabeçalho do site -->\n    <nav>\n      <a href=\"#\">Início</a> | <a href=\"#\">Blog</a> | <a href=\"#\">Contato</a>\n    </nav>\n  </header>\n\n  <main>\n    <article>\n      <h2>Artigo: Boas práticas HTML</h2>\n      <section>\n        <h3>Estrutura</h3>\n        <p>Use tags semânticas para clareza e acessibilidade.</p>\n      </section>\n      <section>\n        <h3>Conteúdo</h3>\n        <p>Organize títulos, parágrafos e listas de forma lógica.</p>\n      </section>\n    </article>\n\n    <aside>\n      <h3>Sobre o autor</h3>\n      <p>Notas e links adicionais.</p>\n    </aside>\n  </main>\n\n  <footer>\n    <p>&copy; 2025 Meu Site. Todos os direitos reservados.</p>\n  </footer>\n</body>\n</html>"};
+
+/* ==== Tabela: carregar direto ==== */
+document.querySelectorAll('[data-load]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.getAttribute('data-load');
+    if(EXERCISES[id]) {
+      document.getElementById('editor').value = EXERCISES[id];
+      runPreview(EXERCISES[id]);
+      showToast('Exercício ' + id + ' carregado ✨');
+    }
+  });
+});
+
+/* ==== Load from dropdown ==== */
+document.getElementById('btnLoad').addEventListener('click',()=>{
+  const id = document.getElementById('selEx').value;
+  if(!id){ showToast('Escolha um exercício.'); return; }
+  if(!EXERCISES[id]){ showToast('Código não encontrado.'); return; }
+  const ed = document.getElementById('editor');
+  ed.value = EXERCISES[id];
+  showToast('Exercício ' + id + ' carregado ✨');
+  runPreview(ed.value);
+});
+
+/* ==== Clear Editor ==== */
+document.getElementById('btnClear').addEventListener('click',()=>{
+  document.getElementById('editor').value = '';
+  document.getElementById('preview').srcdoc = '';
+  document.getElementById('lint').hidden = true;
+});
+
+/* ==== Run/Copy/Download ==== */
+document.getElementById('btnRun').addEventListener('click',()=>{
+  runPreview(document.getElementById('editor').value);
+});
+document.getElementById('btnCopy').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  navigator.clipboard?.writeText(code).then(()=>showToast('Copiado 📋')).catch(()=>alert(code));
+});
+document.getElementById('btnDownload').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  downloadHTML(code, 'exemplo-aula2.html');
+});
+
+function downloadHTML(code, filename){
+  const blob = new Blob([code], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), {href:url, download:filename});
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* ==== Linter didático ==== */
+function runPreview(code){
+  const alerts = [];
+  // Estrutura mínima
+  if(!/<!doctype/i.test(code) || !/<html/i.test(code) || !/<head/i.test(code) || !/<body/i.test(code)){
+    alerts.push('Sugestão: inclua estrutura mínima (<!doctype html>, <html>, <head>, <body>).');
+  }
+  // IMG alt
+  const imgs = (code.match(/<img\b[^>]*>/gi)||[]);
+  imgs.forEach(tag=>{ if(!/\balt=/.test(tag)) alerts.push('Imagem sem alt: ' + tag.replace(/</g,'&lt;')); });
+  // Tabela com thead/tbody
+  if(/<table/i.test(code) && (!/<thead/i.test(code) || !/<tbody/i.test(code))){
+    alerts.push('Tabela encontrada — considere usar <thead> e <tbody>.');
+  }
+  // link target _blank sem noopener
+  const aTags = (code.match(/<a\b[^>]*>/gi)||[]);
+  aTags.forEach(tag=>{
+    const hasBlank = /target=\s*["']?_blank["']?/i.test(tag);
+    const hasNoopener = /rel=\s*["'][^"']*noopener/i.test(tag);
+    if(hasBlank && !hasNoopener){ alerts.push('Link externo com target="_blank" sem rel="noopener": ' + tag.replace(/</g,'&lt;')); }
+  });
+  // <label for> correspondendo a id
+  const ids = Array.from(code.matchAll(/\bid=["']([^"']+)["']/gi)).map(m=>m[1]);
+  const fors = Array.from(code.matchAll(/<label\b[^>]*\bfor=["']([^"']+)["']/gi)).map(m=>m[1]);
+  fors.forEach(f=>{ if(!ids.includes(f)) alerts.push('label[for="'+f+'"] sem campo com id correspondente.'); });
+
+  const lint = document.getElementById('lint');
+  if(alerts.length){ lint.hidden = false; lint.innerHTML = alerts.map(a=>'• '+a).join('<br>'); }
+  else { lint.hidden = true; }
+
+  document.getElementById('preview').srcdoc = code;
+  showToast('Executado ▶️');
+}
+
+/* ==== Quiz ==== */
+document.querySelectorAll('#quiz .list-group').forEach(list=>{
+  list.addEventListener('click',(e)=>{
+    const li = e.target.closest('.list-group-item'); if(!li) return;
+    [...list.querySelectorAll('.list-group-item')].forEach(x=>x.classList.remove('active','list-group-item-success','list-group-item-danger'));
+    li.classList.add('active');
+  });
+});
+document.getElementById('btnCheck').addEventListener('click',()=>{
+  let acertos=0, total=0;
+  document.querySelectorAll('#quiz .list-group').forEach(list=>{
+    total++;
+    const correct = list.getAttribute('data-a');
+    const sel = list.querySelector('.list-group-item.active');
+    if(!sel){ return; }
+    const v = sel.getAttribute('data-v');
+    if(v===correct){ acertos++; sel.classList.add('list-group-item-success'); }
+    else { sel.classList.add('list-group-item-danger'); }
+  });
+  showToast(`Você acertou ${acertos}/${total} ✔️`);
+});
+document.getElementById('btnResetQuiz').addEventListener('click',()=>{
+  document.querySelectorAll('#quiz .list-group-item').forEach(li=>li.classList.remove('active','list-group-item-success','list-group-item-danger'));
+});
+
+/* ==== Mensagem inicial ==== */
+addEventListener('DOMContentLoaded', ()=> showToast('Aula 2 carregada! 🚀'));
+</script>
+</body>
+</html>
