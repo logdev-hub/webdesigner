@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC2 • Aula 3 — Formulários HTML: campos, validações e boas práticas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
+  <style>
+    .preview-box{border:1px dashed #ced4da;border-radius:.75rem;padding:1rem;background:#fff}
+    .code-note{background:#0d1117;color:#c9d1d9;border-radius:.75rem;padding:1rem;font-size:.9rem;overflow:auto}
+    .mini{font-size:.92rem}
+    .hl{background:#fff7d6}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:1rem}
+    .grid-3{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width: 992px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:1fr 1fr 1fr} }
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;}
+    .table thead th{white-space:nowrap}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary">UC2</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Índice</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-01.html">Aula 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-02.html">Aula 2</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-03.html">Aula 3</a></li>
+        <li class="nav-item"><a class="nav-link" href="./exerc001.html">10 exercícios</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC2</a></li>
+        <li class="breadcrumb-item active">Aula 3</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h1 class="h3">Aula 3 — Formulários HTML: campos, validações e boas práticas</h1>
+        <p class="lead">Conceitos e práticas com base em 10 modelos de formulários, um <strong>catálogo de campos/atributos</strong> e um <strong>Playground</strong> que carrega cada modelo.</p>
+        <div class="d-flex gap-2 flex-wrap">
+          <a href="#conceitos" class="btn btn-brand">Conceitos-chave</a>
+          <a href="#catalogo" class="btn btn-outline-secondary">Catálogo de campos</a>
+          <a href="#modelos" class="btn btn-outline-secondary">Modelos do anexo</a>
+          <a href="#playground" class="btn btn-outline-secondary">Playground</a>
+          <a href="#quiz" class="btn btn-outline-dark">Quiz</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-ghost p-3">
+          <strong>Objetivos da aula</strong>
+          <ul class="mini mb-0">
+            <li>Entender estrutura e semântica de formulários.</li>
+            <li>Conhecer tipos de campos e atributos de validação.</li>
+            <li>Aplicar boas práticas de acessibilidade e UX.</li>
+            <li>Carregar e adaptar os 10 modelos no Playground.</li>
+            <li>Validar conhecimento com quiz prático.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="conceitos" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">1) Conceitos-chave</h2>
+    <div class="grid-3">
+      <article class="card-ghost p-3">
+        <h3 class="h6">Estrutura</h3>
+        <ul class="mini mb-0">
+          <li><span class="kbd">&lt;form action method enctype autocomplete&gt;</span></li>
+          <li>Grupos: <span class="kbd">&lt;fieldset&gt;</span> + <span class="kbd">&lt;legend&gt;</span></li>
+          <li>Rotulagem: <span class="kbd">&lt;label for=&quot;id&quot;&gt;</span> ↔ <span class="kbd">&lt;input id=&quot;id&quot;&gt;</span></li>
+        </ul>
+      </article>
+      <article class="card-ghost p-3">
+        <h3 class="h6">Validações & UX</h3>
+        <ul class="mini mb-0">
+          <li>Atributos: <span class="kbd">required</span>, <span class="kbd">minlength</span>, <span class="kbd">maxlength</span>, <span class="kbd">pattern</span></li>
+          <li>Tipos inteligentes: <span class="kbd">email</span>, <span class="kbd">url</span>, <span class="kbd">number</span>, <span class="kbd">date</span>…</li>
+          <li>Mensagens úteis: prefira <span class="kbd">title</span>, <span class="kbd">placeholder</span> para guiar.</li>
+        </ul>
+      </article>
+      <article class="card-ghost p-3">
+        <h3 class="h6">Acessibilidade</h3>
+        <ul class="mini mb-0">
+          <li>Rótulo visível e associado ao campo.</li>
+          <li>Campos relacionados agrupados e com <span class="kbd">&lt;legend&gt;</span>.</li>
+          <li>Erros claros e foco no campo inválido.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="mt-4">
+      <h3 class="h6">Estrutura de exemplo</h3>
+      <div class="code-note" id="code-estrutura">
+&lt;form action=&quot;/inscrever&quot; method=&quot;post&quot; autocomplete=&quot;on&quot;&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Dados&lt;/legend&gt;
+    &lt;label for=&quot;email&quot;&gt;E-mail&lt;/label&gt;
+    &lt;input id=&quot;email&quot; name=&quot;email&quot; type=&quot;email&quot; required&gt;
+    &lt;button type=&quot;submit&quot;&gt;Enviar&lt;/button&gt;
+  &lt;fieldset&gt;
+&lt;/form&gt;
+      </div>
+      <div class="mt-2 d-flex gap-2">
+        <button class="btn btn-outline-primary btn-sm" data-copy="#code-estrutura">Copiar 📋</button>
+        <button class="btn btn-outline-secondary btn-sm" data-run="#code-estrutura">Executar ▶️</button>
+        <button class="btn btn-outline-dark btn-sm" data-download="#code-estrutura">Baixar .html ⬇️</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="catalogo" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3">2) Catálogo de campos e atributos</h2>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr><th>Elemento</th><th>Exemplo (copiável)</th><th>Uso / Observações</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>&lt;input type=&quot;text&quot;&gt;</code></td>
+            <td><code id="t1">&lt;input id=&quot;n&quot; name=&quot;nome&quot; type=&quot;text&quot; placeholder=&quot;Seu nome&quot; required&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t1">Copiar</button></td>
+            <td class="mini">Texto livre. Combine com <code>required</code>, <code>minlength</code>/<code>maxlength</code>.</td>
+          </tr>
+          <tr><td><code>email</code></td>
+            <td><code id="t2">&lt;input id=&quot;e&quot; name=&quot;email&quot; type=&quot;email&quot; required&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t2">Copiar</button></td>
+            <td class="mini">Validação nativa de e-mail.</td></tr>
+          <tr><td><code>password</code></td>
+            <td><code id="t3">&lt;input id=&quot;s&quot; name=&quot;senha&quot; type=&quot;password&quot; minlength=&quot;6&quot; required&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t3">Copiar</button></td>
+            <td class="mini">Evite <code>method=&quot;get&quot;</code> ao enviar senhas.</td></tr>
+          <tr><td><code>number</code></td>
+            <td><code id="t4">&lt;input id=&quot;q&quot; name=&quot;vagas&quot; type=&quot;number&quot; min=&quot;1&quot; max=&quot;500&quot; step=&quot;1&quot;&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t4">Copiar</button></td>
+            <td class="mini">Controle de limites e passo.</td></tr>
+          <tr><td><code>date</code>, <code>time</code>, <code>datetime-local</code>, <code>month</code>, <code>week</code></td>
+            <td><code id="t5">&lt;input type=&quot;datetime-local&quot;&gt; …</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t5">Copiar</button></td>
+            <td class="mini">Seletor de datas/horas nativo.</td></tr>
+          <tr><td><code>url</code>, <code>search</code>, <code>tel</code></td>
+            <td><code id="t6">&lt;input type=&quot;url&quot; placeholder=&quot;https://&quot;&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t6">Copiar</button></td>
+            <td class="mini"><code>tel</code> aceita máscaras com <code>pattern</code>/<code>inputmode</code>.</td></tr>
+          <tr><td><code>color</code>, <code>range</code></td>
+            <td><code id="t7">&lt;input type=&quot;color&quot; value=&quot;#1f6feb&quot;&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t7">Copiar</button></td>
+            <td class="mini">Escolha de cor e deslizante numérico.</td></tr>
+          <tr><td><code>file</code></td>
+            <td><code id="t8">&lt;form enctype=&quot;multipart/form-data&quot;&gt;…&lt;input type=&quot;file&quot; multiple accept=&quot;.pdf,image/*&quot;&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t8">Copiar</button></td>
+            <td class="mini">Exige <code>enctype="multipart/form-data"</code> no <code>&lt;form&gt;</code>.</td></tr>
+          <tr><td><code>&lt;select&gt;</code> (simples e múltiplo)</td>
+            <td><code id="t9">&lt;select id=&quot;uf&quot;&gt;&lt;option&gt;SP&lt;/option&gt;…&lt;/select&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t9">Copiar</button></td>
+            <td class="mini">Use <code>required</code>, <code>size</code> e <code>multiple</code> quando necessário.</td></tr>
+          <tr><td><code>datalist</code></td>
+            <td><code id="t10">&lt;input list=&quot;cidades&quot;&gt;&lt;datalist id=&quot;cidades&quot;&gt;…&lt;/datalist&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t10">Copiar</button></td>
+            <td class="mini">Auto-completar simples baseado em lista.</td></tr>
+          <tr><td><code>radio</code> (grupo)</td>
+            <td><code id="t11">&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;area&quot; value=&quot;dev&quot;&gt; Dev&lt;/label&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t11">Copiar</button></td>
+            <td class="mini">Compartilhe o mesmo <code>name</code> no grupo.</td></tr>
+          <tr><td><code>checkbox</code></td>
+            <td><code id="t12">&lt;label&gt;&lt;input type=&quot;checkbox&quot; name=&quot;skills&quot; value=&quot;html&quot;&gt; HTML&lt;/label&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t12">Copiar</button></td>
+            <td class="mini">Vários valores por mesmo <code>name</code>.</td></tr>
+          <tr><td><code>&lt;textarea&gt;</code></td>
+            <td><code id="t13">&lt;textarea id=&quot;msg&quot; rows=&quot;4&quot; cols=&quot;40&quot; maxlength=&quot;1000&quot;&gt;&lt;/textarea&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t13">Copiar</button></td>
+            <td class="mini">Texto longo; combine com <code>maxlength</code>.</td></tr>
+          <tr><td><code>&lt;button type=&quot;submit&quot;&gt;</code></td>
+            <td><code id="t14">&lt;button type=&quot;submit&quot;&gt;Enviar&lt;/button&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#t14">Copiar</button></td>
+            <td class="mini">Tipos: <code>submit</code>, <code>reset</code>, <code>button</code>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="modelos" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">3) Modelos do anexo (carregar/visualizar)</h2>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead><tr><th>#</th><th>Título</th><th>Conceitos</th><th>Ações</th></tr></thead>
+        <tbody>
+          <tr><td>01</td><td>Modelo 01</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="1">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-01.html">Abrir</a></td></tr><tr><td>02</td><td>Modelo 02</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="2">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-02.html">Abrir</a></td></tr><tr><td>03</td><td>Modelo 03</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="3">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-03.html">Abrir</a></td></tr><tr><td>04</td><td>Modelo 04</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="4">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-04.html">Abrir</a></td></tr><tr><td>05</td><td>Modelo 05</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="5">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-05.html">Abrir</a></td></tr><tr><td>06</td><td>Modelo 06</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="6">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-06.html">Abrir</a></td></tr><tr><td>07</td><td>Modelo 07</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="7">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-07.html">Abrir</a></td></tr><tr><td>08</td><td>Modelo 08</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="8">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-08.html">Abrir</a></td></tr><tr><td>09</td><td>Modelo 09</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="9">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-09.html">Abrir</a></td></tr><tr><td>10</td><td>Modelo 10</td><td>Ver descrição acima</td><td><button class="btn btn-sm btn-outline-primary" data-load="10">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/form-model-10.html">Abrir</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="playground" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">4) Playground — carregue um modelo e edite 🧪</h2>
+    <div class="grid-2">
+      <div>
+        <div class="d-flex gap-2 flex-wrap mb-2">
+          <label class="form-label mb-0 me-2">Carregar modelo:</label>
+          <select id="selModel" class="form-select form-select-sm" style="width:auto;display:inline-block">
+            <option value="">— Escolha —</option>
+            <option value="1">Modelo 01</option><option value="2">Modelo 02</option><option value="3">Modelo 03</option><option value="4">Modelo 04</option><option value="5">Modelo 05</option><option value="6">Modelo 06</option><option value="7">Modelo 07</option><option value="8">Modelo 08</option><option value="9">Modelo 09</option><option value="10">Modelo 10</option>
+          </select>
+          <button class="btn btn-outline-primary btn-sm" id="btnLoad">Carregar</button>
+          <button class="btn btn-outline-dark btn-sm" id="btnClear">Limpar</button>
+        </div>
+        <textarea id="editor" class="form-control" rows="20">&lt;!-- Selecione um modelo acima ou cole seu HTML aqui. --&gt;</textarea>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-brand" id="btnRun">Executar ▶️</button>
+          <button class="btn btn-outline-primary" id="btnCopy">Copiar HTML 📋</button>
+          <button class="btn btn-outline-dark" id="btnDownload">Baixar .html ⬇️</button>
+        </div>
+        <div class="mt-3">
+          <div class="alert alert-warning mini" id="lint" hidden></div>
+        </div>
+      </div>
+      <div>
+        <div class="preview-box">
+          <iframe id="preview" style="width:100%;height:480px;border:0;border-radius:.5rem;background:#fff"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <details class="card-ghost p-3">
+        <summary><strong>O que o verificador checa?</strong></summary>
+        <ul class="mini mb-0">
+          <li><strong>Estrutura mínima</strong>: <span class="kbd">&lt;!doctype&gt;</span>, <span class="kbd">&lt;html&gt;</span>, <span class="kbd">&lt;head&gt;</span>, <span class="kbd">&lt;body&gt;</span>.</li>
+          <li><strong>Label &rarr; Input</strong>: cada <span class="kbd">label[for]</span> deve apontar para um <span class="kbd">id</span> existente.</li>
+          <li><strong>Arquivo</strong>: se houver <span class="kbd">&lt;input type=&quot;file&quot;&gt;</span>, exige <span class="kbd">enctype="multipart/form-data"</span>.</li>
+          <li><strong>Sensível via GET</strong>: alerta se senha/CPF/CVV forem enviados com <span class="kbd">method="get"</span>.</li>
+          <li><strong>Radios</strong>: membros de um grupo devem compartilhar o mesmo <span class="kbd">name</span>.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h4 mb-3">5) Quiz de Formulários ✅</h2>
+    <div class="row g-3 quiz">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">1. Para upload de arquivos é obrigatório…</div>
+          <ul class="list-group list-group-flush" data-q="1" data-a="b">
+            <li class="list-group-item" data-v="a">method="get"</li>
+            <li class="list-group-item" data-v="b">enctype="multipart/form-data"</li>
+            <li class="list-group-item" data-v="c">accept="image/*"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">2. Para agrupar opções exclusivas usamos…</div>
+          <ul class="list-group list-group-flush" data-q="2" data-a="a">
+            <li class="list-group-item" data-v="a">inputs <code>type="radio"</code> com o mesmo <code>name</code></li>
+            <li class="list-group-item" data-v="b">inputs <code>type="checkbox"</code> com nomes diferentes</li>
+            <li class="list-group-item" data-v="c">vários <code>select</code> separados</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">3. O atributo <code>pattern</code>…</div>
+          <ul class="list-group list-group-flush" data-q="3" data-a="c">
+            <li class="list-group-item" data-v="a">Define uma máscara visual</li>
+            <li class="list-group-item" data-v="b">É obrigatório com <code>type="email"</code></li>
+            <li class="list-group-item" data-v="c">Valida por expressão regular</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">4. Enviar senha por <code>GET</code> é…</div>
+          <ul class="list-group list-group-flush" data-q="4" data-a="a">
+            <li class="list-group-item" data-v="a">desaconselhado, pois a URL expõe dados</li>
+            <li class="list-group-item" data-v="b">recomendado, é mais rápido</li>
+            <li class="list-group-item" data-v="c">idêntico a <code>POST</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">5. Para telefone no Brasil, uma dica de UX é…</div>
+          <ul class="list-group list-group-flush" data-q="5" data-a="b">
+            <li class="list-group-item" data-v="a">Usar <code>type="number"</code></li>
+            <li class="list-group-item" data-v="b">Usar <code>type="tel"</code> com <code>pattern</code> e <code>inputmode</code></li>
+            <li class="list-group-item" data-v="c">Sempre obrigar DDI</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">6. <code>&lt;label&gt;</code> é importante porque…</div>
+          <ul class="list-group list-group-flush" data-q="6" data-a="c">
+            <li class="list-group-item" data-v="a">Melhora apenas a estética</li>
+            <li class="list-group-item" data-v="b">Só é útil em telas grandes</li>
+            <li class="list-group-item" data-v="c">Associa rótulo ao campo, melhorando acessibilidade</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">7. <code>datalist</code> serve para…</div>
+          <ul class="list-group list-group-flush" data-q="7" data-a="b">
+            <li class="list-group-item" data-v="a">Substituir <code>select</code> sempre</li>
+            <li class="list-group-item" data-v="b">Sugerir opções mantendo digitação livre</li>
+            <li class="list-group-item" data-v="c">Validar número com passo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">8. Para CPF, uma estratégia é…</div>
+          <ul class="list-group list-group-flush" data-q="8" data-a="a">
+            <li class="list-group-item" data-v="a">Usar <code>inputmode="numeric"</code> com <code>pattern</code></li>
+            <li class="list-group-item" data-v="b">Usar <code>type="number"</code> com <code>max</code></li>
+            <li class="list-group-item" data-v="c">Usar <code>type="text"</code> sem qualquer validação</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn btn-brand btn-sm" id="btnCheck">Conferir respostas</button>
+      <button class="btn btn-outline-secondary btn-sm" id="btnResetQuiz">Limpar seleção</button>
+    </div>
+  </div>
+</section>
+
+<section id="recursos" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h6 mb-2">🔗 Recursos & Leituras</h2>
+    <ul class="mini mb-0">
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Learn/Forms" target="_blank" rel="noopener">MDN — Guia de Formulários</a></li>
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/form" target="_blank" rel="noopener">MDN — &lt;form&gt;</a></li>
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/input" target="_blank" rel="noopener">MDN — &lt;input&gt;</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> 2025-09-11 </span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-container p-2 position-fixed bottom-0 end-0">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+const MODELS = {"1": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 01 — Cadastro Básico</title>\n</head>\n<body>\n  <h1>Modelo 01 — Cadastro Básico</h1>\n\n  <form action=\"#\" method=\"post\">\n    <fieldset>\n      <legend>Dados de acesso</legend>\n\n      <label for=\"nome\">Nome completo</label><br>\n      <input type=\"text\" id=\"nome\" name=\"nome\" placeholder=\"Seu nome\" required><br><br>\n\n      <label for=\"email\">E-mail</label><br>\n      <input type=\"email\" id=\"email\" name=\"email\" placeholder=\"seu@email.com\" required><br><br>\n\n      <label for=\"senha\">Senha</label><br>\n      <input type=\"password\" id=\"senha\" name=\"senha\" minlength=\"6\" required><br><br>\n\n      <button type=\"submit\">Enviar</button>\n      <button type=\"reset\">Limpar</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "2": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 02 — Formulário de Contato</title>\n</head>\n<body>\n  <h1>Modelo 02 — Formulário de Contato</h1>\n\n  <form action=\"#\" method=\"post\">\n    <fieldset>\n      <legend>Mensagem</legend>\n\n      <label for=\"assunto\">Assunto</label><br>\n      <select id=\"assunto\" name=\"assunto\" required>\n        <option value=\"\" selected disabled>Selecione…</option>\n        <option>Suporte</option>\n        <option>Comercial</option>\n        <option>Parcerias</option>\n        <option>Outros</option>\n      </select><br><br>\n\n      <label for=\"mensagem\">Mensagem</label><br>\n      <textarea id=\"mensagem\" name=\"mensagem\" rows=\"6\" cols=\"40\" maxlength=\"1000\" placeholder=\"Escreva sua mensagem…\" required></textarea><br><br>\n\n      <label for=\"anexo\">Anexar arquivo (opcional)</label><br>\n      <input type=\"file\" id=\"anexo\" name=\"anexo\" accept=\".pdf,.jpg,.png\"><br><br>\n\n      <button type=\"submit\">Enviar</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "3": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 03 — Inscrição em Evento</title>\n</head>\n<body>\n  <h1>Modelo 03 — Inscrição em Evento</h1>\n\n  <form action=\"#\" method=\"get\">\n    <fieldset>\n      <legend>Dados do evento</legend>\n\n      <label for=\"data\">Data</label><br>\n      <input type=\"date\" id=\"data\" name=\"data\" required><br><br>\n\n      <label for=\"hora\">Horário</label><br>\n      <input type=\"time\" id=\"hora\" name=\"hora\" required><br><br>\n\n      <label for=\"vagas\">Quantidade de vagas</label><br>\n      <input type=\"number\" id=\"vagas\" name=\"vagas\" min=\"1\" max=\"500\" step=\"1\" value=\"30\"><br><br>\n\n      <label for=\"site\">Página do evento (URL)</label><br>\n      <input type=\"url\" id=\"site\" name=\"site\" placeholder=\"https://exemplo.com\"><br><br>\n\n      <button type=\"submit\">Pesquisar</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "4": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 04 — Perfil Profissional</title>\n</head>\n<body>\n  <h1>Modelo 04 — Perfil Profissional</h1>\n\n  <form action=\"#\" method=\"post\">\n    <fieldset>\n      <legend>Área de atuação</legend>\n\n      <p><strong>Escolha uma área principal (radio):</strong></p>\n      <label><input type=\"radio\" name=\"area\" value=\"dev\" required> Desenvolvimento</label><br>\n      <label><input type=\"radio\" name=\"area\" value=\"design\"> Design</label><br>\n      <label><input type=\"radio\" name=\"area\" value=\"dados\"> Dados</label><br><br>\n\n      <p><strong>Habilidades (checkbox — múltiplas):</strong></p>\n      <label><input type=\"checkbox\" name=\"skills\" value=\"html\"> HTML</label><br>\n      <label><input type=\"checkbox\" name=\"skills\" value=\"css\"> CSS</label><br>\n      <label><input type=\"checkbox\" name=\"skills\" value=\"js\"> JavaScript</label><br>\n      <label><input type=\"checkbox\" name=\"skills\" value=\"sql\"> SQL</label><br><br>\n\n      <button type=\"submit\">Salvar</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "5": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 05 — Pesquisa Rápida</title>\n</head>\n<body>\n  <h1>Modelo 05 — Pesquisa Rápida</h1>\n\n  <form action=\"#\" method=\"get\">\n    <fieldset>\n      <legend>Filtros</legend>\n\n      <label for=\"termo\">Buscar</label><br>\n      <input type=\"search\" id=\"termo\" name=\"q\" placeholder=\"Digite um termo…\"><br><br>\n\n      <label for=\"preco\">Preço máximo</label><br>\n      <input type=\"range\" id=\"preco\" name=\"preco\" min=\"0\" max=\"1000\" value=\"500\"><br><br>\n\n      <label for=\"cor\">Cor preferida</label><br>\n      <input type=\"color\" id=\"cor\" name=\"cor\" value=\"#1f6feb\"><br><br>\n\n      <button type=\"submit\">Aplicar</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "6": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 06 — Endereço & Contato</title>\n</head>\n<body>\n  <h1>Modelo 06 — Endereço & Contato</h1>\n\n  <form action=\"#\" method=\"post\" autocomplete=\"on\">\n    <fieldset>\n      <legend>Endereço</legend>\n\n      <label for=\"cep\">CEP</label><br>\n      <input type=\"text\" id=\"cep\" name=\"cep\" inputmode=\"numeric\" pattern=\"\\d{5}-?\\d{3}\" placeholder=\"00000-000\" required><br><br>\n\n      <label for=\"logradouro\">Logradouro</label><br>\n      <input type=\"text\" id=\"logradouro\" name=\"logradouro\" required><br><br>\n\n      <label for=\"cidade\">Cidade</label><br>\n      <input list=\"cidades\" id=\"cidade\" name=\"cidade\" placeholder=\"Digite ou escolha…\">\n      <datalist id=\"cidades\">\n        <option value=\"Guarulhos\">\n        <option value=\"São Paulo\">\n        <option value=\"Osasco\">\n        <option value=\"Mogi das Cruzes\">\n      </datalist><br><br>\n\n      <label for=\"uf\">Estado</label><br>\n      <select id=\"uf\" name=\"uf\" required>\n        <option value=\"\" disabled selected>Selecione…</option>\n        <option>SP</option><option>RJ</option><option>MG</option><option>PR</option>\n      </select><br><br>\n\n      <label for=\"telefone\">Telefone</label><br>\n      <input type=\"tel\" id=\"telefone\" name=\"telefone\" placeholder=\"(11) 99999-9999\" pattern=\"\\(\\d{2}\\) \\d{4,5}-\\d{4}\"><br><br>\n\n      <label for=\"interesses\">Interesses (múltiplos)</label><br>\n      <select id=\"interesses\" name=\"interesses\" size=\"4\" multiple>\n        <option>Newsletter</option>\n        <option>Promoções</option>\n        <option>Novos cursos</option>\n        <option>Eventos</option>\n      </select><br><br>\n\n      <button type=\"submit\">Salvar endereço</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "7": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 07 — Agendamento</title>\n</head>\n<body>\n  <h1>Modelo 07 — Agendamento</h1>\n\n  <form action=\"#\" method=\"post\">\n    <fieldset>\n      <legend>Datas e períodos</legend>\n\n      <label for=\"quando\">Data e hora</label><br>\n      <input type=\"datetime-local\" id=\"quando\" name=\"quando\"><br><br>\n\n      <label for=\"mes\">Mês de referência</label><br>\n      <input type=\"month\" id=\"mes\" name=\"mes\"><br><br>\n\n      <label for=\"semana\">Semana de referência</label><br>\n      <input type=\"week\" id=\"semana\" name=\"semana\"><br><br>\n\n      <button type=\"submit\">Agendar</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "8": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 08 — Checkout Simples</title>\n</head>\n<body>\n  <h1>Modelo 08 — Checkout Simples</h1>\n\n  <form action=\"#\" method=\"post\" autocomplete=\"on\">\n    <fieldset>\n      <legend>Dados do comprador</legend>\n\n      <label for=\"nome\">Nome</label><br>\n      <input type=\"text\" id=\"nome\" name=\"nome\" required><br><br>\n\n      <label for=\"email\">E-mail</label><br>\n      <input type=\"email\" id=\"email\" name=\"email\" required><br><br>\n\n      <label for=\"cpf\">CPF</label><br>\n      <input type=\"text\" id=\"cpf\" name=\"cpf\" placeholder=\"000.000.000-00\" inputmode=\"numeric\" pattern=\"\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}\" required><br><br>\n    </fieldset>\n\n    <fieldset>\n      <legend>Pagamento</legend>\n\n      <label for=\"numero\">Número do cartão</label><br>\n      <input type=\"text\" id=\"numero\" name=\"numero\" inputmode=\"numeric\" placeholder=\"0000 0000 0000 0000\" pattern=\"\\d{4} \\d{4} \\d{4} \\d{4}\" required><br><br>\n\n      <label for=\"validade\">Validade</label><br>\n      <input type=\"month\" id=\"validade\" name=\"validade\" required><br><br>\n\n      <label for=\"cvv\">CVV</label><br>\n      <input type=\"password\" id=\"cvv\" name=\"cvv\" inputmode=\"numeric\" pattern=\"\\d{3,4}\" maxlength=\"4\" required><br><br>\n    </fieldset>\n\n    <button type=\"submit\">Finalizar</button>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "9": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 09 — Upload de Arquivos</title>\n</head>\n<body>\n  <h1>Modelo 09 — Upload de Arquivos</h1>\n\n  <form action=\"#\" method=\"post\" enctype=\"multipart/form-data\">\n    <fieldset>\n      <legend>Envio</legend>\n\n      <label for=\"arquivos\">Selecione arquivos (imagens ou PDFs)</label><br>\n      <input type=\"file\" id=\"arquivos\" name=\"arquivos\" accept=\".pdf,image/*\" multiple required><br><br>\n\n      <label for=\"descricao\">Descrição (opcional)</label><br>\n      <textarea id=\"descricao\" name=\"descricao\" rows=\"4\" cols=\"40\" placeholder=\"Sobre os arquivos…\"></textarea><br><br>\n\n      <button type=\"submit\">Enviar</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n", "10": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Modelo 10 — Dados Acadêmicos</title>\n</head>\n<body>\n  <h1>Modelo 10 — Dados Acadêmicos</h1>\n\n  <form action=\"#\" method=\"post\">\n    <fieldset>\n      <legend>Aluno</legend>\n\n      <label for=\"matricula\">Matrícula</label><br>\n      <input type=\"text\" id=\"matricula\" name=\"matricula\" pattern=\"[A-Z]{3}-\\d{4}\" placeholder=\"ABC-2025\" required><br><br>\n\n      <label for=\"curso\">Curso</label><br>\n      <input type=\"text\" id=\"curso\" name=\"curso\" required><br><br>\n\n      <label for=\"pais\">País</label><br>\n      <input list=\"paises\" id=\"pais\" name=\"pais\" placeholder=\"Digite/Escolha…\">\n      <datalist id=\"paises\">\n        <option value=\"Brasil\">\n        <option value=\"Argentina\">\n        <option value=\"Portugal\">\n        <option value=\"Estados Unidos\">\n      </datalist><br><br>\n\n      <label for=\"nota\">Nota final (0–10)</label><br>\n      <input type=\"number\" id=\"nota\" name=\"nota\" min=\"0\" max=\"10\" step=\"0.1\" required><br><br>\n\n      <button type=\"submit\">Registrar</button>\n    </fieldset>\n  </form>\n\n  <p><small>Exemplo educativo. Substitua action/method conforme seu backend.</small></p>\n</body>\n</html>\n"};
+
+/* ==== Copiar/Executar/Baixar code-note ==== */
+document.querySelectorAll('[data-copy]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-copy');
+    const el = document.querySelector(sel);
+    const txt = el ? el.textContent : '';
+    navigator.clipboard?.writeText(txt).then(()=>showToast('Copiado 📋')).catch(()=>alert(txt));
+  });
+});
+document.querySelectorAll('[data-run]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-run');
+    const el = document.querySelector(sel);
+    if(!el) return;
+    runPreview(el.textContent);
+  });
+});
+document.querySelectorAll('[data-download]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-download');
+    const el = document.querySelector(sel);
+    if(!el) return;
+    downloadHTML(el.textContent, 'form-estrutura.html');
+  });
+});
+
+/* ==== Carregamento pelos botões da tabela de modelos ==== */
+document.querySelectorAll('[data-load]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const id = btn.getAttribute('data-load');
+    if(MODELS[id]){
+      document.getElementById('editor').value = MODELS[id];
+      runPreview(MODELS[id]);
+      showToast('Modelo '+id.padStart(2,'0')+' carregado ✨');
+    }
+  });
+});
+
+/* ==== Load/Clear ==== */
+document.getElementById('btnLoad').addEventListener('click',()=>{
+  const id = document.getElementById('selModel').value;
+  if(!id){ showToast('Escolha um modelo.'); return; }
+  if(!MODELS[id]){ showToast('Código não encontrado.'); return; }
+  const ed = document.getElementById('editor');
+  ed.value = MODELS[id];
+  showToast('Modelo '+id.padStart(2,'0')+' carregado ✨');
+  runPreview(ed.value);
+});
+document.getElementById('btnClear').addEventListener('click',()=>{
+  document.getElementById('editor').value = '';
+  document.getElementById('preview').srcdoc = '';
+  document.getElementById('lint').hidden = true;
+});
+
+/* ==== Run/Copy/Download ==== */
+document.getElementById('btnRun').addEventListener('click',()=>{
+  runPreview(document.getElementById('editor').value);
+});
+document.getElementById('btnCopy').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  navigator.clipboard?.writeText(code).then(()=>showToast('Copiado 📋')).catch(()=>alert(code));
+});
+document.getElementById('btnDownload').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  downloadHTML(code, 'exemplo-aula3.html');
+});
+
+function downloadHTML(code, filename){
+  const blob = new Blob([code], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), {href:url, download:filename});
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* ==== Linter de formulários ==== */
+function runPreview(code){
+  const alerts = [];
+  // Estrutura mínima
+  if(!/<!doctype/i.test(code) || !/<html/i.test(code) || !/<head/i.test(code) || !/<body/i.test(code)){ alerts.push('Sugestão: inclua estrutura mínima (<!doctype html>, <html>, <head>, <body>).'); }
+  // label for → id
+  const ids = Array.from(code.matchAll(/\bid=["']([^"']+)["']/gi)).map(m=>m[1]);
+  const fors = Array.from(code.matchAll(/<label\b[^>]*\bfor=["']([^"']+)["']/gi)).map(m=>m[1]);
+  fors.forEach(f=>{ if(!ids.includes(f)) alerts.push('label[for="'+f+'"] sem campo com id correspondente.'); });
+  // file → enctype
+  const hasFile = /<input\b[^>]*type=["']?file["']?/i.test(code);
+  const hasEnc = /<form\b[^>]*enctype=["']multipart\/form-data["']/i.test(code);
+  if(hasFile && !hasEnc) alerts.push('Há <input type="file"> mas o <form> não tem enctype="multipart/form-data".');
+  // GET sensível
+  const methodGet = /<form\b[^>]*method=["']?get["']?/i.test(code);
+  const hasSensitive = /(type=["']?password["']?|\bcpf\b|\bcvv\b)/i.test(code);
+  if(methodGet && hasSensitive) alerts.push('Campos sensíveis detectados enviando via GET — prefira method="post".');
+  // radios → mesmo name
+  const radioNames = Array.from(code.matchAll(/<input\b[^>]*type=["']radio["'][^>]*\bname=["']([^"']+)["']/gi)).map(m=>m[1]);
+  const uniqueRadioNames = [...new Set(radioNames)];
+  uniqueRadioNames.forEach(n=>{ const count = radioNames.filter(x=>x===n).length; if(count<2) alerts.push('Grupo radio com name="'+n+'" possui apenas 1 opção.'); });
+
+  const lint = document.getElementById('lint');
+  if(alerts.length){ lint.hidden = false; lint.innerHTML = alerts.map(a=>'• '+a).join('<br>'); }
+  else { lint.hidden = true; }
+
+  document.getElementById('preview').srcdoc = code;
+  showToast('Executado ▶️');
+}
+
+/* ==== Quiz ==== */
+document.querySelectorAll('#quiz .list-group').forEach(list=>{
+  list.addEventListener('click',(e)=>{
+    const li = e.target.closest('.list-group-item'); if(!li) return;
+    [...list.querySelectorAll('.list-group-item')].forEach(x=>x.classList.remove('active','list-group-item-success','list-group-item-danger'));
+    li.classList.add('active');
+  });
+});
+document.getElementById('btnCheck').addEventListener('click',()=>{
+  let acertos=0, total=0;
+  document.querySelectorAll('#quiz .list-group').forEach(list=>{
+    total++;
+    const correct = list.getAttribute('data-a');
+    const sel = list.querySelector('.list-group-item.active');
+    if(!sel){ return; }
+    const v = sel.getAttribute('data-v');
+    if(v===correct){ acertos++; sel.classList.add('list-group-item-success'); }
+    else { sel.classList.add('list-group-item-danger'); }
+  });
+  showToast(`Você acertou ${acertos}/${total} ✔️`);
+});
+document.getElementById('btnResetQuiz').addEventListener('click',()=>{
+  document.querySelectorAll('#quiz .list-group-item').forEach(li=>li.classList.remove('active','list-group-item-success','list-group-item-danger'));
+});
+
+/* ==== Mensagem inicial ==== */
+addEventListener('DOMContentLoaded', ()=> showToast('Aula 3 pronta! 🚀'));
+</script>
+</body>
+</html>
