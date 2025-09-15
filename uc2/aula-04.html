@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UC2 • Aula 4 — Mídia, Tabelas e Image Map no HTML</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/css/styles.css" rel="stylesheet">
+  <style>
+    .preview-box{border:1px dashed #ced4da;border-radius:.75rem;padding:1rem;background:#fff}
+    .code-note{background:#0d1117;color:#c9d1d9;border-radius:.75rem;padding:1rem;font-size:.9rem;overflow:auto}
+    .mini{font-size:.92rem}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:1rem}
+    .grid-3{display:grid;grid-template-columns:1fr;gap:1rem}
+    @media(min-width: 992px){ .grid-2{grid-template-columns:1fr 1fr} .grid-3{grid-template-columns:1fr 1fr 1fr} }
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;}
+    .table thead th{white-space:nowrap}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="../index.html">
+      <span>🎨 Web Designer</span>
+      <span class="badge text-bg-primary">UC2</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="./index.html">Índice</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-01.html">Aula 1</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-02.html">Aula 2</a></li>
+        <li class="nav-item"><a class="nav-link" href="./aula-03.html">Aula 3</a></li>
+        <li class="nav-item"><a class="nav-link active" href="./aula-04.html">Aula 4</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="py-5 hero">
+  <div class="container py-3">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../index.html">Início</a></li>
+        <li class="breadcrumb-item"><a href="./index.html">UC2</a></li>
+        <li class="breadcrumb-item active">Aula 4</li>
+      </ol>
+    </nav>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h1 class="h3">Aula 4 — Mídia, Tabelas e Image Map no HTML</h1>
+        <p class="lead">Com base nos <strong>exemplos anexos (1–13 + 6b)</strong>, vamos revisar padrões, boas práticas e carregar cada código no <strong>Playground</strong>.</p>
+        <div class="d-flex gap-2 flex-wrap">
+          <a href="#conceitos" class="btn btn-brand">Conceitos-chave</a>
+          <a href="#catalogo" class="btn btn-outline-secondary">Catálogo</a>
+          <a href="#modelos" class="btn btn-outline-secondary">Modelos do anexo</a>
+          <a href="#playground" class="btn btn-outline-secondary">Playground</a>
+          <a href="#quiz" class="btn btn-outline-dark">Quiz</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card-ghost p-3">
+          <strong>Objetivos da aula</strong>
+          <ul class="mini mb-0">
+            <li>Dominar imagens, áudio, vídeo e tabelas.</li>
+            <li>Entender <span class="kbd">&lt;figure&gt;</span>, <span class="kbd">&lt;figcaption&gt;</span>, <span class="kbd">&lt;abbr&gt;</span>, escopos de <span class="kbd">&lt;th&gt;</span>.</li>
+            <li>Praticar <span class="kbd">&lt;map&gt;</span>/<span class="kbd">&lt;area&gt;</span> e coordenadas.</li>
+            <li>Aprimorar acessibilidade (alt, caption, scope, summary).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="conceitos" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">1) Conceitos-chave</h2>
+    <div class="grid-3">
+      <article class="card-ghost p-3">
+        <h3 class="h6">Imagens</h3>
+        <ul class="mini mb-0">
+          <li><span class="kbd">&lt;img src alt width/height loading decoding&gt;</span>.</li>
+          <li>Legenda com <span class="kbd">&lt;figure&gt;</span> e <span class="kbd">&lt;figcaption&gt;</span>.</li>
+          <li>Mapas clicáveis com <span class="kbd">&lt;map&gt;</span> e <span class="kbd">&lt;area shape coords&gt;</span>.</li>
+        </ul>
+      </article>
+      <article class="card-ghost p-3">
+        <h3 class="h6">Áudio & Vídeo</h3>
+        <ul class="mini mb-0">
+          <li><span class="kbd">&lt;audio controls&gt;</span>/<span class="kbd">&lt;video controls&gt;</span> + <span class="kbd">&lt;source&gt;</span>.</li>
+          <li><span class="kbd">autoplay</span> requer <span class="kbd">muted</span> para não ser bloqueado.</li>
+          <li>Resumo/capítulos com <span class="kbd">&lt;details&gt;</span>/<span class="kbd">&lt;summary&gt;</span>.</li>
+        </ul>
+      </article>
+      <article class="card-ghost p-3">
+        <h3 class="h6">Tabelas</h3>
+        <ul class="mini mb-0">
+          <li><span class="kbd">&lt;caption&gt;</span>, <span class="kbd">&lt;thead&gt;</span>/<span class="kbd">&lt;tbody&gt;</span>/<span class="kbd">&lt;tfoot&gt;</span>.</li>
+          <li>Semântica: <span class="kbd">&lt;th scope="col/row/colgroup/rowgroup"&gt;</span>.</li>
+          <li>Mesclas: <span class="kbd">rowspan</span> / <span class="kbd">colspan</span>; abreviações com <span class="kbd">&lt;abbr&gt;</span>.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="mt-4">
+      <h3 class="h6">Padrões recomendados</h3>
+      <div class="code-note" id="code-padroes">
+&lt;figure&gt;
+  &lt;img src=&quot;img.jpg&quot; alt=&quot;Descrição objetiva&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;
+  &lt;figcaption&gt;Legenda da imagem&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;audio controls preload=&quot;metadata&quot;&gt;
+  &lt;source src=&quot;audio.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
+  Seu navegador não suporta o elemento &lt;audio&gt;.
+&lt;/audio&gt;
+
+&lt;table&gt;
+  &lt;caption&gt;Título da Tabela&lt;/caption&gt;
+  &lt;thead&gt;…&lt;/thead&gt;
+  &lt;tbody&gt;…&lt;/tbody&gt;
+  &lt;tfoot&gt;…&lt;/tfoot&gt;
+&lt;/table&gt;
+      </div>
+      <div class="mt-2 d-flex gap-2">
+        <button class="btn btn-outline-primary btn-sm" data-copy="#code-padroes">Copiar 📋</button>
+        <button class="btn btn-outline-secondary btn-sm" data-run="#code-padroes">Executar ▶️</button>
+        <button class="btn btn-outline-dark btn-sm" data-download="#code-padroes">Baixar .html ⬇️</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="catalogo" class="py-5 bg-white border-top border-bottom">
+  <div class="container">
+    <h2 class="h4 mb-3">2) Catálogo (elementos & atributos)</h2>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead>
+          <tr><th>Elemento</th><th>Exemplo (copiável)</th><th>Uso / Observações</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>&lt;img&gt;</code></td>
+            <td><code id="c1">&lt;img src=&quot;foto.jpg&quot; alt=&quot;Pessoa sorrindo&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#c1">Copiar</button></td>
+            <td class="mini">Use <code>alt</code> descritivo; considere <code>width/height</code> para evitar layout shift.</td>
+          </tr>
+          <tr><td><code>&lt;figure&gt;/&lt;figcaption&gt;</code></td>
+            <td><code id="c2">&lt;figure&gt;&lt;img …&gt;&lt;figcaption&gt;Legenda&lt;/figcaption&gt;&lt;/figure&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#c2">Copiar</button></td>
+            <td class="mini">Agrupa imagem e legenda semanticamente.</td>
+          </tr>
+          <tr><td><code>&lt;map&gt;/&lt;area&gt;</code></td>
+            <td><code id="c3">&lt;img usemap=&quot;#s&quot;&gt;&lt;map name=&quot;s&quot;&gt;&lt;area shape=&quot;rect&quot; coords=&quot;10,10,100,80&quot;&gt;&lt;/map&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#c3">Copiar</button></td>
+            <td class="mini">Garanta <code>alt</code> na imagem e <code>alt</code> significativo nas áreas.</td>
+          </tr>
+          <tr><td><code>&lt;audio&gt;</code></td>
+            <td><code id="c4">&lt;audio controls preload=&quot;metadata&quot;&gt;&lt;source src=&quot;a.mp3&quot; type=&quot;audio/mpeg&quot;&gt;Fallback&lt;/audio&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#c4">Copiar</button></td>
+            <td class="mini"><code>autoplay</code> costuma exigir <code>muted</code>.</td>
+          </tr>
+          <tr><td><code>&lt;video&gt;</code></td>
+            <td><code id="c5">&lt;video controls poster=&quot;capa.jpg&quot; preload=&quot;metadata&quot;&gt;&lt;source src=&quot;v.mp4&quot; type=&quot;video/mp4&quot;&gt;Fallback&lt;/video&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#c5">Copiar</button></td>
+            <td class="mini">Inclua formatos compatíveis; considere <code>track</code> para legendas.</td>
+          </tr>
+          <tr><td><code>&lt;table&gt;</code></td>
+            <td><code id="c6">&lt;table&gt;&lt;caption&gt;…&lt;/caption&gt;&lt;thead&gt;…&lt;/thead&gt;&lt;tbody&gt;…&lt;/tbody&gt;&lt;/table&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#c6">Copiar</button></td>
+            <td class="mini">Evite <code>border</code> no HTML — use CSS.</td>
+          </tr>
+          <tr><td><code>&lt;th scope&gt;</code></td>
+            <td><code id="c7">&lt;th scope=&quot;col&quot;&gt;Dia&lt;/th&gt; &lt;th scope=&quot;row&quot;&gt;Manhã&lt;/th&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#c7">Copiar</button></td>
+            <td class="mini">Ajuda leitores de tela a relacionar cabeçalhos.</td>
+          </tr>
+          <tr><td><code>&lt;abbr&gt;</code></td>
+            <td><code id="c8">&lt;abbr title=&quot;Segunda-feira&quot;&gt;Seg&lt;/abbr&gt;</code>
+            <button class="btn btn-sm btn-outline-primary ms-2" data-copy="#c8">Copiar</button></td>
+            <td class="mini">Expande siglas e abreviações.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="modelos" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">3) Modelos do anexo (carregar/visualizar)</h2>
+    <div class="table-responsive">
+      <table class="table table-striped align-middle">
+        <thead><tr><th>#</th><th>Título</th><th>Conceitos</th><th>Ações</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Imagem simples</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="1">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo1.html">Abrir</a></td></tr>
+<tr><td>2</td><td>Imagem com lazy/decoding</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="2">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo2.html">Abrir</a></td></tr>
+<tr><td>3</td><td>Figura com link e legenda</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="3">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo3.html">Abrir</a></td></tr>
+<tr><td>4</td><td>Image Map (map/area)</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="4">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo4.html">Abrir</a></td></tr>
+<tr><td>5</td><td>Áudio básico com fallback</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="5">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo5.html">Abrir</a></td></tr>
+<tr><td>6</td><td>Áudio autoplay/muted/loop</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="6">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo6.html">Abrir</a></td></tr>
+<tr><td>6b</td><td>Áudio + link de download (fallback)</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="6b">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo6b.html">Abrir</a></td></tr>
+<tr><td>7</td><td>Vídeo com poster e metadata</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="7">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo7.html">Abrir</a></td></tr>
+<tr><td>8</td><td>Tabela (caption/thead/tbody/tfoot)</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="8">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo8.html">Abrir</a></td></tr>
+<tr><td>9</td><td>Tabela com escopos (row/col)</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="9">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo9.html">Abrir</a></td></tr>
+<tr><td>10</td><td>Tabela multinível (rowspan/colgroup)</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="10">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo10.html">Abrir</a></td></tr>
+<tr><td>11</td><td>Mescla de células (colspan)</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="11">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo11.html">Abrir</a></td></tr>
+<tr><td>12</td><td>Agenda semanal + <abbr></td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="12">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo12.html">Abrir</a></td></tr>
+<tr><td>13</td><td>Áudio com sumário (details/summary)</td><td>Ver descrição na aula</td><td><button class="btn btn-sm btn-outline-primary" data-load="13">Carregar</button> <a class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener" href="./modelos/exemplo13.html">Abrir</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="playground" class="py-5">
+  <div class="container">
+    <h2 class="h4 mb-3">4) Playground — carregue um modelo e edite 🧪</h2>
+    <div class="grid-2">
+      <div>
+        <div class="d-flex gap-2 flex-wrap mb-2">
+          <label class="form-label mb-0 me-2">Carregar modelo:</label>
+          <select id="selModel" class="form-select form-select-sm" style="width:auto;display:inline-block">
+            <option value="">— Escolha —</option>
+          </select>
+          <button class="btn btn-outline-primary btn-sm" id="btnLoad">Carregar</button>
+          <button class="btn btn-outline-dark btn-sm" id="btnClear">Limpar</button>
+        </div>
+        <textarea id="editor" class="form-control" rows="20">&lt;!-- Selecione um modelo acima ou cole seu HTML aqui. --&gt;</textarea>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-brand" id="btnRun">Executar ▶️</button>
+          <button class="btn btn-outline-primary" id="btnCopy">Copiar HTML 📋</button>
+          <button class="btn btn-outline-dark" id="btnDownload">Baixar .html ⬇️</button>
+        </div>
+        <div class="mt-3">
+          <div class="alert alert-warning mini" id="lint" hidden></div>
+        </div>
+      </div>
+      <div>
+        <div class="preview-box">
+          <iframe id="preview" style="width:100%;height:520px;border:0;border-radius:.5rem;background:#fff"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <details class="card-ghost p-3">
+        <summary><strong>O que o verificador checa?</strong></summary>
+        <ul class="mini mb-0">
+          <li><strong>Imagens:</strong> <span class="kbd">alt</span> obrigatório.</li>
+          <li><strong>Áudio:</strong> presença de <span class="kbd">&lt;source&gt;</span> e fallback; alerta para <span class="kbd">autoplay</span> sem <span class="kbd">muted</span>.</li>
+          <li><strong>Vídeo:</strong> recomenda <span class="kbd">controls</span> e <span class="kbd">preload=&quot;metadata&quot;</span>.</li>
+          <li><strong>Tabelas:</strong> <span class="kbd">&lt;caption&gt;</span>, <span class="kbd">&lt;thead&gt;</span>/<span class="kbd">&lt;tbody&gt;</span>, e escopos em <span class="kbd">&lt;th&gt;</span>.</li>
+          <li><strong>Image map:</strong> checa combinação <span class="kbd">usemap</span> ↔ <span class="kbd">&lt;map name&gt;</span> e <span class="kbd">&lt;area&gt;</span> com <span class="kbd">alt</span>.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h4 mb-3">5) Quiz de Mídia & Tabelas ✅</h2>
+    <div class="row g-3 quiz">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">1. Para autoplay de áudio/vídeo funcionar, normalmente é preciso…</div>
+          <ul class="list-group list-group-flush" data-q="1" data-a="a">
+            <li class="list-group-item" data-v="a">usar <code>muted</code></li>
+            <li class="list-group-item" data-v="b">omitir <code>controls</code></li>
+            <li class="list-group-item" data-v="c">remover as fontes</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">2. Em tabelas acessíveis, recomenda-se…</div>
+          <ul class="list-group list-group-flush" data-q="2" data-a="c">
+            <li class="list-group-item" data-v="a">usar somente &lt;td&gt;</li>
+            <li class="list-group-item" data-v="b">evitar &lt;caption&gt;</li>
+            <li class="list-group-item" data-v="c">definir &lt;th scope="col/row"&gt;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">3. Para abreviações como “Seg”, use…</div>
+          <ul class="list-group list-group-flush" data-q="3" data-a="b">
+            <li class="list-group-item" data-v="a">&lt;abbr&gt; sem title</li>
+            <li class="list-group-item" data-v="b">&lt;abbr title="Segunda-feira"&gt;Seg&lt;/abbr&gt;</li>
+            <li class="list-group-item" data-v="c">apenas CSS</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">4. Em image map, cada &lt;area&gt; deve ter…</div>
+          <ul class="list-group list-group-flush" data-q="4" data-a="a">
+            <li class="list-group-item" data-v="a">um <code>alt</code> e um <code>href</code> úteis</li>
+            <li class="list-group-item" data-v="b">apenas <code>coords</code></li>
+            <li class="list-group-item" data-v="c">apenas <code>shape</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">5. Em vídeos, para desempenho é comum definir…</div>
+          <ul class="list-group list-group-flush" data-q="5" data-a="c">
+            <li class="list-group-item" data-v="a"><code>preload="auto"</code> sempre</li>
+            <li class="list-group-item" data-v="b">remover <code>poster</code></li>
+            <li class="list-group-item" data-v="c"><code>preload="metadata"</code> e <code>poster</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header">6. Em tabelas com multi-cabeçalhos, use…</div>
+          <ul class="list-group list-group-flush" data-q="6" data-a="b">
+            <li class="list-group-item" data-v="a">apenas &lt;th scope="col"&gt;</li>
+            <li class="list-group-item" data-v="b">&lt;th&gt; com <code>rowspan</code>/<code>colspan</code> e <code>scope</code> adequados</li>
+            <li class="list-group-item" data-v="c">nada, leitores de tela inferem sempre</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn btn-brand btn-sm" id="btnCheck">Conferir respostas</button>
+      <button class="btn btn-outline-secondary btn-sm" id="btnResetQuiz">Limpar seleção</button>
+    </div>
+  </div>
+</section>
+
+<section id="recursos" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="h6 mb-2">🔗 Recursos & Leituras</h2>
+    <ul class="mini mb-0">
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/img" target="_blank" rel="noopener">MDN — &lt;img&gt;</a></li>
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">MDN — &lt;audio&gt;</a></li>
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/video" target="_blank" rel="noopener">MDN — &lt;video&gt;</a></li>
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/table" target="_blank" rel="noopener">MDN — &lt;table&gt;</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="py-5 mt-5">
+  <div class="container d-flex justify-content-between flex-wrap">
+    <span><strong>Atualizado:</strong> 2025-09-12 </span>
+    <span>Feito com ❤️, Bootstrap 5 e JavaScript.</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast-container p-2 position-fixed bottom-0 end-0">
+  <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="status" aria-live="polite" aria-atomic="true">
+    <div class="d-flex">
+      <div class="toast-body" id="toastMsg">Pronto!</div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+const MODELS = {"1": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Teste com Imagem</title>\n</head>\n<body>\n    <h1>Teste com Imagem</h1>\n    <img src=\"imagens/arvore.jpg\" alt=\"Imagem de uma árvore no campo\" height=\"560\">\n</body>\n</html>", "2": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Teste com imagem</title>\n</head>\n<body>\n    <img src=\"imagens/arvore.jpg\" alt=\"Imagem de uma árvore no campo\" width=\"400\" loading=\"lazy\" decoding=\"async\"\n\n</body>\n</html>", "3": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Teste com imagem</title>\n</head>\n<body>\n   <figure>\n    <a href=\"exemplo2.html\" target=\"_blank\" rel=\"noopener\">\n\n        <img src=\"imagens/natureza.jpg\" alt=\"Imagem de uma folha\" width=\"150\">\n    </a>\n    \n    <figcaption> Imagem de uma folha</figcaption>\n\n   </figure>\n    \n\n\n</body>\n</html>", "4": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Teste com Imagens - 4</title>\n</head>\n<body>\n    <img src=\"imagens/setores.jpg\" alt=\"Imagem de setores\" usemap=\"#setores\" width=\"700\">\n\n    <map name=\"setores\">\n        <area shape=\"rect\" coords=\"20,20,220,180\" href=\"exemplo1.html\" alt=\"abre a página exemplo1.html\">\n        \n        <area shape=\"circle\" coords=\"400,150,80\" href=\"exemplo2.html\" alt=\"abre exemplo2.html\">\n\n        <area shape=\"poly\" coords=\"500,250, 650,250, 680,360, 520,360 \" href=\"exemplo3.html\" alt=\"abre exemplo3.html\">\n\n\n    </map>\n\n    \n\n\n\n</body>\n</html>", "5": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Teste - Áudio</title>\n</head>\n<body>\n\n    <audio controls>\n        <source src=\"audio/001.mp3\" type=\"audio/mpeg\">\n        Seu navegador não suporta o elemento de áudio.\n    </audio>\n\n</body>\n</html>", "6": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Teste de Aúdio 2</title>\n</head>\n<body>\n\n    <audio controls autoplay muted loop>\n        <source src=\"audio/001.mp3\" type=\"audio/mpeg\">\n        Seu navegador não suporta o elemento de áudio.\n    </audio>\n\n\n\n\n</body>\n</html>", "6b": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Teste de Aúdio 2</title>\n</head>\n<body>\n\n    <audio controls autoplay muted loop>\n        <source src=\"audio/001.mp3\" type=\"audio/mpeg\">\n\n        <p> <a href=\"audio/001.mp3\" download>001.mp3</a>Baixe o arquivo aqui</p>\n\n\n    </audio>\n\n\n\n\n</body>\n</html>", "7": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Teste de Vídeo 1</title>\n</head>\n<body>\n  \n    <video controls width=\"720\" poster=\"imagens/trilha.jpg\" preload=\"metadata\">\n        <source src=\"videos/003.mp4\" type=\"video/mp4\">\n        Seu navegador não suporta o elemento de vídeo (HTML5).\n    </video>\n    \n\n\n</body>\n</html>", "8": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Exemplo 1 - Tabela</title>\n</head>\n<body>\n    <table border=\"1\">\n        <caption>Vendas por Trimestre</caption>\n      <thead>\n        <tr>\n          <th>Trimestres</th>\n          <th>2024</th>\n          <th>2025</th>  \n        </tr>\n      </thead>\n      <tbody>\n        <tr>\n            <td>T1</td>\n            <td>R$ 120.000,00</td>\n            <td>R$ 132.000,00</td>\n        </tr>\n        <tr>\n            <td>T2</td>\n            <td>R$ 135.000,00</td>\n            <td>R$ 141.200,00</td>\n        </tr>\n      </tbody>\n      \n      <tfoot>\n        <tr>\n            <td>Total</td>\n            <td>R$ 255.000,00</td>\n            <td>R$ 273.200,00</td>'\n        </tr>\n      </tfoot>\n\n\n    </table>\n\n\n\n\n\n</body>\n</html>", "9": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Tabela com Scope</title>\n</head>\n<body>\n    <table border=\"1\">\n        <caption>Estoque por Setor</caption>\n        <thead>\n            <tr>\n            <th scope=\"col\">Setor</th>\n            <th scope=\"col\">Qtde</th>\n            </tr>\n        </thead>\n\n        <tbody>\n            <tr>\n                <th scope=\"row\">A</th>\n                <td>120</td>\n               \n            </tr>\n\n            <tr>\n                <th scope=\"row\">B</th>\n                <td>80</td>\n            </tr>\n        </tbody>\n\n    </table>\n</body>\n</html>", "10": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Multinível - Tabela</title>\n</head>\n<body>\n    <table border=\"1\">\n        <caption>Receitas por mês e Loja</caption>\n\n        <thead>\n            <tr>\n                <th rowspan=\"2\" scope=\"col\">Mês</th>\n                <th colspan=\"3\" scope=\"colgroup\">Receitas</th>\n            </tr>\n\n            <tr>\n                <th scope =\"col\"> Loja A</th>\n                <th scope =\"col\"> Loja B</th>\n                <th scope =\"col\">Total</th>\n            </tr>\n\n        </thead>\n        \n        <tbody>\n            <tr>\n                <td>Jan</td>\n                <td>R$ 15.000,00</td>\n                <td>R$ 10.000,00</td>\n                <td>R$ 25.000,00 </td>        \n            </tr>\n            <tr>\n                <td>Fev</td>\n                <td>R$ 18.000,00</td>\n                <td>R$ 12.000,00</td>\n                <td>R$ 30.000,00 </td>\n            </tr>\n            \n        </tbody>\n\n\n    </table>\n\n\n\n</body>\n</html>", "11": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Mescla de linhas</title>\n</head>\n<body>\n    <table border=\"1\">\n        <caption>Participantes do evento</caption>\n        <thead>\n            <tr>\n                <th>Nome</th>\n                <th>Cidade</th>\n                <th>Observação</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr>\n                <td>Ana</td>\n                <td>Guarulhos</td>\n                <td>Chegará às 9h</td>\n            </tr>\n            <tr>\n                <td>Carlos</td>\n                <td colspan=\"2\">São Paulo | Sem Observação</td>\n            </tr>\n\n        </tbody>\n\n\n\n\n    </table>\n</body>\n</html>", "12": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Tabela Agenda Semanal</title>\n</head>\n\n<body>\n<table border=\"1\">\n    <caption>Agenda Semanal</caption>\n    <thead>\n        <tr>\n            <th>Período</th>\n            <th> <abbr title=\"Segunda-feira\">Seg </abbr> </th>\n\n            <th> <abbr title=\"Terça-feira\">Ter</abbr> </th>\n            <th> <abbr title=\"Quarta-feira\">Qua</abbr> </th>\n            <th> <abbr title=\"Quinta-feira\">Qui</abbr> </th>\n            <th> <abbr title=\"Sexta-feira\">Sex</abbr> </th>\n\n        </tr>\n    </thead>\n\n    <tbody>\n        <tr>\n            <th scope=\"row\">Manhã</th>\n            <td>Reunião</td>\n            <td>Treinamento</td>\n            <td>Reunião</td>\n            <td>Treinamento</td>\n            <td>Reunião</td>\n        </tr>\n\n        <tr>\n            <th scope=\"row\">Tarde</th>\n            <td>Atendimento</td>    \n            <td>Atendimento</td>\n            <td>Atendimento</td>\n            <td>Atendimento</td>\n            <td>Atendimento</td>\n            \n        </tr>\n    </tbody>\n</table>\n    \n\n\n\n\n</body>\n</html>", "13": "<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Áudio com sumário</title>\n</head>\n<body>\n    <audio controls>\n        <source src=\"audio/002.mp3\" type=\"audio/mpeg\">\n        Seu navegador não suporta o elemento de áudio.\n    </audio>\n\n    <details>\n        <summary>\n            Capítulos do áudio\n        </summary>\n        <p>[00:00] Introdução</p>\n        <p>[00:05] Tema 1</p>\n        <p>[00:06] Tema 2</p>\n    </details>\n\n\n</body>\n</html>"};
+
+// Fallback para showToast caso app.js não esteja disponível
+if (typeof window.showToast !== "function") {
+  window.showToast = function(msg){
+    try{
+      const el = document.getElementById("liveToast");
+      const body = document.getElementById("toastMsg");
+      if(!el || !body){ alert(msg); return; }
+      body.textContent = msg;
+      if (window.bootstrap && bootstrap.Toast) new bootstrap.Toast(el).show(); else alert(msg);
+    }catch(e){ alert(msg); }
+  }
+}
+
+/* ==== Popular <select> com chaves de MODELS ==== */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const sel = document.getElementById('selModel');
+  if (sel && sel.options.length <= 1) {
+    Object.keys(MODELS).forEach(k => {
+      const opt = document.createElement('option');
+      opt.value = k;
+      opt.textContent = `Modelo ${k}`;
+      sel.appendChild(opt);
+    });
+  }
+});
+
+/* ==== Copiar/Executar/Baixar code-note ==== */
+document.querySelectorAll('[data-copy]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-copy');
+    const el = document.querySelector(sel);
+    const txt = el ? el.textContent : '';
+    navigator.clipboard?.writeText(txt).then(()=>showToast('Copiado 📋')).catch(()=>alert(txt));
+  });
+});
+document.querySelectorAll('[data-run]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-run');
+    const el = document.querySelector(sel);
+    if(!el) return;
+    runPreview(el.textContent);
+  });
+});
+document.querySelectorAll('[data-download]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const sel = btn.getAttribute('data-download');
+    const el = document.querySelector(sel);
+    if(!el) return;
+    downloadHTML(el.textContent, 'padroes-aula4.html');
+  });
+});
+
+/* ==== Carregamento pelos botões da tabela de modelos ==== */
+document.querySelectorAll('[data-load]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const id = btn.getAttribute('data-load');
+    if(MODELS[id]){
+      document.getElementById('editor').value = MODELS[id];
+      runPreview(MODELS[id]);
+      showToast('Modelo '+id+' carregado ✨');
+    } else {
+      showToast('Código do modelo não encontrado.');
+    }
+  });
+});
+
+/* ==== Load/Clear ==== */
+document.getElementById('btnLoad').addEventListener('click',()=>{
+  const id = document.getElementById('selModel').value;
+  if(!id){ showToast('Escolha um modelo.'); return; }
+  if(!MODELS[id]){ showToast('Código não encontrado.'); return; }
+  const ed = document.getElementById('editor');
+  ed.value = MODELS[id];
+  showToast('Modelo '+id+' carregado ✨');
+  runPreview(ed.value);
+});
+document.getElementById('btnClear').addEventListener('click',()=>{
+  document.getElementById('editor').value = '';
+  document.getElementById('preview').srcdoc = '';
+  document.getElementById('lint').hidden = true;
+});
+
+/* ==== Run/Copy/Download ==== */
+document.getElementById('btnRun').addEventListener('click',()=>{
+  runPreview(document.getElementById('editor').value);
+});
+document.getElementById('btnCopy').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  navigator.clipboard?.writeText(code).then(()=>showToast('Copiado 📋')).catch(()=>alert(code));
+});
+document.getElementById('btnDownload').addEventListener('click',()=>{
+  const code = document.getElementById('editor').value;
+  downloadHTML(code, 'exemplo-aula4.html');
+});
+
+function downloadHTML(code, filename){
+  const blob = new Blob([code], {type:'text/html'});
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), {href:url, download:filename});
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* ==== Linter de mídia/tabelas ==== */
+function runPreview(code){
+  const alerts = [];
+  const has = (re)=> re.test(code);
+
+  // IMG alt
+  (code.match(/<img\b[^>]*>/gi)||[]).forEach(tag=>{ if(!/\balt=/.test(tag)) alerts.push('Imagem sem alt: ' + tag.replace(/</g,'&lt;')); });
+
+  // AUDIO: source e fallback; autoplay sem muted
+  if(has(/<audio\b/i)){
+    if(!has(/<audio\b[^>]*>/i) || !has(/<source\b/i)) alerts.push('Áudio sem <source> — forneça pelo menos um formato.');
+    const body = (code.match(/<audio[\s\S]*?<\/audio>/i)||[''])[0];
+    if(body && !/&lt;|<source\b/i.test(body) && !/Seu navegador|fallback|não suporta/i.test(body)){ alerts.push('Considere incluir um fallback textual dentro de <audio>.'); }
+    const audioTag = (code.match(/<audio\b[^>]*>/i)||[''])[0];
+    if(/autoplay/i.test(audioTag) && !/muted/i.test(audioTag)) alerts.push('Autoplay sem muted pode ser bloqueado.');
+  }
+
+  // VIDEO: controls e preload metadata recomendado
+  if(has(/<video\b/i)){
+    const v = (code.match(/<video\b[^>]*>/i)||[''])[0];
+    if(!/controls/i.test(v)) alerts.push('Vídeo sem controls — pode prejudicar usabilidade.');
+    if(!/preload=/.test(v)) alerts.push('Considere preload="metadata" para reduzir consumo.');
+  }
+
+  // TABLE: caption, thead/tbody, th scope
+  if(has(/<table\b/i)){
+    if(!has(/<caption\b/i)) alerts.push('Tabela sem <caption> — descreva a finalidade.');
+    if(!has(/<thead\b/i) || !has(/<tbody\b/i)) alerts.push('Considere usar <thead> e <tbody>.');
+    if(!has(/<th\b[^>]*scope=/i)) alerts.push('Inclua scope="col/row" em <th> para acessibilidade.');
+    if(/\bborder=/.test(code)) alerts.push('Evite atributo border no HTML — prefira CSS.');
+  }
+
+  // MAP: usemap ↔ map[name], áreas com alt e href
+  const imgMap = code.match(/<img\b[^>]*usemap=["']#([^"']+)["'][^>]*>/i);
+  if(imgMap){
+    const name = imgMap[1];
+    const map = new RegExp('<map\\b[^>]*name=["\']'+name+'["\']', 'i');
+    if(!map.test(code)) alerts.push('Imagem tem usemap, mas não encontrei <map name="'+name+'">.');
+    (code.match(/<area\b[^>]*>/gi)||[]).forEach(a=>{
+      if(!/\balt=/.test(a) || !/\bhref=/.test(a)) alerts.push('Cada <area> deve ter alt e href: ' + a.replace(/</g,'&lt;'));
+    });
+  }
+
+  const lint = document.getElementById('lint');
+  if(alerts.length){ lint.hidden = false; lint.innerHTML = alerts.map(a=>'• '+a).join('<br>'); }
+  else { lint.hidden = true; }
+
+  document.getElementById('preview').srcdoc = code;
+  showToast('Executado ▶️');
+}
+
+/* ==== Quiz ==== */
+document.querySelectorAll('#quiz .list-group').forEach(list=>{
+  list.addEventListener('click',(e)=>{
+    const li = e.target.closest('.list-group-item'); if(!li) return;
+    [...list.querySelectorAll('.list-group-item')].forEach(x=>x.classList.remove('active','list-group-item-success','list-group-item-danger'));
+    li.classList.add('active');
+  });
+});
+document.getElementById('btnCheck').addEventListener('click',()=>{
+  let acertos=0, total=0;
+  document.querySelectorAll('#quiz .list-group').forEach(list=>{
+    total++;
+    const correct = list.getAttribute('data-a');
+    const sel = list.querySelector('.list-group-item.active');
+    if(!sel){ return; }
+    const v = sel.getAttribute('data-v');
+    if(v===correct){ acertos++; sel.classList.add('list-group-item-success'); }
+    else { sel.classList.add('list-group-item-danger'); }
+  });
+  showToast(`Você acertou ${acertos}/${total} ✔️`);
+});
+document.getElementById('btnResetQuiz').addEventListener('click',()=>{
+  document.querySelectorAll('#quiz .list-group-item').forEach(li=>li.classList.remove('active','list-group-item-success','list-group-item-danger'));
+});
+
+addEventListener('DOMContentLoaded', ()=> showToast('Aula 4 pronta! 🚀'));
+</script>
+</body>
+</html>
